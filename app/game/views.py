@@ -11,7 +11,7 @@ from noise import snoise2
 from ..decorators import admin_required, permission_required
 
 #temp workaround
-POSTS_PER_PAGE = 5
+POSTS_PER_PAGE = 15
 world_active = None
 
 
@@ -54,14 +54,7 @@ def make_world():
                 location = WorldMap(world=world.id, letter_coord=count_letter,number_coord=count_number, terrain=terrain_result[0],image=terrain_result[1])    
                 count_number += 1
                 db.session.add(location)
-            count_letter += 1
-#        for number in range(1,27):
-#            for letter in letters:
-#                terrain = [['G','grassland.png'],['W','water.png'],['M','mountains.png'],['J','jungle.png'],['F','forest.png'],['H','hills.png']]
-#                roll = randint(0,5)
-#                terrain_result = terrain[roll]
-#                location = WorldMap(world=world.id,letter_coord=letter,number_coord=number,terrain=terrain_result[0],image=terrain_result[1])
-#                db.session.add(location)
+            count_letter += 1)
         db.session.commit()
         flash("Your world is now made")
         return redirect(url_for('.index'))
