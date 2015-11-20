@@ -17,7 +17,7 @@
 		</tr>
 	{% for order in orders %}
 		<tr>
-		<td><a href="/orders/{{order.id}}">{{ order.name }}</a></td>
+		<td><a href="{{ url_for('.single_order',order=order.id)}}">{{ order.name }}</a></td>
 		<td>{{order.description}}</td> 
 		<td><a href="{{url_for('.userpage',userid=order.owner)}}">{{User.query.get(order.owner).name}}</a></td>
         <td>{{ order.order_type() }}</td>

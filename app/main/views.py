@@ -1,10 +1,10 @@
 from flask import render_template, redirect, url_for, abort, flash, request,\
-    current_app, make_response
+    current_app, make_response, session
 from flask.ext.login import login_required, current_user
 from . import main
 from .forms import EditProfileForm, EditProfileAdminForm, PostForm
 from .. import db
-from ..models import Permission, Role, User, Post
+from ..models import *
 from ..decorators import admin_required, permission_required
 
 
@@ -24,8 +24,12 @@ def index():
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
+    if 'active_world' in session:
+        world_active = World.query.get(session['active_world'])
+    else:
+        world_active = ""
     return render_template('index.html', form=form, posts=posts,
-                           show_followed=show_followed, pagination=pagination)
+                           show_followed=show_followed, pagination=pagination, active_world = world_active)
 
 
 @main.route('/user/<username>')
@@ -36,8 +40,13 @@ def user(username):
         page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
         error_out=False)
     posts = pagination.items
+    if 'active_world' in session:
+        world_active = World.query.get(session['active_world'])
+    else:
+        world_active = ""
     return render_template('user.html', user=user, posts=posts,
-                           pagination=pagination)
+                           pagination=pagination,
+                           active_world = world_active)
 
 
 @main.route('/edit-profile', methods=['GET', 'POST'])

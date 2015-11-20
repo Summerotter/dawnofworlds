@@ -84,13 +84,6 @@
                 </td>
                 </tr>
 				{% endfor %}
-				{% for error in form.made_by.errors %}
-                <tr>
-				<td>
-				<span style="color: red;">Maker[{{ error }}]</span><br>
-                </td>
-                </tr>
-				{% endfor %}
                 {% for error in form.religion.errors %}
                 <tr>
 				<td>
@@ -122,7 +115,7 @@
                 <td>Religion:</td>
                 <td>{{ form.religion }}</td>
 				<td>Creator:</td>
-                <td>{{ form.made_by }}</td>
+                <td>{{ current_user.name }}</td>
 			</tr>
 			<tr>
 				<th class="sub_title" colspan="4"><input type="submit" value="Create Race!"></th>

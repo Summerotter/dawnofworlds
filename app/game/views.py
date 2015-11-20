@@ -14,6 +14,50 @@ from ..decorators import admin_required, permission_required
 POSTS_PER_PAGE = 15
 world_active = None
 
+@game.route("/randomchar",methods=['GET','POST'])
+def character_builder():
+    species = ['Fox', 'Wolf', 'Cat', 'Leopard', 'Cheetah', 'Lion', 'Otter', 'Badger', 'Skunk', 'Rabbit', 'Gerbil', 'Hamster', 'Tiger', 'Lynx', 'Honey Badger', 'Dingo', 'Shiba-Inu', 'Malamute', 'Hare', 'Liger', 'Snow Leopard', 'Serval', 'Cow/Bull', 'Rat', 'German Shepard', 'Bulldog', 'Border Collie', 'Squirrel', 'Mouse', 'Sugar Glider', 'Possum', 'Ram', 'Dalmatian', 'Goat', 'Stallion', 'Horse', 'Sheep', 'Pig', 'Mouse', 'GuineaPig', 'Elephant', 'Gazelle', 'Gazebo', 'Boar', 'Deer', 'Caribou', 'Terrier', 'Boxer', 'Corgi', 'Golden Retriever', 'Reindeer', 'Great Dane', 'Mastiff', 'Old English Sheepdog', 'Pug', 'Donkey', 'Cougar', 'Bat', 'Eastern Dragon', 'Western Dragon', 'Giraffe', 'Rhino', 'Ferret', 'Mink', 'Pine Marten', 'Crow', 'Pelican', 'Hawk', 'Griffin', 'Crocodile', 'Alligator', 'Snake', 'Serpentine Dragon', 'Wyvern', 'Blue Tit', 'Hippo', 'Zebra', 'Seal', 'Seal-lion', 'Walrus', 'Bear', 'Panda', 'Red Panda', 'Polar Bear', 'Samoyed', 'Miniature Pinscher', 'Antelope', 'Anteater', 'Coyote', 'Jackal', 'Hedgehog', 'Hyena', 'Meerkat', 'Koala', 'Furred Eastern Dragon', 'Furred Western Dragon', 'Mongoose', 'Raccoon', 'Beaver', 'Monkey', 'Ape', 'Gorilla', 'Lemur', 'Weasel', 'Wolverine', 'Unicorn', 'Phoenix', 'Owl', 'Dolphin', 'Shark', 'Whale', 'Crux', 'Qwhilla', 'Sergal', 'Tanuki', 'Naga', 'Dinosaur', 'T-Rex', 'Raptor', 'Turtle', 'Lizard','Minotaur',]
+    gender = ["male", "female","herm","ungendered"]
+    height = ["very short", "short", "average height", "tall", "very tall"]
+    weight = ["very thin", "thin", "average weight", "husky", "fluffy", "fat", "very fat"]
+    build = ["thin", "out of shape", "swimmers", "fit", "body-builder"]
+    eye_color = ["blue","green","brown",'gold','yellow','purple','red','orange']
+    fur_color = ["red", "brown", "golden", "white", "grey", "black", "orange"]
+    accessory = ["a scar", "an eyepatch", "a jaunty hat", "gloves", "Monocle", "Scarf", "Glasses", "Sunglasses"]
+    personality = ["Cocky", "Shy", "Naive", "Aggressive", "Calm", "oblivious"]
+    job = ["cook", "mechanic", "programmer", "pilot", "mercenary"]
+    food = ["rice", "pizza", "steak", "salad", "soup", "noodles"]
+    fear = ["spiders", "heights", "water", "insects", "volcanoes", "My Little Pony", "mormons", "the dark", "Lizards"]
+    extras = ["Tauric", "Demonic", "Quadrupedal", "Angelic", "Satyric"]
+    sex_pref = ["bisexual", "homosexual", "heterosexual", "asexual",]
+    chosen_species = species[(randint(1,len(species))-1)]
+    chosen_height = height[(randint(1,len(height))-1)]
+    chosen_weight = weight[(randint(1,len(weight))-1)]
+    chosen_build = build[(randint(1,len(build))-1)]
+    chosen_eye_color = eye_color[(randint(1,len(eye_color))-1)]
+    chosen_fur_color = fur_color[(randint(1,len(fur_color))-1)]
+    chosen_accessory = accessory[(randint(1,len(accessory))-1)]
+    chosen_personality = personality[(randint(1,len(personality))-1)]
+    chosen_job = job[(randint(1,len(job))-1)]
+    chosen_food = food[(randint(1,len(food))-1)]
+    chosen_fear = fear[(randint(1,len(fear))-1)]
+    chosen_sex_pref = sex_pref[(randint(1,len(sex_pref))-1)]
+    if randint(1,100) <= 40:
+        chosen_extras = extras[(randint(1,len(extras))-1)]
+    else:
+        chosen_extras = "Anthro"
+    chosen_gender = gender[(randint(1,len(gender))-1)]
+    if chosen_gender == 'male':
+        pronoun = "He"
+    elif chosen_gender == "female":
+        pronoun = "She"
+    elif chosen_gender == "herm":
+        pronoun = "Shi"
+    else:
+        pronoun = "It"
+    return render_template("game/character.html", species=chosen_species, gender=chosen_gender, height=chosen_height, weight=chosen_weight, build=chosen_build, eye_color=chosen_eye_color,
+                            fur_color=chosen_fur_color, accessory=chosen_accessory, personality=chosen_personality, job=chosen_job, food=chosen_food, fear=chosen_fear, pronoun=pronoun, sex_pref=chosen_sex_pref)
+
 
 @game.route('/make-world/',methods=['GET','POST'])
 @login_required
@@ -26,7 +70,6 @@ def make_world():
         db.session.add(new_world)
         db.session.commit()
         world = World.query.order_by(World.id.desc()).first()
-        letters = ("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",)
         world_gen = {}
         scale = 1/48.0
         coords = range(width)
@@ -269,11 +312,6 @@ def races_page():
     for race in races:
         race_list.append([race.id,race.culture_name])  
     form.subrace.choices = race_list
-    players = world.players.all()
-    player_list = []
-    for player in players:
-        player_list.append([player.id,player.name])
-    form.made_by.choices = player_list
     if form.validate_on_submit():
         location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first()
         race_check = Race.query.filter_by(world_id=world.id,culture_name=form.culture.data).all()
@@ -288,6 +326,10 @@ def races_page():
             if Race.query.filter_by(world_id=world.id).filter_by(map_color=color).all():
                 flash("Racial color taken")
                 return redirect(url_for(".races_page"))
+        points = current_user.return_points_obj(world.id)
+        if points.points < 1:
+            flash("You do not have enough points for this")
+            return redirect(url_for(".races_page"))
 #        if True:
 #            flash("Temporary redirect")
 #            return redirect(url_for(".races_page"))
@@ -299,14 +341,16 @@ def races_page():
                         abs_turn_made=world.total_turns,
                         subrace = form.subrace.data,
                         age_turn=world.age_turn(),
-                        creator = form.made_by.data,
+                        creator = current_user.id,
                         religion = 0,)
         religion_description = "The cultural religion of the "+form.culture.data
         db.session.add(new_race)
+        points.points -= 1
+        db.session.add(points)
         db.session.commit()
         race = Race.query.order_by(Race.id.desc()).first()
         new_order = Orders(name=form.religion.data,
-                           owner=form.made_by.data,
+                           owner=current_user.id,
                            description=religion_description,
                            abs_turn=world.total_turns,
                            age_turn=world.age_turn(),
@@ -336,7 +380,7 @@ def races_page():
                            active_world=world,
                            races=races,
                            form=form,
-                           players=players,)
+                           user=current_user,)
 
 @game.route("/races/<race>/",methods=['GET','POST'])
 @login_required
@@ -1084,7 +1128,6 @@ def world_map():
     letters = ["",]
     for i in range(world.size):
         letters.append(str(i))
-    #letters = ("","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z",)
     locations = WorldMap.query.filter_by(world=world.id).order_by(WorldMap.number_coord)
     return render_template("/game/mapflip.html",
                             active_world=world,

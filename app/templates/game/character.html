@@ -1,0 +1,10 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+
+<font size=6><p>Your character is a {{gender}}{{extras}} {{species}}, who is {{height}} and {{weight}}, with a {{build}} build. 
+<br>{{pronoun}} has {{eye_color}} eyes and {{fur_color}} fur, with {{accessory}}. {{pronoun}} is a {{sex_pref}} {{personality}} {{job}}, loves to eat {{food}} and is afraid of {{fear}}.
+
+<p><a href="{{ url_for('.character_builder') }}">New Character</a></font>
+
+{% endblock %}
