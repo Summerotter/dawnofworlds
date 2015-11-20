@@ -54,7 +54,7 @@ def make_world():
                 location = WorldMap(world=world.id, letter_coord=count_letter,number_coord=count_number, terrain=terrain_result[0],image=terrain_result[1])    
                 count_number += 1
                 db.session.add(location)
-            count_letter += 1)
+            count_letter += 1
         db.session.commit()
         flash("Your world is now made")
         return redirect(url_for('.index'))
@@ -247,19 +247,12 @@ def userpage(userid):
 @login_required
 def player_page():
     players = User.query.all()
-    form = MakePlayer()
-    if form.validate_on_submit():
-        new_player = User(name=form.player_name.data,)
-        db.session.add(new_player)
-        db.session.commit()
-        return redirect(url_for(".player_page"))
     if 'active_world' not in session:
         session['active_world'] = ""
     world = World.query.get(session['active_world'])
     return render_template("/game/players.html",
                            active_world=world,
-                           players = players,
-                           form=form,)
+                           players = players,)
 
 @game.route("/races", methods=['GET','POST'])
 @login_required

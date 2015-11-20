@@ -29,25 +29,6 @@
 </div>
 <div id="right_pane_wrapper">
 <section id="right_pane">
-	<form action="" method="post" name="makeplayer">
-	
-		{{ form.hidden_tag() }}
-		<table>
-            <tr>
-                <th class="title">Add Player</th>
-            </tr>
-            {% for error in form.player_name.errors %}
-            <tr>
-                <td><span style="color: red;">[{{ error }}]</span></td>
-            </tr>
-            {% endfor %}
-			<tr>
-				<td>Player name:</td>
-				<td>{{ form.player_name(size=30, maxlength=140) }}</td>
-				<td><input type="submit" value="Create Player!"></td>
-			</tr>
-		</table>
-	</form>
 </section>
 </div>
 {% endblock %}
