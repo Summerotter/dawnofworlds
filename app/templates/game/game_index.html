@@ -1,0 +1,63 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Dawn of Worlds - Main Page{% endblock %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	{% if worlds %}
+	<table border="1">
+		<tr>
+			<th class="title" colspan="5">Worlds</th>
+		</tr>
+		<tr>
+			<th class="title">Name</th>
+            <th class="title">Date</th>
+			<th class="title">Total Turns</th>
+			<th class="title">Player Count</th>
+			<th class="title">Civilizations</th>
+            <th class="title">Activate World</th>
+		</tr>
+        {% if active_world %}
+		<tr>
+			<th class="sub_title">{{ active_world.name }} </th>
+            <th class="sub_title">{{ active_world.age_turn() }}</th>
+			<th class="sub_title">{{ active_world.total_turns }} </th>
+			<th class="sub_title">{{ active_world.players.count() }} </td>
+			<th class="sub_title">{{ active_world.races.count() }}</th>
+			<th class="sub_title"> Active World </th>
+		</tr>
+        {% endif %}
+		{% for world in worlds %}
+			{% if world != active_world %}
+            {% if current_user in world.players.all() or current_user.is_administrator() %}
+		<tr>
+			<td align="center">{{ world.name }} </td>
+			<td align="center">{{ world.age_turn() }}</td>
+			<td align="center">{{ world.total_turns }} </td>
+			<td align="center">{{ world.players.count() }}</td>
+			<td align="center">{{ world.races.count() }}</td>
+			<td align="center"><a href="{{ url_for('.activate', world_id=world.id) }}">Activate world</a></td>
+		</tr>
+			{% endif %}
+            {% endif %}
+		{% endfor %}
+		</table>
+	{% else %}
+		<p> No worlds</p>
+		
+	{% endif %}
+</section>
+</div>
+{% if current_user.is_administrator() %}
+<div class="col-md-4">
+<section id="right_pane">
+<a href="{{ url_for('.make_world') }}">Make a World</a>
+</section>
+</div>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}

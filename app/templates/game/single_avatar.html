@@ -1,0 +1,64 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+{% if avatar %}
+	<table>
+		<tr>
+			<th class="title" colspan="4">The Avatar {{avatar.name}}</th>
+		</tr>
+		<tr>
+			<th>Owner</th>
+			<th>Description</th>
+			<th>Year Made</th>
+			<th>Location</th>
+		</tr>
+		<tr>
+			<td><a href="{{url_for('.userpage',userid=avatar.owner)}}">{{ avatar.owner_name() }}</a></td>
+			<td>{{ avatar.description }}</td>
+			<td>{{ avatar.age_turn }}</td>
+			<td><a href="{{url_for('.single_location',location_id=avatar.location)}}">{{ avatar.return_location().coords() }}</a></td>
+		</tr>
+	</table>
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+	<table>
+        <tr>
+            <th class="title" colspan="3">Avatar Controls</th>
+        </tr>
+			<form action="" method="post" name="location">
+			{{ location.hidden_tag() }}
+				{% for error in location.number.error %}
+				<tr>
+					<td><span style="color: red;">Kill Av:[{{ error }}]</span></td>
+				</tr>
+				{% endfor %}
+			</tr>
+			<tr>
+				<td>New Location:</td>
+				<td>{{location.letter}}{{location.number}}</td>
+				<td><input type="submit" value="Change Location"></td>
+			</tr>
+			</form>
+			<form action="" method="post" name="destroy">
+			{{ destroyform.hidden_tag() }}
+				{% for error in destroyform.destroy.error %}
+				<tr>
+					<td><span style="color: red;">Location:[{{ error }}]</span></td>
+				</tr>
+				{% endfor %}
+			</tr>
+			<tr>
+				<td>Destroy Confirm:</td>
+				<td>{{destroyform.destroy}}</td>
+				<td><input type="submit" value="DESTROY"></td>
+		</table>
+{% else %}
+	<p> No avatars in this world. </p>
+{% endif %}
+</section>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+    <table class="map">
+        <tr>
+        {% for letter in letters %}
+            <th class="map">{{letter}}</th>
+        {%endfor%}
+        </tr>  
+    {% for row in locations|batch(size) %}
+        <tr>
+        <th class="map">{{ row[0].number_coord }}</th>
+        {% for location in row %}
+        <td class="map"><a href="{{ url_for('.single_location',location_id=location.id) }}"><img src="{{ url_for('static', filename='images/' + location.image) }}" /></a></td>
+        
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+</section>
+</div>
+{% endblock %}

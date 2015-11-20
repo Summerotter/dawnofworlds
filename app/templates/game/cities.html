@@ -1,0 +1,119 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+{% if cities %}
+	<table>
+        <tr>
+            <th class="title" colspan="8">Cities</th>
+        </tr>
+		<tr>
+			<th>Name</th> 
+            <th>Location</th>
+			<th>Builders:</th>
+			<th>Owners: </th>
+			<th>Alignment:</th>
+			<th>Year Built</th>
+			<th>Buildings</th>
+			<th>Armies Raised</th>
+		</tr>
+	{% for city in cities %}
+    {% if city.is_alive %}
+		<tr>
+		<td><a href="{{ url_for('.single_city',cityid=city.id) }}">{{ city.name }}</a></td>
+        <td><a href="{{url_for('.single_location',location_id=city.return_location().id)}}">{{city.return_location().coords()}}</a></td>
+		<td><a href="{{url_for('.single_race',race=city.built_by)}}">{{Race.query.get(city.built_by).culture_name}}</a></td> 
+		<td><a href="{{url_for('.single_race',race=city.owned_by)}}">{{Race.query.get(city.owned_by).culture_name}}</a></td> 
+		<td>{{city.alignment}}</td> 
+		<td>{{city.age_turn}}</td>
+		<td>{{ city.buildings.count() }}</td>
+		<td>{{ city.armies.count() }}</td>
+		</tr>
+    {% endif %}
+	{% endfor %}
+	</table>
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+    <table>
+        <tr>
+            <th class="title" colspan="7">Ruins</th>
+        </tr>
+		<tr>
+			<th>Name</th> 
+            <th>Location</th>
+			<th>Builders:</th>
+			<th>Alignment:</th>
+			<th>Year Built</th>
+            <th>Destroyed in</th>
+		</tr>
+    {% for city in cities %}
+    {% if not city.is_alive %}
+        <tr>
+		<td><a href="{{ url_for('.single_city',cityid=city.id) }}">{{ city.name }}</a></td>
+        <td><a href="{{url_for('.single_location',location_id=city.return_location().id)}}">{{city.return_location().coords()}}</a></td>
+		<td><a href="{{url_for('.single_race',race=city.built_by)}}">{{Race.query.get(city.built_by).culture_name}}</a></td> 
+		<td>{{city.alignment}}</td> 
+		<td>{{city.age_turn}}</td>
+        <td>{{ city.destroyed_in }}</td>
+		</tr>
+     {% endif %}
+     {% endfor %}
+     </table>
+{% else %}
+	<p> No cities in this world. </p>
+{% endif %}
+{% if not races %}
+	<p> Races build cities, and there are no races in this world.</p>
+{% else %}
+	<form action="" method="post" name="cities">
+		{{ form.hidden_tag() }}
+		<table>
+			<tr>
+				<th class="title" colspan="4">Add City</th>
+			</tr>
+			{% for error in form.name.errors %}
+                <tr><td>
+				<span style="color: red;">Name: [{{ error }}]</span><br>
+                </td></tr>
+            {% endfor %}
+            {% for error in form.builders.errors %}
+                <tr><td>
+				<span style="color: red;">Builders:[{{ error }}]</span><br>
+                </td></tr>
+            {% endfor %}
+            {% for error in form.number.errors %}
+                <tr><td>
+				<span style="color: red;">Location:[{{ error }}]</span><br>
+                </td></tr>
+            {% endfor %}
+            {% for error in form.alignment.errors %}
+                <tr><td>
+				<span style="color: red;">Alignment:[{{ error }}]</span><br>
+                </td></tr>
+            {% endfor %}
+				
+			
+			<tr>
+				<td>Name:</td>
+				<td>{{ form.name(size=15, maxlength=140) }}</td>
+				<td>Alignment:</td>
+				<td>{{ form.alignment(size=20, maxlength=140) }}</td>
+            </tr>
+            <tr>
+				<td>Location:</td>
+				<td>{{ form.letter }}{{form.number}}</td>
+				<td>Builders:</td>
+				<td>{{ form.builders }}</td>
+            </tr>
+            <tr>
+				<th class="sub_title" colspan="4"><input type="submit" value="Build City!"></th>
+			</tr>
+		</table>
+	</form>
+</section>
+</div>
+{% endif %}
+{% endblock %}

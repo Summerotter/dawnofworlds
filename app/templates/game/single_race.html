@@ -1,0 +1,126 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+{% if race %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	<table>
+        <tr>
+            <th class="title">The {{race.culture_name}} {{race.race_name}}</th>
+		<tr>
+            <th>Map Color</th>
+            <th>Alignment</th>
+            <th>Parent Race</th>
+            <th>Made by</th>
+            <th>Religion</th>
+            <th>Date Made</th>
+            <th>Pops</th>
+            <th>Locations</th>
+		</tr>
+		<tr>
+			<td><font color="{{race.map_color}}">Sample</font></td>
+			<td>{{race.alignment}}</td>
+            {% if race.subrace %}
+            <td><a href="{{ url_for('.single_race',race=race.subrace)}}">{{ race.subrace_of() }}</a></td>
+            {% else %}
+			<td>{{ race.subrace_of() }}</td>
+            {% endif %}
+			<td><a href="{{ url_for('.userpage',userid=race.creator)}}">{{ race.made_by() }}</td>
+            {% if race.get_religion() %}
+            <td><a href="{{ url_for('.single_order',order=race.get_religion().id)}}">{{ race.get_religion().name }}</a></td>
+            {% else %}
+            <td> No Religion</td>
+            {% endif %}
+            <td>{{race.age_turn}}</td>
+            <td>popsplaceholder</td>
+            <td>{{race.location.count()}}</td>
+		</tr>
+        </table>
+        {% if advances %}
+        <table><tr><th>Advances</th></tr>
+            {% for row in advances|batch(5) %}
+            <tr>
+                {% for advance in row %}
+                    <td>{{advance.text}}</td>
+                {%endfor%}
+            </tr>
+            {% endfor %}
+        <table>
+        {% endif %}
+        {% if cities %}
+        <table border="1">
+        <tr><th>Cities</th></tr>
+            {% for row in cities|batch(5) %}
+                <tr>
+                {% for city in row %}
+                    <td><a href="{{ url_for('.single_city',cityid=city.id)}}">{{city.name}}</a></td>
+                {%endfor%}
+                </tr>
+            {%endfor%}
+        </table>
+        {% endif %}
+        
+        {% if race.location.all() %}
+        <table border="1">
+        <tr><th>Locations</th></tr>
+            {% for row in race.location.all()|batch(5) %}
+                <tr>
+                {% for location in row %}
+                    <td><a href="{{ url_for('.single_location',location_id=location.id)}}">{{location.coords()}}</a></td>
+                {%endfor%}
+                </tr>
+            {%endfor%}
+        </table>
+        {% endif %}
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+    <table>
+        <tr>
+            <th class="title">Controls</th>
+        </tr>
+        <tr>
+            <form action="" method="post" name="expand">
+            {{ form.hidden_tag() }}
+            <td>Expand to Location</td>
+            <td> {{form.letter}}{{form.number}}</td>
+            <td><input type="submit" value="Strike the Earth!"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="contract">
+            {{ remove.hidden_tag() }}
+            <td>Contract from location</td>
+            <td> {{ remove.support }}</td>
+            <td><input type="submit" value="Boatmurdered"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="add_advance">
+            {{ advance_form.hidden_tag() }}
+            <td>Add Advance:</td>
+            <td> {{advance_form.text}}</td>
+            <td><input type="submit" value="Add Advance"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="remove_advance">
+            {{ advance_remove.hidden_tag() }}
+            <td>Remove Advance</td>
+            <td> {{advance_remove.support}}</td>
+            <td><input type="submit" value="Remove Advance"></td>
+            </form>
+        </tr>
+    </table>
+    
+</section>
+</div>
+    
+    
+    
+    
+{% else %}
+{{ redirect(url_for('.races_page')) }}
+{% endif %}
+{% endblock %}

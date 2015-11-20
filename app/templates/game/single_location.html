@@ -1,0 +1,221 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+
+<div id="left_pane_wrapper">
+<section id="left_pane">
+
+{% if city %}
+    <table>
+        <tr>
+            <th class="title" colspan="4">City of <a href="{{ url_for('.single_city',cityid=city.id)}}">{{city.name}}</a></th>
+        </tr>
+        <tr>
+            <th width='30%'>Builders</th>
+            <th width='30%'>Owners</th>
+            <th width='20%'>Alignment</th>
+            <th width='20%'>Date Built</th>
+        </tr>
+            <tr>
+                <td><a href="{{ url_for('.single_race',race=city.built_by) }}">{{city.builder_name()}}</a></td>
+                <td><a href="{{ url_for('.single_race',race=city.owned_by) }}">{{city.owner_name()}}</a></td>
+                <td>{{city.alignment}}</td>
+                <td>{{city.age_turn}}</td>
+            </tr>
+    </table>
+    {% endif %}
+    {% if race %}
+    <table>
+        <tr>
+            <th class="title" colspan="4">Populated by <a href="{{ url_for('.single_race',race=race.id) }}">{{race.culture_name}}</a></th>
+        </tr>
+        <tr>
+            <th width="25%">Race</th>
+            <th width="25%">Religion</th>
+            <th width="25%">Subrace of</th>
+            <th width="25%">Made by</th>
+        </tr>
+            <tr>
+                <td>{{race.race_name}}</td>
+                <td><a href="{{ url_for('.single_order',order=race.religion) }}">{{race.get_religion().name}}</a></td>
+                {% if race.subrace %}
+                    <td><a href="{{ url_for('.single_race',race=race.subrace) }}">{{race.subrace_of() }}</td>
+                {% else %}
+                    <td>None</td>
+                {% endif %}
+                <td><a href="{{ url_for('.userpage',userid=race.creator) }}">{{race.made_by()}}</a></td>
+            </tr>
+    </table>
+    {% endif %}
+    {% if location.orders.all() %}
+    <table>
+        <tr>
+            <th class="title" colspan="3">Orders in Province</th>
+        </tr>
+        <tr>
+            <th width="30%">Name</th>
+            <th width="40%">Type</th>
+            <th width="30%">Controlled By</th>
+        </tr>
+        {% for item in location.orders.all() %}
+            <tr>
+                <td><a href="{{ url_for('.single_order',order=item.id) }}">{{item.name}}</a></td>
+                <td>{{item.order_type()}}</td>
+                <td><a href="{{ url_for('.userpage',userid=item.owner) }}">{{item.owner_name()}}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% if armies %}
+    <table>
+        <tr>
+            <th class="title" colspan="4">Armies in {{location.coords()}}</th>
+        </tr>
+        <tr>
+            <th>Army Name</th>
+            <th>Culture</th>
+            <th>Owner</th>
+        </tr>
+        {% for army in armies %}
+        <tr>
+            <td><a href="{{ url_for('.single_army',armyid=army.id) }}">{{army.name}}</a></td>
+            <td><a href="{{ url_for('.single_race',race=army.home_culture) }}">{{army.homeculture_name()}}</a></td>
+            <td><a href="{{ url_for('.userpage',userid=army.owner) }}">{{army.owner_name()}}</a></td>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% if events %}
+    <table>
+        <tr>
+            <th class="title" colspan="3">Events</th>
+        </tr>
+        <tr>
+            <th width="10%">Date</th>
+            <th width="60%">Text</th>
+            <th width="15%">Played By</th>
+            <th width="15%">Duration</th>
+        </tr>
+        {% for item in events %}
+        {%if item.duration >0 %}
+        <tr>
+            <td>{{item.age_turn}}</td>
+            <td>{{item.event_info}}</td>
+            <td><a href="{{ url_for('.userpage',userid=item.played_by) }}">{{item.playedby_name()}}</a></td>
+            {% if item.duration <9000 %}
+                <td>{{item.duration}} Turns Left</td>
+                {% else %}
+                <td>Forever</td>
+                {% endif %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+    {% endif %}    
+</section>
+</div>
+
+<div id="right_pane_wrapper">
+<section id="right_pane">
+    <table>
+        <tr>
+            <th>Location</th>
+            <th>ID</th>
+            <th>Terrain</th>
+        </tr>
+        <tr>
+            <td>{{location.coords()}}</td>
+            <td>{{location.id}}</td>
+            <td>{{location.terrain}}</td>
+        </tr>
+        <tr>
+            <form action="" method="post" name="expand">
+            {{terrain_form.hidden_tag()}}
+            <td>Change Terrain</td>
+            <td>{{terrain_form.terrain}}</td>
+            <td><input type="submit" value="Change Terrain">
+            </form>
+        </tr>
+    </table>
+    {% if avatars %}
+    <table>
+        <tr>
+            <th class="title" colspan="66">Avatars</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Owner</th>
+            <th>Description</th>
+        </tr>
+        {% for avatar in avatars %}
+        <tr>
+            <td><a href="{{ url_for('.single_avatar',avatar_id=avatar.id) }}">{{avatar.name}}</a></td>
+            <td><a href="{{ url_for('.userpage',userid=avatar.owner)}}">{{avatar.owner_name()}}</a></td>
+            <td>{{avatar.description}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% if location.return_live_provbldge() %}
+    <table>
+        <tr>
+            <th class="title" colspan="3">Province Buildings</th>
+        </tr>
+        <tr>
+            <th>Building</th>
+            <th>Owner</th>
+            <th>Built In</th>
+        </tr>
+        {% for item in location.return_live_provbldge() %}
+        <tr>
+            <td><a href="{{ url_for('.single_provbldg',bldg=item.id) }}">{{item.name}}</a></td>
+            <td><a href="{{ url_for('.single_race',race=item.owned_by) }}">{{item.owner_name()}}</a></td>
+            <td>{{item.age_turn}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    
+    {% if location.return_ruin_city() %}
+    <table>
+        <tr>
+            <th class="title" colspan='3'>City Ruins</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Builder</th>
+            <th>Destroyed In</th>
+        </tr>
+        {% for item in location.return_ruin_city() %}
+            <tr>
+                <td><a href="{{ url_for('.single_city',cityid=item.id)}}">{{item.name}}</a></td>
+                <td><a href="{{ url_for('.single_race',race=item.built_by)}}">{{item.builder_name()}}</a></td>
+                <td>{{item.destroyed_in}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if location.return_ruin_provbldg() %}
+    <table>
+        <tr>
+            <th class="title" colspan="3">Other Ruins</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Builder</th>
+            <th>Destroyed In</th>
+        </tr>
+        {% for item in location.return_ruin_provbldg() %}
+            <tr>
+                <td><a href="{{ url_for('.single_provbldg',bldg=item.id) }}">{{item.name}}</a></td>
+                <td><a href="{{ url_for('.single_race',race=item.built_by)}}">{{item.builder_name()}}</a></td>
+                <td>{{item.destroyed_in}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</section>
+</div>
+
+<div style='clear: both'></div>
+{% endblock %}

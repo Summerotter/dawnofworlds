@@ -1,0 +1,105 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	{% if events %}
+		<table>
+			<tr>
+				<th class="title" colspan="4">Events</th>
+			</tr>
+			<tr>
+				<th>Location</th>
+				<th>Event Info</th>
+				<th>Played By</th>
+				<th>Turn Played</th>
+                <th>Duration</th>
+			</tr>
+		{% for event in events %}
+            {%if event.duration >0%}
+			<tr>
+				<td><a href="{{url_for('.single_location',location_id=event.location)}}">{{ event.return_location().coords() }}</a></td>
+				<td>{{ event.event_info }}</td>
+				<td><a href="{{ url_for('.userpage',userid=event.played_by)}}">{{ event.playedby_name() }}</a></td>
+				<td>{{event.age_turn}}</td>
+                {% if event.duration <=9000 %}
+                <td>{{event.duration}} Turns Left</td>
+                {% else %}
+                <td>Forever</td>
+                {% endif %}
+			</tr>
+            {% endif %}
+		{% endfor %}
+		</table>
+	{% else %}
+		No events have been played.
+	{% endif %}
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+	{% if players %}
+	<form action="" method="post" name="buildings">
+		{{ form.hidden_tag() }}
+			<table>
+				<tr>
+					<th class="title" colspan="3">Play Events</th>
+				</tr>
+				
+					{% for error in form.number.errors %}
+                    <tr>
+                        <td><span style="color: red;">Name: [{{ error }}]</span></td>
+                    </tr>
+					{% endfor %}
+					{% for error in form.event_info.errors %}
+					<tr>
+                        <td><span style="color: red;">Info: [{{ error }}]</span></td>
+                    </tr>
+					{% endfor %}
+					{% for error in form.played_by.errors %}
+					<tr>
+                        <td><span style="color: red;">Played by: [{{ error }}]</span></td>
+                    </tr>
+					{% endfor %}
+                <tr>
+					<td>Location:</td>
+					<td>{{ form.letter }}{{form.number}}</td>
+                </tr>
+                <tr>
+					<td>Description:</td>
+					<td>{{ form.event_info(size=20, maxlength=140) }}</td>
+                </tr>
+                <tr>
+                    <td>Duration</td>
+                    <td>{{ form.duration }}</td>
+                </tr>
+                <tr>
+					<td>Played By</td>
+					<td>{{ form.played_by }}</td>
+				</tr>
+				<tr>
+					<th class="sub_title" colspan="3"><input type="submit" value="Make Event!"></th>
+				</tr>
+			</table>
+		</form>
+        <form action="" method="post" name="buildings">
+		{{ remove_event.hidden_tag() }}
+            <table>
+                <tr>
+                    <th class="title">Remove Event</th>
+                </tr>
+                <tr>
+                    <td>{{ remove_event.removal }}</td>
+                    <td>{{ remove_event.played_by }}</td>
+                    <th class="sub_title" colspan="2"><input type="submit" value="Remove Event!"></th>
+				</tr>
+			</table>
+		</form>
+	{% else %}
+	<p>Events are only caused by players</p>
+	{% endif %}
+</section>
+</div>
+{% endblock %}

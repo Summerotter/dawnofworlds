@@ -1,0 +1,85 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+{% if building %}
+		<table border="1">
+			<tr>
+                <th class="title" colspan="6">
+                {% if building.is_alive %}
+				{{building.name}}</th>
+                {% else %}
+                Ruins of {{building.name}}</th>
+                {% endif %}
+            </tr>
+            <tr>
+				<th>Description</th>
+				<th>Location</th>
+				<th>Built By</th>
+				<th>Controlled By</th>
+				<th>Age Built</th>
+                {% if not building.is_alive %}
+                <th>Destroyed in</th>
+                {% endif %}
+			</tr>
+			<tr>
+				<td>{{building.description}}</td>
+				<td><a href="{{url_for('.single_location',location_id=building.location)}}">{{building.return_location().coords() }}</a></td>
+				<td><a href="{{ url_for('.single_race',race=building.built_by)}}">{{building.builder_name()}}</a></td>
+                {% if building.is_alive %}
+				<td><a href="{{ url_for('.single_race',race=building.owned_by)}}">{{building.owner_name()}}</a></td>
+				<td>{{building.age_turn}}</td>
+                {% else %}
+                <td>{{building.owner_name()}}</td>
+                <td>{{building.age_turn}}</td>
+                <td>{{building.destroyed_in}}</td>
+                {% endif %}
+				</tr>
+			
+		</table>
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+        {% if building.is_alive %}
+		<table>
+            <tr>
+                <th class="title" colspan="3">Control Panel</th>
+            </tr>
+			<form action="" method="post" name="new_owner">
+			{{ newownerform.hidden_tag() }}
+				{% for error in newownerform.new_owner.error %}
+				<tr>
+					<td><span style="color: red;">Location:[{{ error }}]</span></td>
+				</tr>
+				{% endfor %}
+			</tr>
+			<tr>
+				<td>New Owner:</td>
+				<td>{{newownerform.new_owner}}</td>
+				<td><input type="submit" value="Change Ownership"></td>
+			</tr>
+			</form>
+			<form action="" method="post" name="destroy">
+			{{ destroyform.hidden_tag() }}
+				{% for error in destroyform.destroy.error %}
+				<tr>
+					<td><span style="color: red;">Location:[{{ error }}]</span></td>
+				</tr>
+				{% endfor %}
+			</tr>
+			<tr>
+				<td>Destroy Confirm:</td>
+				<td>{{destroyform.destroy}}</td>
+				<td><input type="submit" value="DESTROY"></td>
+		</table>
+        {% endif %}
+{% else %}
+{{ redirect(url_for("prov_buildings_upage")) }}
+{% endif %}
+
+</section>
+</div>
+
+{% endblock %}

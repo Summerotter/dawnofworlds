@@ -1,0 +1,53 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	{% if players %}
+		<table border="1">
+            <tr>
+                <th class="title" colspan="2">Player List</th>
+            </tr>
+			<tr>
+				<th>Player</th>
+				<th>Worlds</th>
+			</tr>
+			{% for player in players %}
+				<tr>
+					<td><a href="{{ url_for('main.user',username=player.username) }}">{% if player.name == None %}
+                        {{player.username}}
+                    {% else %}
+                        {{player.name}}
+                    {% endif %}
+                        </a></td>
+					<td>{{ player.worlds.count() or 0 }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+	<form action="" method="post" name="makeplayer">
+	
+		{{ form.hidden_tag() }}
+		<table>
+            <tr>
+                <th class="title">Add Player</th>
+            </tr>
+            {% for error in form.player_name.errors %}
+            <tr>
+                <td><span style="color: red;">[{{ error }}]</span></td>
+            </tr>
+            {% endfor %}
+			<tr>
+				<td>Player name:</td>
+				<td>{{ form.player_name(size=30, maxlength=140) }}</td>
+				<td><input type="submit" value="Create Player!"></td>
+			</tr>
+		</table>
+	</form>
+</section>
+</div>
+{% endblock %}

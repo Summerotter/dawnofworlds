@@ -1,0 +1,130 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	{% if active_world %}
+	<table border="1">
+        <tr>
+            <th class="title">{{ active_world.name }}</th>
+            {% if current_user == owner or current_user.is_administrator() %} 
+            <form action="" method="post" name="advance_turn">
+                {{ advance_turn.hidden_tag() }}
+                <th class="title"><input type='submit' value="Advance Turn"></th>
+            </form>
+            {% if active_world.age < 3 %}
+            <form action="" method="post" name="advance_age">
+                {{ advance_age.hidden_tag() }}
+                <th class="title"><input type='submit' value="Advance Age"></th>
+            </form>
+        {% endif %}
+        {% endif %}
+        </tr>
+        <tr>
+            <th>Current Date</th>
+            <th>Total Turns</th>
+            <th>Races</th>
+            <th>Cities</th>
+        </tr>
+        <tr>
+            <td>{{ active_world.age_turn() }}</td>
+            <td>{{ active_world.total_turns }}</td>
+            <td>{{ active_world.races.count() }}</td>
+            <td>{{ active_world.cities.count() }}</td>
+        </tr>
+    </table>
+	
+	{% else %}
+	<p>
+		No world Selected
+	</p>
+	{% endif %}
+    <table>
+        <tr>
+            <th class="title" colspan="7">Players in {{active_world.name}}</th>
+        <tr>
+            <th>Player</th>
+            <th>Races</th>
+            <th>Avatars</th>
+            <th>Orders</th>
+            <th>Armies</th>
+            <th>Events</th>
+            <th>Points</th>
+        </tr>
+        {% for player in players %}
+            <tr>
+                <td><a href="{{ url_for('.userpage',userid=player.id) }}">{{player.name}}</td>
+                <td>{{ player.races.filter_by(world_id=active_world.id).count() or 0 }}</td>
+                <td>{{ player.avatars.filter_by(world=active_world.id).count() or 0 }}</td>
+                <td>{{ player.orders.filter_by(world=active_world.id).count() or 0 }}</td>
+                <td>{{ player.armies.filter_by(world=active_world.id).count() or 0 }}</td>
+                <td>{{ player.events.filter_by(world=active_world.id).count() or 0 }}</td>
+                <form action="" method="post" name="points">
+                <td><input type="hidden" name="player" value="{{player.id}}">
+                <input type="number" name="points" value={{player.return_points_obj(active_world.id).points}}>  <input type="submit" value="Submit"></td></form>
+            </tr>
+        {% endfor %}
+        {% if current_user == owner or current_user.is_administrator() %} 
+        <tr>
+            <form action="" method="post" name="makeplayer">
+            {{ newplayer.hidden_tag() }}
+            <td>Add Player:</td>
+            <td>{{ newplayer.player_list }}</td>
+            <td>
+                {% for error in newplayer.player_list.errors %}
+                <span style="color: red;">[{{ error }}]</span><br>
+                {% endfor %}
+            </td>
+            <td><input type="submit" value="Add Player to {{ active_world.name }}!"></td>
+            </form>
+            <form action="" method="post" name="newowner">
+            {{ new_owner.hidden_tag() }}
+            <td>World Owner</td>
+            <td>{{ owner.name or "None" }}</td>
+            <td>{{ new_owner.player_list }}<input type="submit" value="New Owner of {{ active_world.name }}!"></td>
+            </form>
+        </tr>
+        {% endif %}
+        <tr>
+            
+        </tr>
+    </table>
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+	<table border="1">
+        <tr>
+            <th class="title" colspan="2">History of {{active_world.name}}</th>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <th>Event</th>
+        </tr>
+        {% for entry in history.items %}
+        <tr>
+            <td>{{entry.age_turn}}</td>
+            <td>{{entry.text}}</td>
+        </tr>
+    {% endfor %} 
+        <tr>
+            <th class="title" colspan='2'>{% if history.has_prev %}<a href="{{ url_for('.world_page', page=history.prev_num) }}"><< Newer posts</a>{% else %}<< Newer posts{% endif %}  |
+            {% if history.has_next %}<a href="{{ url_for('.world_page', page=history.next_num) }}">Older posts >></a>{% else %}Older posts >>{% endif %}</th>
+        </tr>
+    </table>
+    <form action="" method="post" name="history">
+    {{ history_entry.hidden_tag() }}
+    <table>
+        <tr>
+            <th class="title" colspan="3">Add History Entry</th>
+        </tr>
+        <tr>
+            <td>Entry:</td>
+            <td>{{history_entry.text}}</td>
+            <td><input type="submit" value="Add Entry"></td>
+        </tr>
+    </table>
+    </form>
+</section>
+</div>
+{% endblock %}

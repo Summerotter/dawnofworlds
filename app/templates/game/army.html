@@ -1,0 +1,94 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+{% if army %}
+	<table border="1">
+		<tr>
+			<th class="title" colspan="6">{{army.name}}</th>
+		</tr>
+		<tr>
+			<th>Type</th>
+			<th>Raised From</th>
+            <th>Supported From</th>
+			<th>Owner</th>
+			<th>Culture</th>
+			<th>Location</th>
+		</tr>
+		<tr>
+			<td>{{ army.army_navy() }}</td>
+            {% if not army.home_city %}
+                <td>Orphaned</td>
+            {% else %}
+                <td><a href="{{ url_for('.single_city',cityid=army.home_city)}}">{{ army.homecity_name() }}</a></td>
+            {% endif %}
+            {% if army.supported_from %}
+                <td><a href=" {{ url_for('.single_city',cityid=army.supported_from)}}">{{ army.supporting_city() }}</a></td>
+            {% else %}
+            <td>{{army.supporting_city()}}</td>
+            {% endif %}
+			<td><a href="{{ url_for('.userpage',userid=army.owner)}}">{{ army.owner_name() }}</a></td>
+			<td><a href="{{ url_for('.single_race',race=army.home_culture)}}">{{ army.homeculture_name() }}</a></td>
+			<td><a href="{{url_for('.single_location',location_id=army.location)}}">{{ army.return_location().coords() }}</a></td>
+		</tr>
+		</table>
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+    <table>
+        <tr>
+            <th class="title" colspan="3">Control Panel</th>
+        </tr>
+        <tr>
+        {% if not cities %}
+            <td>The {{army.homeculture_name()}} do not control any cities to support this army.</td>
+        {% else %}
+            <form action="" method="post" name="support">
+            {{support.hidden_tag()}}
+            <td>Support From</td>
+            <td>{{ support.support }}</td>
+            <td><input type="submit" value="New Home"></td>
+        </tr>
+        </form>
+        {%endif%}
+        </tr>
+			<form action="" method="post" name="location">
+					{{ form.hidden_tag() }}
+					{% for error in form.number.errors %}
+					<tr>
+						<td><span style="color: red;">Location:[{{ error }}]</span></td>
+					</tr>
+					{% endfor %}	
+					<tr>
+						<td>New Location:</td>
+						<td>{{ form.letter }}{{form.number}}</td>
+						<td><input type="submit" value="Move Army!"></td>
+					</tr>
+			</form>
+			<form action="" method="post" name="rename">
+					{{ rename.hidden_tag() }}
+					{% for error in rename.new_name.errors %}
+					<tr>
+						<td><span style="color: red;">Name:[{{ error }}]</span></td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td>New Name:</td>
+						<td>{{ rename.new_name(size=10, maxlength=140) }}</td>
+						<td><input type="submit" value="Rename!"></td>
+					</tr>
+			</form>
+            <tr>
+                <td class="nav2" colspan="3"><a href="{{ url_for('.disband_army',armyid=army.id)}}">Delete Army</a></td>
+            </tr>
+		</table>
+			
+{% else %}
+	{{ redirect(url_for('.military_page')) }}
+{% endif %}
+
+</section>
+</div>
+{% endblock %}

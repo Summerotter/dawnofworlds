@@ -1,0 +1,47 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	{% if armies %}
+		<table>
+			<tr>
+                <th class="title" colspan="7">Armies</th>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+                <th>Culture</th>
+				<th>Raised From</th>
+                <th>Supported From</th>
+				<th>Owner</th>
+				<th>Location</th>
+			</tr>
+			{% for army in armies %}
+			<tr>
+				<td><a href="{{ url_for('.single_army',armyid=army.id) }}">{{ army.name }}</a></td>
+				<td>{{ army.army_navy() }}</td>
+                <td><a href="{{ url_for('.single_race',race=army.home_culture)}}">{{ army.homeculture_name() }}</a></td>
+                {% if not army.home_city %}
+                    <td>Orphaned</td>
+                {% else %}
+                    <td><a href="{{ url_for('.single_city',cityid=army.home_city)}}">{{ army.homecity_name() }}</a></td>
+                {% endif %}
+                {% if army.supported_from %}
+                <td><a href=" {{ url_for('.single_city',cityid=army.supported_from)}}">{{ army.supporting_city() }}</a></td>
+            {% else %}
+            <td>Orphaned</td>
+            {% endif %}
+				<td><a href="{{ url_for('.userpage',userid=army.owner)}}">{{ army.owner_name() }}</a></td>
+				<td><a href="{{url_for('.single_location',location_id=army.location)}}">{{ army.return_location().coords() }}</a></td>
+			</tr>
+				
+			{% endfor%}
+			</table>
+				
+	{% else %}
+		<p>There have been no armies made.</p>
+	{% endif %}
+</section>
+</div>
+{% endblock %}

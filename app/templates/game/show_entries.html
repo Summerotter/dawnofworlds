@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('.add_race') }}" method=post class=add-entry>
+      <dl>
+        <dt>Culture:
+        <dd><input type=text size=30 name=culture>
+        <dt>Race:
+        <dd><input type=text size=30 name=race>
+		<dt>Map Color:
+        <dd><input type=text size=30 name=color>
+		<dt>Alignment:
+        <dd><input type=text size=30 name=alignment>
+		<dt>Player (Dropdown):
+        <dd><input type=text size=30 name=player>
+		<dt>Subrace of (Dropdown, None+other races):
+        <dd><input type=text size=30 name=subrace>
+        <dd><input type=submit value=Share>
+      </dl>
+    </form>
+  {% endif %}
+ <ul class=entries>
+  {% for entry in entries %}
+    <li><h2>{{ entry.title }}</h2>{{ entry.text|safe }}
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}

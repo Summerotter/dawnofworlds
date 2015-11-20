@@ -1,0 +1,87 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+{% if avatars %}
+	<table>
+		<tr>
+			<th class="title" colspan="5">Avatars</th>
+		</tr>
+		<tr>
+			<th>Name</th>
+			<th>Owner</th>
+			<th>Description</th>
+			<th>Year Made</th>
+			<th>Location</th>
+		</tr>
+	{% for avatar in avatars %}
+		<tr>
+			<td><a href="{{ url_for('.single_avatar',avatar_id=avatar.id)}}">{{ avatar.name }}</a></td>
+			<td><a href="{{ url_for('.userpage',userid=avatar.owner)}}">{{ avatar.owner_name() }}</a></td>
+			<td>{{ avatar.description }}</td>
+			<td>{{ avatar.age_turn }}</td>
+			<td><a href="{{url_for('.single_location',location_id=avatar.return_location().id)}}">{{ avatar.return_location().coords() }}</a></td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	<p> No avatars in this world. </p>
+{% endif %}
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+{% if active_world.players.count() > 0 %}
+	<form action="" method="post" name="avatar">
+		{{ form.hidden_tag() }}
+		<table>
+			<tr>
+				<th class="title" colspan="4">Create Avatar</th>
+			</tr>
+			
+				{% for error in form.name.errors %}
+                <tr>
+                    <td><span style="color: red;">Name: [{{ error }}]</span></td>
+                </tr>
+				{% endfor %}
+				{% for error in form.description.errors %}
+				<tr>
+                    <td><span style="color: red;">Description: [{{ error }}]</span></td>
+                </tr>
+				{% endfor %}
+				{% for error in form.number.errors %}
+				<tr>
+                    <td><span style="color: red;">Number: [{{ error }}]</span></td>
+                </tr>
+				{% endfor %}
+				{% for error in form.god.errors %}
+				<tr>
+                    <td><span style="color: red;">Maker: [{{ error }}]</span></td>
+                </tr>
+				{% endfor %}
+				
+			
+			<tr>
+				<td>Name:</td>
+				<td>{{ form.name(size=15, maxlength=140) }}</td>
+				<td>Description:</td>
+				<td>{{ form.description(size=20, maxlength=140) }}</td>
+            </tr>
+            <tr>
+				<td>Location:</td>
+				<td>{{form.letter}}{{ form.number }}</td>
+				<td>Creator:</td>
+				<td>{{ form.god }}</td>
+			</tr>
+			<tr>
+				<th class="sub_title" colspan="4"><input type="submit" value="Create Avatar!"></th>
+			</tr>
+		</table>
+	</form>
+{% else %}
+	<p>You need to have players! </p>
+{% endif %}
+</section>
+</div>
+{% endblock %}

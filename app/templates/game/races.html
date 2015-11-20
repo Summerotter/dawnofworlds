@@ -1,0 +1,135 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+	{% if races %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	<table>
+        <tr>
+            <th class="title" colspan="11">Races of {{active_world.name}}</th>
+        </tr>
+		<tr>
+            <th>Name</th>
+            <th>Race</th>
+            <th>Map Color</th>
+            <th>Alignment</th>
+            <th>Parent Race</th>
+            <th>Made by</th>
+            <th>Religion</th>
+            <th>Date Made</th>
+            <th>Pops</th>
+            <th>Locations</th>
+            <th>Cities</th>
+		</tr>
+		{% for race in races %}
+		<tr>
+			<th align=left><a href="/game/races/{{ race.id}}">{{ race.culture_name }}</th>
+			<td>{{ race.race_name }}</td>
+			<td><font color="{{race.map_color}}">Sample</font></td>
+			<td>{{race.alignment}}</td>
+			<td>{{ race.subrace_of() }}</td>
+			<td><a href="{{ url_for('.userpage',userid=race.creator) }}">{{ race.made_by() }}</a></td>
+            {% if race.get_religion() %}
+            <td><a href="{{ url_for('.single_order',order=race.get_religion().id)}}">{{ race.get_religion().name }}</a></td>
+            {% else %}
+            <td> No Religion</td>
+            {% endif %}
+            <td>{{race.age_turn}}</td>
+            <td>pops</td>
+            <td>{{race.location.count()}}</td>
+            <td>{{race.controlled_cities.count() }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% else %}
+		<p>No races have been made</p>
+	{% endif %}
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+	{% if active_world.players.count() > 0 %}
+	<form action="" method="post" name="makerace">
+		{{ form.hidden_tag() }}
+		<table border='1'>
+			<tr>
+				<th class="title" colspan="4">Create Race</th>
+			</tr>
+			
+				{% for error in form.culture.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Culture[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+				{% for error in form.race.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Race[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}             
+				{% for error in form.align.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Align[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+				{% for error in form.subrace.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Subrace[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+				{% for error in form.made_by.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Maker[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+                {% for error in form.religion.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Religion[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<td>Culture Name:</td>
+				<td>{{ form.culture(size=15, maxlength=140) }}</td>
+				<td>Race Name:</td>
+				<td>{{ form.race(size=15, maxlength=140) }}</td>
+            <tr>
+            </tr>
+				<td>Map Color:</td>
+                <td><input id="color" name="color" type="color"></td>
+                <td>Location</td>
+                <td> {{form.letter}}{{form.number}}</td>
+			</tr>
+			<tr>
+				<td>Alignment:</td>
+				<td>{{ form.align(size=15, maxlength=140) }}</td>
+				<td>Subrace:</td>
+				<td>{{ form.subrace }}</td>
+            </tr>
+            <tr>
+                <td>Religion:</td>
+                <td>{{ form.religion }}</td>
+				<td>Creator:</td>
+                <td>{{ form.made_by }}</td>
+			</tr>
+			<tr>
+				<th class="sub_title" colspan="4"><input type="submit" value="Create Race!"></th>
+			</tr>
+		</table>
+	</form>
+	{% else %}
+		<p>There are no players in this world to make races.</p>
+	{% endif %}
+{% endblock %}

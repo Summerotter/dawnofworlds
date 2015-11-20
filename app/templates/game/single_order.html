@@ -1,0 +1,111 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+{% if order %}
+		<table>
+            <tr>
+                <th class="title" colspan="3">{{order.name}}</th>
+            </tr>
+			<tr>
+				<th>Description</th>
+				<th>Owned By</th>
+				<th>Age Built</th>
+			</tr>
+			<tr>
+				<td>{{order.description}}</td>
+				<td><a href="{{ url_for('.userpage',userid=order.owner)}}">{{order.owner_name()}}</a></td>
+				<td>{{order.age_turn}}</td>
+				</tr>
+			
+		</table>
+        {% if cities %}
+        
+        <table>
+            <tr>
+                <th class="title" colspan="5">Cities</th>
+            </tr>
+            {% for row in cities|batch(5) %}
+            <tr>
+                {% for city in row %}
+                    <td width="20%"><a href="{{url_for('.single_city',cityid=city.id)}}">{{city.name}}</a></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        {% endif %}
+        <table>
+            <tr>
+                <th class="title" colspan="5">Locations</th>
+            </tr>
+            {% for row in locations|batch(5) %}
+            <tr>
+                {% for location in row %}
+                    <td width="20%"><a href="{{url_for('.single_location',location_id=location.id)}}">{{location.coords()}}</a></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+
+        <table>
+            <tr>
+                <th class="title" colspan='3'>Controls</th>
+            </tr>
+        <tr>
+            <form action="" method="post" name="expand">
+            {{ expand.hidden_tag() }}
+            <td>Expand to Location</td>
+            <td> {{expand.letter}}{{expand.number}}</td>
+            <td><input type="submit" value="Expand to a province!"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="expand_city">
+            {{ city_expand.hidden_tag() }}
+            <td>Expand to Location</td>
+            <td> {{city_expand.support}}</td>
+            <td><input type="submit" value="Expand to a city!"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="contract_city">
+            {{ remove_city.hidden_tag() }}
+            <td>Remove from</td>
+            <td> {{remove_city.support}}</td>
+            <td><input type="submit" value="Leave city!"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="contract">
+            {{ remove.hidden_tag() }}
+            <td>Contract from location</td>
+            <td> {{ remove.support }}</td>
+            <td><input type="submit" value="Boatmurdered"></td>
+            </form>
+        </tr>
+			<form action="" method="post" name="destroy">
+			{{ destroyform.hidden_tag() }}
+				{% for error in destroyform.destroy.error %}
+				<tr>
+					<td><span style="color: red;">Location:[{{ error }}]</span></td>
+				</tr>
+				{% endfor %}
+			</tr>
+			<tr>
+				<td>Destroy Confirm:</td>
+				<td>{{destroyform.destroy}}</td>
+				<td><input type="submit" value="DESTROY"></td>
+                </form>
+		</table>
+{% else %}
+{{ redirect(url_for("orders_page")) }}
+{% endif %}
+</section>
+</div>
+
+
+{% endblock %}

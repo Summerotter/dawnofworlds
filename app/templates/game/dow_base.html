@@ -1,0 +1,40 @@
+<!-- extend base layout -->
+{% extends "bootstrap/base.html" %}
+{{ super() }}
+<html>
+	<head>
+		{% if title %}
+		<title>{{ title }} - Dawn of Worlds</title>
+		{% else %}
+		<title>Welcome to Dawn of Worlds</title>
+		{% endif %}
+         <link rel='stylesheet' type='text/css' href="{{url_for('.static', filename='style.css')}}">
+	</head>
+	<body>
+    <center>
+		<a href="{{ url_for('..index') }}">{% if title %}{{ title }} {% else %}Select World{% endif %}</a>
+		<a href="{{ url_for('..player_page') }}">Players</a> |||
+		{% if active_world %}
+            <a href="{{ url_for('.world_page') }}">{{ active_world.name }}</a> <b>{{active_world.age_turn() }}</b>
+            <a href="{{ url_for('.world_map') }}">Map</a>
+            <a href="{{ url_for('.races_page') }}">Races</a>
+            <a href="{{ url_for('.cities_page') }}">Cities</a>
+            <a href="{{ url_for('.orders_page') }}">Orders</a>
+            <a href="{{ url_for('.avatars_page') }}">Avatars</a>
+            <a href="{{ url_for('.prov_buildings_page') }}">Prov Buildings</a>
+            <a href="{{ url_for('.events_page') }}">Events</a>
+            <a href="{{ url_for('.military_page') }}">Military</a>
+        {% endif %}
+    </center>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+				{% for message in messages %}
+					<li>{{ message }} </li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+		{% block page_content %}{% endblock %}
+	</body>
+</html>

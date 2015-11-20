@@ -1,0 +1,38 @@
+Name: The Vulmer
+Race: Magically Uplifted foxes
+Color:  Red with Black Trim
+Fluff: Centuries ago, there was a race of Elves who were very skilled at magically altering living beings. Towards the end, there was a fad about pet foxes, and liked to breed and show them - but were not above magically enhancing the vulpines, bringing them up to nearly as intelligent as baseline humans, and giving them grasping paws and longer lifespans - although not as long as the Elves.
+However, disaster struck as a plague - a magically enhanced cold that only impacted the Elves - burned through the community. Within only a few days, 99% of the elves had died, and the remainder were not enough to sustain their people. The remainders fully uplifted the Vulmer, who took on the Elvish society.
+
+Government Type: High Kingdom, with a council of 'High Nobles'. There is a strong code of laws, but Code Duello is active. The Noble titles are held for life and are not passed on, with the exception of the High King.
+Economy Type: Heavily Craftsman-based, with specialized Guilds. Uses precious-metal currency.
+Religion: Officially, the Vulmer worship the Creator God of the Elves. unofficially, they worship their Elvish Ancestors. 
+Location: Southern Gul
+
+Population: (13.6) (+1.2/turn)
+Food: (Good)
+Raw Currency: (23) (+8/turn, -4 Iron Bank)
+Legitimacy:  (Good)
+Culture: (5)
+Industry: (5)
+Unique Buildings: High King's Palace                                             
+Defenses: Vulmerian Walls [Large]
+Military Units: 4 Legio Culpes Consularius[Very Strong]; 2 Legio Vulpes [Strong]
+Resources/Quantity: Iron [Sustainble]; Stone [Sustainable]; Wood [Sustainable]; Silver [Sustainable,+3 currency/turn]
+Magic/Spells: [Vulmerian](spells: Invisibility [Average]; Body Alteration [Good])
+Technology: Metallurgy [Average]; Arcane Theory [Simple]; 
+Trade Routes: [none initially]
+Territory: 3
+Bonuses:
+1. Like A Fox: Generally, very clever tactics don't work on you in combat. You're just super clever.
+2. Clever: You know a thing or two about most things. You get +5 to all rolls.
+Eccentricities:
+1. What's That Smell?: You are vulnerable to fire. If the opposition uses fire against you, you are penalized by -1 in combat rolls. Generally the opposition must make an actual effort to use flame.
+--In Progress--
+-Invisbility: 2/10
+-Arcane Theory: 2/10
+—-Actions--
+All Roles get +5 from Clever [Not put in to modifier field]
+Action 1: 
+Action 2: 
+Action 3: 
