@@ -44,6 +44,7 @@
             {% endif %}
 
             {% if city.is_alive %}
+            {% if current_user.id == player_owner or current_user.id == world_owner %}
             <tr>
                 <form action="" method="post" name="new_owner">
 			{{ new_owner.hidden_tag() }}
@@ -60,6 +61,8 @@
 			</tr>
 			</form>
             <tr>
+            {% endif %}
+            {% if current_user.id == world_owner %}
             <form action="" method="post" name="destroy">
 			{{ destroy.hidden_tag() }}
 				{% for error in destroy.destroy.error %}
@@ -74,6 +77,7 @@
 				<td><input type="submit" value="DESTROY"></td>
             </tr>
             </form>
+            {% endif %}
             {% endif %}
 		</table>
 	{% else %}
@@ -182,6 +186,7 @@
          <tr><th>Remove Advance:</th><td>{{advance_remove.support}}</td><td><input type="submit" value="Remode"></td></tr>
         </form>
         </table>
+        {% if current_user.id == player_owner or current_user.id == world_owner %}
         <table border="1">
         <form action="" method="post" name="buildings">
         {{ form.hidden_tag() }}
@@ -216,6 +221,8 @@
             </tr>
             </form>
         </table>
+        {% endif %}
+        {% if current_user.id == player_owner or current_user.id == world_owner %}
         <table border="1">
         <form action="" method="post" name="armies">
         {{ army_form.hidden_tag() }}
@@ -244,6 +251,7 @@
             </tr>
         </form>
         </table>
+        {% endif %}
 		
     {% endif %}
     {% if history %}

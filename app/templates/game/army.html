@@ -37,13 +37,18 @@
 </div>
 <div id="right_pane_wrapper">
 <section id="right_pane">
+    {% if current_user.id == army.owner or current_user.id == active_world.owner %}
     <table>
         <tr>
             <th class="title" colspan="3">Control Panel</th>
         </tr>
         <tr>
         {% if not cities %}
+            {% if army.supporting_city == "Orphaned" %}
             <td>The {{army.homeculture_name()}} do not control any cities to support this army.</td>
+            {% else %}
+            <td>The {{army.homeculture_name()}} do not control any other cities.</td>
+            {% endif %}
         {% else %}
             <form action="" method="post" name="support">
             {{support.hidden_tag()}}
@@ -84,6 +89,7 @@
                 <td class="nav2" colspan="3"><a href="{{ url_for('.disband_army',armyid=army.id)}}">Delete Army</a></td>
             </tr>
 		</table>
+        {% endif %}
 			
 {% else %}
 	{{ redirect(url_for('.military_page')) }}

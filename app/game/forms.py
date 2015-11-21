@@ -17,6 +17,7 @@ class MakeRace(Form):
     align = IntegerField('alignment', validators=[InputRequired()])
     subrace = SelectField('subrace',coerce=int)
     religion = StringField('religion',validators=[DataRequired()])
+    made_by = SelectField('made_by',coerce=int)
     choices_x = []
     choices_y = []
     for i in range(50):

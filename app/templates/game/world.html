@@ -59,9 +59,13 @@
                 <td>{{ player.orders.filter_by(world=active_world.id).count() or 0 }}</td>
                 <td>{{ player.armies.filter_by(world=active_world.id).count() or 0 }}</td>
                 <td>{{ player.events.filter_by(world=active_world.id).count() or 0 }}</td>
+                {% if current_user == owner %}
                 <form action="" method="post" name="points">
                 <td><input type="hidden" name="player" value="{{player.id}}">
                 <input type="number" name="points" value={{player.return_points_obj(active_world.id).points}}>  <input type="submit" value="Submit"></td></form>
+                {% else %}
+                <td>{{player.return_points_obj(active_world.id).points}}</td>
+                {% endif %}
             </tr>
         {% endfor %}
         {% if current_user == owner or current_user.is_administrator() %} 

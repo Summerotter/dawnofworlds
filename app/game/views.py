@@ -308,6 +308,14 @@ def races_page():
         return redirect(url_for('.index'))
     races = Race.query.filter_by(world_id=world.id).all()
     form = MakeRace()
+    players = world.players.all()
+    player_list = []
+    if current_user.id == world.owner:
+        for player in players:
+            player_list.append([player.id,player.name])
+    else:
+        player_list.append([current_user.id,current_user.name])
+    form.made_by.choices = player_list
     race_list = [[0,"Not a Subrace"],]
     for race in races:
         race_list.append([race.id,race.culture_name])  
@@ -341,7 +349,7 @@ def races_page():
                         abs_turn_made=world.total_turns,
                         subrace = form.subrace.data,
                         age_turn=world.age_turn(),
-                        creator = current_user.id,
+                        creator = form.made_by.data,
                         religion = 0,)
         religion_description = "The cultural religion of the "+form.culture.data
         db.session.add(new_race)
@@ -471,7 +479,8 @@ def cities_page():
     form = MakeCity()
     race_list = []
     for race in races:
-        race_list.append([race.id, race.culture_name])
+        if current_user.id == race.creator or current_user.id == world.owner:
+            race_list.append([race.id, race.culture_name])
     form.builders.choices = race_list
     if form.validate_on_submit():
         location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first()
@@ -522,6 +531,8 @@ def cities_page():
 def single_city(cityid,page=1):
     world = World.query.get(session['active_world'])
     city = City.query.get(cityid)
+    player_owner = city.return_owner_player()
+    world_owner = world.owner
     if city is None:
         flash("That doesn't exist")
         return redirect(url_for('.world_page'))
@@ -655,13 +666,39 @@ def single_city(cityid,page=1):
         new_advance = CityAdvances(city_id = city.id,
                                     text=advance_form.text.data)
         db.session.add(new_advance)
+        entry = advance_form.text.data+" was developed"
+        new_history = CityHistory(cityid=city.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    entry=entry,
+                                    )
+        db.session.add(new_history)
+        hist_text = advance_form.text.data+" was developed in "+city.name
+        world_history = WorldHistory(world=world.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    text=hist_text,)
+        db.session.add(world_history)
         db.session.commit()
-        flash("New advance for city")
         return redirect(url_for('.single_city',cityid=city.id))
         
     if advance_remove.validate_on_submit():
         advance = CityAdvances.query.get(advance_remove.support.data)
+        entry = "The secrets of "+advance.text+" was lost"
+        new_history = CityHistory(cityid=city.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    entry=entry,
+                                    )
+        db.session.add(new_history)
+        hist_text = "The city of "+city.name+" has lost the secrets of "+advance.text
+        world_history = WorldHistory(world=world.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    text=hist_text,)
+        db.session.add(world_history)
         db.session.delete(advance)
+        
         db.session.commit()
         flash("Lost advance for city")
         return redirect(url_for('.single_city',cityid=city.id))
@@ -679,6 +716,8 @@ def single_city(cityid,page=1):
                            advances=advances,
                            advance_form=advance_form,
                            advance_remove=advance_remove,
+                           player_owner = player_owner,
+                           world_owner = world_owner,
                            )
 
 @game.route("/orders",methods=['GET','POST'])
@@ -692,8 +731,11 @@ def orders_page():
     players = world.players.all()
     form = MakeOrder()
     player_list = []
-    for player in players:
-        player_list.append( [player.id, player.name])
+    if current_user.id == world.owner:
+        for player in players:
+            player_list.append([player.id,player.name])
+    else:
+        player_list.append([current_user.id,current_user.name])
     form.owner.choices= player_list
     races = Race.query.filter_by(world_id=world.id).all()
     orders = Orders.query.filter_by(world=world.id).all()
@@ -827,8 +869,11 @@ def avatars_page():
     form = MakeAvatar()
     players = world.players.all()
     player_list = []
-    for player in players:
-        player_list.append([player.id,player.name])
+    if current_user.id == world.owner:
+        for player in players:
+            player_list.append([player.id,player.name])
+    else:
+        player_list.append([current_user.id,current_user.name])
     form.god.choices = player_list
     avatars = Avatars.query.filter_by(world=world.id).all()
     if form.validate_on_submit():
@@ -900,7 +945,8 @@ def prov_buildings_page():
     form = MakeProvBldg()
     race_list = []
     for race in races:
-        race_list.append([race.id,race.culture_name])
+        if current_user.id == race.creator or current_user.id == world.owner:
+            race_list.append([race.id, race.culture_name])
     form.built_by.choices = race_list
     if form.validate_on_submit():
         new_building = BldgProv(name = form.name.data,
@@ -991,8 +1037,11 @@ def events_page():
     world = World.query.get(session['active_world'])
     players = world.players.all()
     player_list = []
-    for player in players:
-        player_list.append([player.id,player.name])
+    if current_user.id == world.owner:
+        for player in players:
+            player_list.append([player.id,player.name])
+    else:
+        player_list.append([current_user.id,current_user.name])
     form.played_by.choices = player_list
     events = world.event.all()
     remove_event = RemoveEvent(prefix="remove")

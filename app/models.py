@@ -490,6 +490,11 @@ class City(db.Model):
         
     def return_location(self):
         return WorldMap.query.get(self.location)
+        
+    def return_owner_player(self):
+        race = Race.query.get(self.owned_by)
+        player = User.query.get(race.creator)
+        return player.id
 
 class BldgCity(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -523,6 +528,13 @@ class BldgProv(db.Model):
             return owner.culture_name
         else:
             return "Ruins"
+            
+    def owner_id(self):
+        if self.is_alive:
+            owner = Race.query.get(self.owned_by)
+            return owner.creator
+        else:
+            return 0
 
     def new_owner(self, owner):
         if self.owned_by != owner:
