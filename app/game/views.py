@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, session, url_for, request, g, make_response, abort, current_app
 from flask.ext.login import login_required, current_user
 
-from . import game
+from . import game, points_table
 from .. import db
 from .forms import *
 from ..models import *
@@ -9,6 +9,7 @@ from config import *
 from random import randint
 from noise import snoise2
 from ..decorators import admin_required, permission_required
+point_costs = points_table.points_table
 
 #temp workaround
 POSTS_PER_PAGE = 15
@@ -335,7 +336,7 @@ def races_page():
                 flash("Racial color taken")
                 return redirect(url_for(".races_page"))
         points = current_user.return_points_obj(world.id)
-        if points.points < 1:
+        if points.points < point_costs[world.age]['Create Race']:
             flash("You do not have enough points for this")
             return redirect(url_for(".races_page"))
 #        if True:
@@ -353,7 +354,7 @@ def races_page():
                         religion = 0,)
         religion_description = "The cultural religion of the "+form.culture.data
         db.session.add(new_race)
-        points.points -= 1
+        points.points -= point_costs[world.age]['Create Race']
         db.session.add(points)
         db.session.commit()
         race = Race.query.order_by(Race.id.desc()).first()
@@ -388,7 +389,8 @@ def races_page():
                            active_world=world,
                            races=races,
                            form=form,
-                           user=current_user,)
+                           user=current_user,
+                           cost=point_costs[world.age]['Create Race'],)
 
 @game.route("/races/<race>/",methods=['GET','POST'])
 @login_required
