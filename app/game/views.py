@@ -498,6 +498,9 @@ def single_city(cityid,page=1):
     city = City.query.get(cityid)
     player_owner = city.return_owner_player()
     world_owner = world.owner
+    points = current_user.return_points_obj(world.id)
+    command_city_cost = point_costs[world.age]['Command City']
+    command_order_cost = point_costs[world.age]['Command Order']
     if city is None:
         flash("That doesn't exist")
         return redirect(url_for('.world_page'))
@@ -525,6 +528,9 @@ def single_city(cityid,page=1):
     new_owner.new_owner.choices = race_list
     destroy = Destroy_Form(prefix="destroy")
     if form.validate_on_submit():
+        if points.points < command_city_cost:
+            flash("You don't have enough points for that")
+            return redirect(url_for(".single_city",cityid=city.id))
         new_bldg = BldgCity(name=form.name.data,
                             desc = form.description.data,
                             built_in = city.id,
@@ -545,10 +551,15 @@ def single_city(cityid,page=1):
                                     age_turn=world.age_turn(),
                                     text=hist_text,)
         db.session.add(world_history)
+        points.points -= command_city_cost
+        db.session.add(points)
         db.session.commit()
         flash("You built a building!")
         return redirect(url_for(".single_city",cityid=city.id))
     if army_form.validate_on_submit():
+        if points.points < command_city_cost:
+            flash("You don't have enough points for that")
+            return redirect(url_for(".single_city",cityid=city.id))
         race_controlling = city.owned_by
         player_id = Race.query.get(race_controlling).creator
         new_army = Armies(name=army_form.name.data,
@@ -627,7 +638,11 @@ def single_city(cityid,page=1):
         db.session.commit()
         flash("You have destroyed "+city.name+" and all it contained! It lies in ruins.")
         return redirect(url_for(".cities_page"))
+        
     if advance_form.validate_on_submit():
+        if points.points < point_costs[world.age]['Advance City']:
+            flash("You don't have enough points for that")
+            return redirect(url_for(".single_city",cityid=city.id))
         new_advance = CityAdvances(city_id = city.id,
                                     text=advance_form.text.data)
         db.session.add(new_advance)
@@ -644,6 +659,7 @@ def single_city(cityid,page=1):
                                     age_turn=world.age_turn(),
                                     text=hist_text,)
         db.session.add(world_history)
+        points.points -= point_costs[world.age]['Advance City']
         db.session.commit()
         return redirect(url_for('.single_city',cityid=city.id))
         
@@ -667,7 +683,10 @@ def single_city(cityid,page=1):
         db.session.commit()
         flash("Lost advance for city")
         return redirect(url_for('.single_city',cityid=city.id))
-                          
+    if len(advance_list) >= 2:
+        at_max_advance = True
+    else:
+        at_max_advance = False
     return render_template("/game/single_city.html",
                            active_world=world,
                            city=city,
@@ -683,6 +702,10 @@ def single_city(cityid,page=1):
                            advance_remove=advance_remove,
                            player_owner = player_owner,
                            world_owner = world_owner,
+                           command_city_cost=command_city_cost,
+                           command_order_cost=command_order_cost,
+                           advance_cost = point_costs[world.age]['Advance City'],
+                           at_max_advance = at_max_advance,
                            )
 
 @game.route("/orders",methods=['GET','POST'])
@@ -987,6 +1010,8 @@ def events_page():
     world = World.query.get(session['active_world'])
     players = world.players.all()
     player_list = []
+    points = current_user.return_points_obj(world.id)
+    cost = point_costs[world.age]['Event']
     if current_user.id == world.owner:
         for player in players:
             player_list.append([player.id,player.name])
@@ -1002,6 +1027,9 @@ def events_page():
     remove_event.played_by.choices = player_list
     remove_event.removal.choices = remove_event_list
     if form.validate_on_submit():
+        if points.points < cost:
+            flash("You lack sufficient points for this action")
+            return redirect(url_for('.events_page'))
         new_event = Events(location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first().id,
                           event_info=form.event_info.data,
                           played_by=form.played_by.data,
@@ -1017,10 +1045,15 @@ def events_page():
                                     age_turn=world.age_turn(),
                                     text=hist_text,)
         db.session.add(world_history)
+        points.points -= cost
+        db.session.add(points)
         db.session.commit()
         flash("You played a new event")
         return redirect(url_for('.events_page'))
     if remove_event.validate_on_submit():
+        if points.points < cost:
+            flash("You lack sufficient points for this action")
+            return redirect(url_for('.events_page'))
         event = Events.query.get(remove_event.removal.data)
         event.duration = 0
         hist_text = event.event_info+" in "+event.return_location().coords()+" has been removed by "+User.query.get(remove_event.played_by.data).name+"!"
@@ -1038,6 +1071,7 @@ def events_page():
                            form=form,
                            events=events,
                            players=players,
+                           cost=cost,
                            remove_event=remove_event,)
 
 @game.route("/military",methods=['GET', 'POST'])
@@ -1170,6 +1204,7 @@ def world_map_regen():
 def single_location(location_id):
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
+    points = current_user.return_points_obj(world.id)
     terrain_form = ChangeTerrain()
     terrain_options = [['G','grassland.png',"Grassland",],['W','water.png',"Water",],
     ['M','mountains.png',"Mountains",],['J','jungle.png',"Jungle",],['F','forest.png',"Forest",],['H','hills.png',"Hills",]]
@@ -1189,20 +1224,25 @@ def single_location(location_id):
     events = location.events.all()
     armies = location.army.all()
     avatars = location.avatars.all()
-    command_race_form = CommandRace()
-    command_order_form = CommandOrder()
+    command_race_form = CommandRace(prefix="race")
+    command_order_form = CommandOrder(prefix="order")
+    commands_orders = [
+        [1,'Construct Provincial Building',],
+        [2,'Expand',],
+        ]
+    command_order_form.command_list.choices = commands_orders
     commands = [
         [1,'Construct Provincial Building',],
         [2,'Expand',],
         ]
-    command_order_form.command_list.choices = commands
     if race and not city:
         commands.append([3,'Found City'])
     command_race_form.command_list.choices = commands
     if command_race_form.validate_on_submit():
         order = command_race_form.command_list.data
         if order == 1:
-            return redirect(url_for(".build_prov_buildings",location_id = location.id,builder_source="Command Race",))
+            session['builder_source']='Command Race'
+            return redirect(url_for(".build_prov_buildings",location_id = location.id,))
         elif order == 2:
             flash("Command: Expand")
             return redirect(url_for(".single_location",location_id = location.id))
@@ -1215,7 +1255,7 @@ def single_location(location_id):
         command = command_order_form.command_list.data
         if command == 1:
             session['builder_source'] = "Command Order"
-            return redirect(url_for(".build_prov_buildings",location_id = location.id,builder_source="Command Order",))
+            return redirect(url_for(".build_prov_buildings",location_id = location.id,))
         elif command == 2:
             flash("Command: Expand")
             return redirect(url_for(".single_location",location_id = location.id))
@@ -1223,18 +1263,55 @@ def single_location(location_id):
             flash("Error occured")
             return redirect(url_for(".single_location",location_id = location.id))
     if terrain_form.validate_on_submit():
+        if points.points < point_costs[world.age]['Shape Land']:
+            flash("Not enough points for this action")
+            return redirect(url_for(".single_location",location_id = location.id))
         for option in terrain_options:
             if terrain_form.terrain.data in option:
                 location.terrain=option[0]
                 location.image=option[1]
         db.session.add(location)
+        points.points -= point_costs[world.age]['Shape Land']
+        db.session.add(points)
         db.session.commit()
         return redirect(url_for(".single_location",location_id = location.id))
     orders = location.orders.all()
+    owns_present_order = False
     for i in orders:
         if current_user.id == i.owner:
             owns_present_order = True
             break
+            
+    letter = location.letter_coord #X
+    number = location.number_coord #Y
+    neighbors = []
+    
+    label_x = [letter-1,letter,letter+1]
+    label_y = [number-1,number,number+1]
+    print("Letter: ",letter)
+    print("Number: ",number)
+    neighbor_lands = []
+    neighbors = [[[-1,-1,],[0,-1],[+1,-1]],
+                 [[-1,0,],[0,0,],[+1,0]],
+                [[-1,+1,],[0,+1],[+1,+1]],
+                 ]
+                 
+
+    for row in neighbors:
+        for item in row:
+            
+            y = item[0]+letter
+            x = item[1]+number
+            if x < 0 or y < 0:
+                neighbor_lands.append(False)
+            elif x == 0 and y == 0:
+                neighbor_lands.append(location)
+            elif x > world.size or y > world.size:
+                neighbor_lands.append(False)
+            else:
+                neighbor = WorldMap.query.filter_by(letter_coord=y,number_coord=x,world=world.id).first()
+                neighbor_lands.append(neighbor)   
+        
     return render_template("/game/single_location.html",
                             active_world=world,
                             location=location,
@@ -1250,8 +1327,58 @@ def single_location(location_id):
                             command_order_cost=point_costs[world.age]['Command Order'],
                             orders = orders,
                             owns_present_order = owns_present_order,
+                            shape_land_cost = point_costs[world.age]['Shape Land'],
+                            locations = neighbor_lands,
+                            letters = label_x,
+                            label_y = label_y,
                             )
 
+@game.route("/map/<location_id>/expand-race/",methods=['GET','POST'])
+@login_required
+def expand_race(location_id):
+    world = World.query.get(session['active_world'])
+    location = WorldMap.query.get(location_id)
+    race = Race.query.get(location.race)
+    if not race:
+        flash("Invalid resource")
+        return redirect(url_for(".single_location",location_id = location.id))
+    letter = location.letter_coord #X
+    number = location.number_coord #Y
+    neighbors = []
+    
+    label_x = [letter-1,letter,letter+1]
+    label_y = [number-1,number,number+1]
+    print("Letter: ",letter)
+    print("Number: ",number)
+    neighbor_lands = []
+    neighbors = [[[-1,-1,],[0,-1],[+1,-1]],
+                 [[-1,0,],[0,0,],[+1,0]],
+                [[-1,+1,],[0,+1],[+1,+1]],
+                 ]
+                 
+
+    for row in neighbors:
+        for item in row:
+            
+            y = item[0]+letter
+            x = item[1]+number
+            if x < 0 or y < 0:
+                neighbor_lands.append(False)
+            elif x == 0 and y == 0:
+                neighbor_lands.append(location)
+            elif x > world.size or y > world.size:
+                neighbor_lands.append(False)
+            else:
+                neighbor = WorldMap.query.filter_by(letter_coord=y,number_coord=x,world=world.id).first()
+                neighbor_lands.append(neighbor)
+
+    return render_template("/game/expansion.html",
+                            active_world=world,
+                            locations = neighbor_lands,
+                            letters = label_x,
+                            label_y = label_y,
+                            )                            
+    
 @game.route("/map/<location_id>/make-city/", methods=['GET','POST'])
 @login_required
 def single_location_make_city(location_id):
@@ -1314,11 +1441,9 @@ def single_location_make_city(location_id):
 #For things like walls, bridges, farmland, forts
 def build_prov_buildings(location_id):
     world = World.query.get(session['active_world'])
-    builder_source = request.args.get('builder_source')
+    builder_source = session['builder_source']
     points = current_user.return_points_obj(world.id)
     cost = point_costs[world.age][builder_source]
-    print(builder_source)
-    print(cost)
     if points.points < cost:
         flash("You don't have enough points for this action")
         return redirect(url_for(".single_location",location_id = location_id))

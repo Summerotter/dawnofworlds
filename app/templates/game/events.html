@@ -8,7 +8,7 @@
 	{% if events %}
 		<table>
 			<tr>
-				<th class="title" colspan="4">Events</th>
+				<th class="title" colspan="5">Events</th>
 			</tr>
 			<tr>
 				<th>Location</th>
@@ -45,7 +45,7 @@
 		{{ form.hidden_tag() }}
 			<table>
 				<tr>
-					<th class="title" colspan="3">Play Events</th>
+					<th class="title" colspan="4">Play Events (Points Cost: {{cost}} )</th>
 				</tr>
 				
 					{% for error in form.number.errors %}
@@ -88,7 +88,7 @@
 		{{ remove_event.hidden_tag() }}
             <table>
                 <tr>
-                    <th class="title">Remove Event</th>
+                    <th class="title" colspan="3">Remove Event (Points Cost: {{cost}} )</th>
                 </tr>
                 <tr>
                     <td>{{ remove_event.removal }}</td>

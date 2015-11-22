@@ -174,24 +174,31 @@
 <section id="right_pane">
     {% if city.is_alive %}
     <table>
+        {% if not at_max_advance %}
         <tr>
-            <th class="title" colspan="3">Advances</th>
+            <th class="title" colspan="3">Add Advance ( Point Cost: {{ advance_cost }} )</th>
         </tr>
         <form action="" method="post" name="advances">
         {{ advance_form.hidden_tag() }}
         <tr><th>Add Advance:</th><td>{{advance_form.text}}</td><td><input type="submit" value="Add"></td></tr>
-        </form>   
+        </form>
+        {% endif %}
+        {% if current_user.id == world_owner %}
+        <tr>
+            <th class="title" colspan="3">World_Owner: Remove Advance</th>
+        </tr>
         <form action="" method="post" name="removeadvance">
         {{ advance_remove.hidden_tag() }}
          <tr><th>Remove Advance:</th><td>{{advance_remove.support}}</td><td><input type="submit" value="Remode"></td></tr>
         </form>
+        {% endif %}
         </table>
         {% if current_user.id == player_owner or current_user.id == world_owner %}
         <table border="1">
         <form action="" method="post" name="buildings">
         {{ form.hidden_tag() }}
             <tr>
-                <th class="title" colspan="2">Build Buildings</th>
+                <th class="title" colspan="2">Construct Buildings ( Poinst Cost: {{ command_city_cost }} )</th>
             </tr>
                 {% for error in form.name.errors %}
                 <tr>
@@ -227,7 +234,7 @@
         <form action="" method="post" name="armies">
         {{ army_form.hidden_tag() }}
             <tr>
-                <th class="title" colspan="4">Build an Army</th>
+                <th class="title" colspan="4">Build an Army ( Points Cost: {{command_city_cost}} )</th>
             </tr>
             
                 {% for error in army_form.name.errors %}
