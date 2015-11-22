@@ -336,9 +336,14 @@ def races_page():
                 flash("Racial color taken")
                 return redirect(url_for(".races_page"))
         points = current_user.return_points_obj(world.id)
-        if points.points < point_costs[world.age]['Create Race']:
-            flash("You do not have enough points for this")
-            return redirect(url_for(".races_page"))
+        if form.subrace.data == 0:
+            if points.points < point_costs[world.age]['Create Subrace']:
+                flash("You do not have enough points for this")
+                return redirect(url_for(".races_page"))
+        else:
+            if points.points < point_costs[world.age]['Create Race']:
+                flash("You do not have enough points for this")
+                return redirect(url_for(".races_page"))
 #        if True:
 #            flash("Temporary redirect")
 #            return redirect(url_for(".races_page"))
@@ -390,7 +395,8 @@ def races_page():
                            races=races,
                            form=form,
                            user=current_user,
-                           cost=point_costs[world.age]['Create Race'],)
+                           race_cost=point_costs[world.age]['Create Race'],
+                           subrace_cost=point_costs[world.age]['Create Subrace'],)
 
 @game.route("/races/<race>/",methods=['GET','POST'])
 @login_required
@@ -478,54 +484,11 @@ def cities_page():
         return redirect(url_for('.index'))
     races = Race.query.filter_by(world_id=world.id).all()
     cities = City.query.filter_by(world_id=world.id).all()
-    form = MakeCity()
-    race_list = []
-    for race in races:
-        if current_user.id == race.creator or current_user.id == world.owner:
-            race_list.append([race.id, race.culture_name])
-    form.builders.choices = race_list
-    if form.validate_on_submit():
-        location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first()
-        if City.query.filter_by(location=location.id,is_alive=1).count():
-            flash("there is already a city at that location")
-            return redirect(url_for(".cities_page"))
-        if City.query.filter_by(world_id=world.id,name=form.name.data,is_alive=1).count():
-            flash("There is a city by that name alive.")
-            return redirect(url_for(".cities_page"))
-        new_city = City( name = form.name.data,
-                         world_id = world.id,
-                         built_by = form.builders.data,
-                         owned_by =form.builders.data,
-                         location = location.id,
-                         alignment=form.alignment.data,
-                         age_turn = world.age_turn(),
-                         turn_built = world.total_turns,
-                         )
-        db.session.add(new_city)
-        temprace = Race.query.get(form.builders.data)
-        hist_text = new_city.name+" was founded at "+location.coords()+" by the "+temprace.culture_name
-        new_history = WorldHistory(world=world.id,
-                                    abs_turn=world.total_turns,
-                                    age_turn=world.age_turn(),
-                                    text=hist_text,)
-        db.session.add(new_history)
-        db.session.commit()
-        flash("We built a city on Rock and Roll")
-        city = City.query.order_by(City.id.desc()).first()
-        history = CityHistory(cityid=city.id,
-                                    abs_turn=world.total_turns,
-                                    age_turn=world.age_turn(),
-                                    entry=hist_text,
-                                    )
-        db.session.add(history)
-        db.session.commit()
-        return redirect(url_for('.cities_page'))
     return render_template("/game/cities.html",
                            active_world=world,
                            races=races,
                            cities=cities,
-                           form=form,
-                           Race=Race,)
+                           )
 
 @game.route("/cities/<cityid>",methods=['GET','POST'])
 @game.route('/cities/<cityid>/<int:page>', methods=['GET', 'POST'])
@@ -741,7 +704,12 @@ def orders_page():
     form.owner.choices= player_list
     races = Race.query.filter_by(world_id=world.id).all()
     orders = Orders.query.filter_by(world=world.id).all()
+    
     if form.validate_on_submit():
+        points = current_user.return_points_obj(world.id)
+        if points.points < point_costs[world.age]['Create Order']:
+            flash("You do not have enough points for this")
+            return redirect(url_for(".orders_page"))
         new_order = Orders(name=form.name.data,
                            owner=form.owner.data,
                            description=form.description.data,
@@ -754,6 +722,8 @@ def orders_page():
                                     age_turn=world.age_turn(),
                                     text=hist_text,)
         db.session.add(world_history)
+        points.points -= point_costs[world.age]['Create Order']
+        db.session.add(points)
         db.session.commit()
         flash("You have made a new order")
         return redirect(url_for(".orders_page"))
@@ -763,7 +733,8 @@ def orders_page():
                            races = races,
                            orders=orders,
                            form = form,
-                           User=User,)
+                           User=User,
+                           found_order_cost = point_costs[world.age]['Create Order'],)
 
 @game.route("/orders/<order>/", methods=['GET','POST'])
 @login_required
@@ -879,6 +850,10 @@ def avatars_page():
     form.god.choices = player_list
     avatars = Avatars.query.filter_by(world=world.id).all()
     if form.validate_on_submit():
+        points = current_user.return_points_obj(world.id)
+        if points.points < point_costs[world.age]['Create Avatar']:
+            flash("You do not have enough points for this")
+            return redirect(url_for(".avatars_page"))
         new_avatar = Avatars(name = form.name.data,
                             owner = form.god.data,
                             location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first().id,
@@ -894,6 +869,8 @@ def avatars_page():
                                     age_turn=world.age_turn(),
                                     text=hist_text,)
         db.session.add(world_history)
+        points.points -= point_costs[world.age]['Create Avatar']
+        db.session.add(points)
         db.session.commit()
         flash("You have made a new avatar!")
         return redirect(url_for(".avatars_page"))
@@ -902,6 +879,7 @@ def avatars_page():
                            form=form,
                            players=players,
                            avatars=avatars,
+                           cost = point_costs[world.age]['Create Avatar'],
                            )
 
 @game.route("/avatars/<avatar_id>",methods=['GET','POST'])
@@ -944,39 +922,9 @@ def prov_buildings_page():
     world = World.query.get(session['active_world'])
     buildings = BldgProv.query.filter_by(world_in=world.id).all()
     races = Race.query.filter_by(world_id=world.id).all()
-    form = MakeProvBldg()
-    race_list = []
-    for race in races:
-        if current_user.id == race.creator or current_user.id == world.owner:
-            race_list.append([race.id, race.culture_name])
-    form.built_by.choices = race_list
-    if form.validate_on_submit():
-        new_building = BldgProv(name = form.name.data,
-                                built_by = form.built_by.data,
-                                owned_by = form.built_by.data,
-                                description = form.description.data,
-                                location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first().id,
-                                world_in = world.id,
-                                age_turn = world.age_turn(),
-                                turn_built = world.total_turns,
-                                is_alive = 1,
-                                )
-        db.session.add(new_building)
-        hist_text = "The "+new_building.builder_name()+" have built "+new_building.name+" at "+new_building.return_location().coords()
-        world_history = WorldHistory(world=world.id,
-                                    abs_turn=world.total_turns,
-                                    age_turn=world.age_turn(),
-                                    text=hist_text,)
-        db.session.add(world_history)
-        db.session.commit()
-        flash("You built a provincial building")
-        return redirect(url_for(".prov_buildings_page"))
     return render_template("/game/provbldg.html",
                            active_world=world,
-                           form=form,
-                           buildings=buildings,
-                           races=races,
-                           Race = Race,)
+                           buildings=buildings,)
 
 @game.route("/prov/<bldg>",methods=['GET','POST'])
 def single_provbldg(bldg):
@@ -1241,6 +1189,39 @@ def single_location(location_id):
     events = location.events.all()
     armies = location.army.all()
     avatars = location.avatars.all()
+    command_race_form = CommandRace()
+    command_order_form = CommandOrder()
+    commands = [
+        [1,'Construct Provincial Building',],
+        [2,'Expand',],
+        ]
+    command_order_form.command_list.choices = commands
+    if race and not city:
+        commands.append([3,'Found City'])
+    command_race_form.command_list.choices = commands
+    if command_race_form.validate_on_submit():
+        order = command_race_form.command_list.data
+        if order == 1:
+            return redirect(url_for(".build_prov_buildings",location_id = location.id,builder_source="Command Race",))
+        elif order == 2:
+            flash("Command: Expand")
+            return redirect(url_for(".single_location",location_id = location.id))
+        elif order == 3:
+            return redirect(url_for(".single_location_make_city",location_id = location.id))
+        else:
+            flash("Error occured")
+            return redirect(url_for(".single_location",location_id = location.id))
+    if command_order_form.validate_on_submit():
+        command = command_order_form.command_list.data
+        if command == 1:
+            session['builder_source'] = "Command Order"
+            return redirect(url_for(".build_prov_buildings",location_id = location.id,builder_source="Command Order",))
+        elif command == 2:
+            flash("Command: Expand")
+            return redirect(url_for(".single_location",location_id = location.id))
+        else:
+            flash("Error occured")
+            return redirect(url_for(".single_location",location_id = location.id))
     if terrain_form.validate_on_submit():
         for option in terrain_options:
             if terrain_form.terrain.data in option:
@@ -1249,6 +1230,11 @@ def single_location(location_id):
         db.session.add(location)
         db.session.commit()
         return redirect(url_for(".single_location",location_id = location.id))
+    orders = location.orders.all()
+    for i in orders:
+        if current_user.id == i.owner:
+            owns_present_order = True
+            break
     return render_template("/game/single_location.html",
                             active_world=world,
                             location=location,
@@ -1258,4 +1244,114 @@ def single_location(location_id):
                             armies=armies,
                             avatars=avatars,
                             terrain_form=terrain_form,
+                            command_race_form=command_race_form,
+                            command_order_form=command_order_form,
+                            command_race_cost=point_costs[world.age]['Command Race'],
+                            command_order_cost=point_costs[world.age]['Command Order'],
+                            orders = orders,
+                            owns_present_order = owns_present_order,
                             )
+
+@game.route("/map/<location_id>/make-city/", methods=['GET','POST'])
+@login_required
+def single_location_make_city(location_id):
+    world = World.query.get(session['active_world'])
+    location = WorldMap.query.get(location_id)
+    race = Race.query.get(location.race)
+    form = MakeCity()
+    points = current_user.return_points_obj(world.id)
+    if points.points < point_costs[world.age]['Command Race']:
+        flash("You don't have enough points for this action")
+        return redirect(url_for(".single_location",location_id = location.id))
+    if form.validate_on_submit():
+        points = current_user.return_points_obj(world.id)
+        if points.points < point_costs[world.age]['Command Race']:
+            flash("You do not have enough points for this")
+            return redirect(url_for(".single_location",location_id = location.id))
+        if City.query.filter_by(location=location.id,is_alive=1).count():
+            flash("there is already a living city at that location")
+            return redirect(url_for(".single_location",location_id = location.id))
+        if City.query.filter_by(world_id=world.id,name=form.name.data,is_alive=1).count():
+            flash("There is already a living city by that name.")
+            return redirect(url_for(".single_location_make_city",location_id = location.id))
+        new_city = City( name = form.name.data,
+                         world_id = world.id,
+                         built_by = race.id,
+                         owned_by = race.id,
+                         location = location.id,
+                         alignment=form.alignment.data,
+                         age_turn = world.age_turn(),
+                         turn_built = world.total_turns,
+                         )
+        db.session.add(new_city)
+        hist_text = new_city.name+" was founded at "+location.coords()+" by the "+race.culture_name
+        new_history = WorldHistory(world=world.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    text=hist_text,)
+        db.session.add(new_history)
+        city = City.query.order_by(City.id.desc()).first()
+        history = CityHistory(cityid=city.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    entry=hist_text,
+                                    )
+        db.session.add(history)
+        points.points -= point_costs[world.age]['Command Race']
+        db.session.add(points)
+        db.session.commit()
+        return redirect(url_for('.cities_page'))
+    return render_template("/game/make_city.html",
+                            active_world=world,
+                            form = form,
+                            coords = location.coords(),
+                            race = race,
+                            command_race_cost=point_costs[world.age]['Command Race'],
+                            )
+                            
+@game.route("/map/<location_id>/make-prov-bldg", methods=['GET','POST'])
+@login_required
+#For things like walls, bridges, farmland, forts
+def build_prov_buildings(location_id):
+    world = World.query.get(session['active_world'])
+    builder_source = request.args.get('builder_source')
+    points = current_user.return_points_obj(world.id)
+    cost = point_costs[world.age][builder_source]
+    print(builder_source)
+    print(cost)
+    if points.points < cost:
+        flash("You don't have enough points for this action")
+        return redirect(url_for(".single_location",location_id = location_id))
+    location = WorldMap.query.get(location_id)
+    race = Race.query.get(location.race)
+    buildings = BldgProv.query.filter_by(world_in=world.id).all()
+    form = MakeProvBldg()
+    if form.validate_on_submit():
+        new_building = BldgProv(name = form.name.data,
+                                built_by = race.id,
+                                owned_by = race.id,
+                                description = form.description.data,
+                                location = location.id,
+                                world_in = world.id,
+                                age_turn = world.age_turn(),
+                                turn_built = world.total_turns,
+                                is_alive = 1,
+                                )
+        db.session.add(new_building)
+        hist_text = "The "+new_building.builder_name()+" have built "+new_building.name+" at "+new_building.return_location().coords()
+        world_history = WorldHistory(world=world.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    text=hist_text,)
+        db.session.add(world_history)
+        points.points -= cost
+        db.session.add(points)
+        db.session.commit()
+        return redirect(url_for(".prov_buildings_page"))
+    return render_template("/game/build_prov_bldg.html",
+                           active_world=world,
+                           form=form,
+                           buildings=buildings,
+                           race=race,
+                           cost=cost,
+                           )

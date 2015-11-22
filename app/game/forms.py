@@ -53,19 +53,11 @@ class MakeAvatar(Form):
     def __init__(self):
         Form.__init__(self)
 
+   
 class MakeCity(Form):
     name = StringField("name", validators=[DataRequired()])
-    builders = SelectField("builders",coerce=int)
     alignment= IntegerField("alignment",validators=[InputRequired()])
-    x_coords = []
-    y_coords = []
-    for i in range(50):
-        x_coords.append([i,"x"+str(i)])
-        y_coords.append([i,"y"+str(i)])
     
-    letter = SelectField("letter", coerce=int, choices=x_coords,validators=[InputRequired()])
-    number = SelectField("number", coerce=int, choices=y_coords,validators=[InputRequired()])
-
 class MakeOrder(Form):
     owner = SelectField("owners",coerce=int)
     name = StringField("name", validators=[DataRequired()])
@@ -87,16 +79,7 @@ class AddPlayer(Form):
 
 class MakeProvBldg(Form):
     name = StringField("name", validators=[DataRequired()])
-    built_by = SelectField("built_by",coerce=int)
     description = StringField("description")
-    x_coords = []
-    y_coords = []
-    for i in range(50):
-        x_coords.append([i,"x"+str(i)])
-        y_coords.append([i,"y"+str(i)])
-    
-    letter = SelectField("letter", coerce=int, choices=x_coords,validators=[InputRequired()])
-    number = SelectField("number", coerce=int, choices=y_coords,validators=[InputRequired()])
 
     def __init__(self):
         Form.__init__(self)
@@ -173,3 +156,11 @@ class WorldOwner(Form):
 
     def __init__(self):
         Form.__init__(self)
+        
+class CommandRace(Form):
+    command_list = SelectField("order_list", coerce=int)
+    submit = SubmitField('Submit')
+    
+class CommandOrder(Form):
+    command_list = SelectField("order_list", coerce=int)
+    submit = SubmitField('Submit')

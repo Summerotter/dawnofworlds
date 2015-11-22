@@ -1,0 +1,36 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	
+	<form action="" method="post" name="buildings">
+    {{ form.hidden_tag() }}
+		<table>
+            <tr>
+                <th class="title" colspan="4">Construct Building - Poinst Cost {{ cost }}</th>
+            </tr>
+				{% for error in form.name.errors %}
+                <tr>
+                    <td><span style="color: red;">Name: [{{ error }}]</span></td>
+                </tr>
+				{% endfor %}
+				{% for error in form.description.errors %}
+				<tr>
+                    <td><span style="color: red;">Description: [{{ error }}]</span></td>
+                </tr>
+				{% endfor %}
+			<tr>
+				<td>Name:</td>
+                <td>{{ form.name(size=15, maxlength=140) }}</td>
+				<td>Description:</td>
+				<td>{{ form.description(size=20, maxlength=140) }}</td>
+            </tr>
+			<tr>
+				<th class="sub_title" colspan='4'><input type="submit" value="Construct Building!"></th>
+			</tr>
+		</table>
+	</form>
+</section>
+</div>
+{% endblock %}

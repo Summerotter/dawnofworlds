@@ -61,54 +61,6 @@
 	{% else %}
 		<p> There are no Provincial Buildings in this world.</p>
 	{% endif %}
-	
-{% if not races %}
-	<p> Races build buildings, and there are no races in this world.</p>
-{% else %}
-	<form action="" method="post" name="buildings">
-    {{ form.hidden_tag() }}
-		<table>
-            <tr>
-                <th class="title" colspan="4">Construct Building</th>
-            </tr>
-				{% for error in form.name.errors %}
-                <tr>
-                    <td><span style="color: red;">Name: [{{ error }}]</span></td>
-                </tr>
-				{% endfor %}
-				{% for error in form.description.errors %}
-				<tr>
-                    <td><span style="color: red;">Description: [{{ error }}]</span></td>
-                </tr>
-				{% endfor %}
-				{% for error in form.number.errors %}
-				<tr>
-                    <td><span style="color: red;">Location: [{{ error }}]</span></td>
-                </tr>
-				{% endfor %}
-				{% for error in form.built_by.errors %}
-				<tr>
-                    <td><span style="color: red;">Builders: [{{ error }}]</span></td>
-                </tr>
-				{% endfor %}
-			<tr>
-				<td>Name:</td>
-                <td>{{ form.name(size=15, maxlength=140) }}</td>
-				<td>Description:</td>
-				<td>{{ form.description(size=20, maxlength=140) }}</td>
-            </tr>
-            <tr>
-				<td>Location:</td>
-				<td>{{ form.letter }}{{form.number}}</td>
-				<td>Builders:</td>
-				<td>{{ form.built_by }}</td>
-			</tr>
-			<tr>
-				<th class="sub_title" colspan='4'><input type="submit" value="Construct Building!"></th>
-			</tr>
-		</table>
-	</form>
-{% endif %}
 </section>
 </div>
 {% endblock %}

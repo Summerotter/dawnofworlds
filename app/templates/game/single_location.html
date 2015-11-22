@@ -1,5 +1,6 @@
 <!-- extend base layout -->
 {% extends "/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% block page_content %}
 
 <div id="left_pane_wrapper">
@@ -47,7 +48,7 @@
             </tr>
     </table>
     {% endif %}
-    {% if location.orders.all() %}
+    {% if orders %}
     <table>
         <tr>
             <th class="title" colspan="3">Orders in Province</th>
@@ -57,7 +58,7 @@
             <th width="40%">Type</th>
             <th width="30%">Controlled By</th>
         </tr>
-        {% for item in location.orders.all() %}
+        {% for item in orders %}
             <tr>
                 <td><a href="{{ url_for('.single_order',order=item.id) }}">{{item.name}}</a></td>
                 <td>{{item.order_type()}}</td>
@@ -136,6 +137,36 @@
             </form>
         </tr>
     </table>
+    {% if race %}
+    {% if current_user.id == race.creator %}
+    <table>
+       <tr>
+        <th class="title" colspan=2>Command Race | Point Cost: {{ command_race_cost }}</th>
+        </tr>
+        <tr>
+            <form action="" method="post" name="command_race">
+            {{ command_race_form.hidden_tag() }}
+            <td>{{command_race_form.command_list}}</td>
+            <td><input type="submit" value="Command Race">
+            </form>
+        </tr>
+    </table>
+    {% endif %}
+    {% endif %}
+    {% if owns_present_order %}
+    <table>
+       <tr>
+        <th class="title" colspan=2>Command Order | Point Cost: {{ command_order_cost }}</th>
+        </tr>
+        <tr>
+            <form action="" method="post" name="command_race">
+            {{ command_order_form.hidden_tag() }}
+            <td>{{command_order_form.command_list}}</td>
+            <td><input type="submit" value="Command Order">
+            </form>
+        </tr>
+    </table>
+    {% endif %}
     {% if avatars %}
     <table>
         <tr>

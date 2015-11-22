@@ -28,7 +28,7 @@
                 <li><a href="{{ url_for('game.index') }}">The Game</a></li>
                 <li><a href="{{ url_for('game.player_page') }}">Players</a></li>
                 {% if active_world %}
-            <li><a href="{{ url_for('game.world_page') }}">{{ active_world.name }} : {{active_world.age_turn() }}</a></li>
+            <li><a href="{{ url_for('game.world_page') }}">{{ active_world.name }} : {{active_world.age_turn() }} | {{ current_user.return_points_obj(active_world.id).points }} Points</a></li>
             <li><a href="{{ url_for('game.world_map') }}">Map</a></li>
             <li><a href="{{ url_for('game.races_page') }}">Races</a></li>
             <li><a href="{{ url_for('game.cities_page') }}">Cities</a></li>
