@@ -303,100 +303,19 @@ def player_page():
 #Maybe specific /races/<racename> page?
 def races_page():
     world = World.query.get(session['active_world'])
+    races = Race.query.filter_by(world_id=world.id).all()
     if world is None:
         flash("You need to select a world before accessing this page")
         return redirect(url_for('.index'))
-    races = Race.query.filter_by(world_id=world.id).all()
-    form = MakeRace()
-    players = world.players.all()
-    player_list = []
-    if current_user.id == world.owner:
-        for player in players:
-            player_list.append([player.id,player.name])
-    else:
-        player_list.append([current_user.id,current_user.name])
-    form.made_by.choices = player_list
-    race_list = [[0,"Not a Subrace"],]
-    for race in races:
-        race_list.append([race.id,race.culture_name])  
-    form.subrace.choices = race_list
-    if form.validate_on_submit():
-        location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first()
-        race_check = Race.query.filter_by(world_id=world.id,culture_name=form.culture.data).all()
-        if race_check:
-            flash("Already a culture by that name")
-            return redirect(url_for(".races_page"))
-        if location.race:
-            flash("There is already a race at this location")
-            return redirect(url_for(".races_page"))
-        if request:
-            color = request.form['color']
-            if Race.query.filter_by(world_id=world.id).filter_by(map_color=color).all():
-                flash("Racial color taken")
-                return redirect(url_for(".races_page"))
-        points = current_user.return_points_obj(world.id)
-        if form.subrace.data == 0:
-            if points.points < point_costs[world.age]['Create Subrace']:
-                flash("You do not have enough points for this")
-                return redirect(url_for(".races_page"))
-        else:
-            if points.points < point_costs[world.age]['Create Race']:
-                flash("You do not have enough points for this")
-                return redirect(url_for(".races_page"))
-#        if True:
-#            flash("Temporary redirect")
-#            return redirect(url_for(".races_page"))
-        new_race = Race(race_name=form.race.data,
-                        culture_name=form.culture.data,
-                        map_color = color,
-                        alignment = form.align.data,
-                        world_id=world.id,
-                        abs_turn_made=world.total_turns,
-                        subrace = form.subrace.data,
-                        age_turn=world.age_turn(),
-                        creator = form.made_by.data,
-                        religion = 0,)
-        religion_description = "The cultural religion of the "+form.culture.data
-        db.session.add(new_race)
-        points.points -= point_costs[world.age]['Create Race']
-        db.session.add(points)
-        db.session.commit()
-        race = Race.query.order_by(Race.id.desc()).first()
-        new_order = Orders(name=form.religion.data,
-                           owner=current_user.id,
-                           description=religion_description,
-                           abs_turn=world.total_turns,
-                           age_turn=world.age_turn(),
-                           is_alive=1,
-                           world=world.id,
-                           founding_culture=race.id,
-                           type=1,)
-        db.session.add(new_order)
-        db.session.commit()
-        order = Orders.query.order_by(Orders.id.desc()).first()
-        race.religion = order.id
-        db.session.add(race)
-        location.race = race.id
-        db.session.add(location)
-        order.locations.append(location)
-        db.session.add(order)
-        hist_text = race.made_by()+" made the "+race.culture_name+" "+race.race_name+" with the "+order.name+" religion."
-        new_history = WorldHistory(world=world.id,
-                                    abs_turn=world.total_turns,
-                                    age_turn=world.age_turn(),
-                                    text=hist_text,)
-        db.session.add(new_history)
-        db.session.commit()
-        flash("Your new race is now made")
-        return redirect(url_for('.races_page'))
+    
     return render_template("/game/races.html",
                            active_world=world,
                            races=races,
-                           form=form,
                            user=current_user,
                            race_cost=point_costs[world.age]['Create Race'],
                            subrace_cost=point_costs[world.age]['Create Subrace'],)
-
+                           
+                           
 @game.route("/races/<race>/",methods=['GET','POST'])
 @login_required
 def single_race(race):
@@ -1187,7 +1106,8 @@ def single_location(location_id):
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
     points = current_user.return_points_obj(world.id)
-    terrain_form = ChangeTerrain()
+    terrain_form = ChangeTerrain(prefix="terrain")
+    spawn_race = SpawnRace(prefix="spawnrace")
     terrain_options = [['G','grassland.png',"Grassland",],['W','water.png',"Water",],
     ['M','mountains.png',"Mountains",],['J','jungle.png',"Jungle",],['F','forest.png',"Forest",],['H','hills.png',"Hills",]]
     form_options = []
@@ -1220,6 +1140,11 @@ def single_location(location_id):
     if race and not city:
         commands.append([3,'Found City'])
     command_race_form.command_list.choices = commands
+    if spawn_race.validate_on_submit():
+        if points.points < point_costs[world.age]['Create Subrace']:
+            flash("Not enough points to spawn a Race or Subrace")
+            return redirect(url_for(".single_location",location_id=location.id))
+        return redirect(url_for(".make_race",location_id=location.id,))
     if command_race_form.validate_on_submit():
         order = command_race_form.command_list.data
         if order == 1:
@@ -1311,7 +1236,104 @@ def single_location(location_id):
                             locations = neighbor_lands,
                             letters = label_x,
                             label_y = label_y,
+                            spawn_race = spawn_race,
                             )
+@game.route("/map/<location_id>/create-race/",methods=["GET","POST"])
+@login_required
+def make_race(location_id):
+    world = World.query.get(session['active_world'])
+    location = WorldMap.query.get(location_id)
+    races = Race.query.filter_by(world_id=world.id).all()
+    form = MakeRace()
+    players = world.players.all()
+    player_list = []
+    if current_user.id == world.owner:
+        for player in players:
+            player_list.append([player.id,player.name])
+    else:
+        player_list.append([current_user.id,current_user.name])
+    form.made_by.choices = player_list
+    race_list = [[0,"Not a Subrace"],]
+    for race in races:
+        race_list.append([race.id,race.culture_name])  
+    form.subrace.choices = race_list
+    if form.validate_on_submit():
+        race_check = Race.query.filter_by(world_id=world.id,culture_name=form.culture.data).all()
+        if race_check:
+            flash("Already a culture by that name")
+            return redirect(url_for(".races_page"))
+        if location.race:
+            flash("There is already a race at this location")
+            return redirect(url_for(".races_page"))
+        if request:
+            color = request.form['color']
+            if Race.query.filter_by(world_id=world.id).filter_by(map_color=color).all():
+                flash("Racial color taken")
+                return redirect(url_for(".races_page"))
+        points = current_user.return_points_obj(world.id)
+        if form.subrace.data == 0:
+            if points.points < point_costs[world.age]['Create Subrace']:
+                flash("You do not have enough points for this")
+                return redirect(url_for(".races_page"))
+        else:
+            if points.points < point_costs[world.age]['Create Race']:
+                flash("You do not have enough points for this")
+                return redirect(url_for(".races_page"))
+#        if True:
+#            flash("Temporary redirect")
+#            return redirect(url_for(".races_page"))
+        new_race = Race(race_name=form.race.data,
+                        culture_name=form.culture.data,
+                        map_color = color,
+                        alignment = form.align.data,
+                        world_id=world.id,
+                        abs_turn_made=world.total_turns,
+                        subrace = form.subrace.data,
+                        age_turn=world.age_turn(),
+                        creator = form.made_by.data,
+                        religion = 0,)
+        religion_description = "The cultural religion of the "+form.culture.data
+        db.session.add(new_race)
+        points.points -= point_costs[world.age]['Create Race']
+        db.session.add(points)
+        db.session.commit()
+        race = Race.query.order_by(Race.id.desc()).first()
+        new_order = Orders(name=form.religion.data,
+                           owner=current_user.id,
+                           description=religion_description,
+                           abs_turn=world.total_turns,
+                           age_turn=world.age_turn(),
+                           is_alive=1,
+                           world=world.id,
+                           founding_culture=race.id,
+                           type=1,)
+        db.session.add(new_order)
+        db.session.commit()
+        order = Orders.query.order_by(Orders.id.desc()).first()
+        race.religion = order.id
+        db.session.add(race)
+        location.race = race.id
+        location.race_color = race.map_color
+        db.session.add(location)
+        order.locations.append(location)
+        db.session.add(order)
+        hist_text = race.made_by()+" made the "+race.culture_name+" "+race.race_name+" with the "+order.name+" religion."
+        new_history = WorldHistory(world=world.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    text=hist_text,)
+        db.session.add(new_history)
+        db.session.commit()
+        flash("Your new race is now made")
+        return redirect(url_for('.races_page'))
+    return render_template("/game/make_race.html", active_world=world,
+                           races=races,
+                           user=current_user,
+                           race_cost=point_costs[world.age]['Create Race'],
+                           subrace_cost=point_costs[world.age]['Create Subrace'],
+                           form=form,
+                           )
+#
 
 @game.route("/map/<location_id>/expand-race/",methods=['GET','POST'])
 @login_required
@@ -1420,6 +1442,8 @@ def single_location_make_city(location_id):
         db.session.add(history)
         points.points -= point_costs[world.age]['Command Race']
         db.session.add(points)
+        location.has_city = 1
+        db.session.add(location)
         db.session.commit()
         return redirect(url_for('.cities_page'))
     return render_template("/game/make_city.html",

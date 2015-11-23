@@ -10,26 +10,11 @@ from ..decorators import admin_required, permission_required
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    form = PostForm()
-    if current_user.can(Permission.WRITE_ARTICLES) and \
-            form.validate_on_submit():
-        post = Post(body=form.body.data,
-                    author=current_user._get_current_object())
-        db.session.add(post)
-        return redirect(url_for('.index'))
-    page = request.args.get('page', 1, type=int)
-    show_followed = False
-    query = Post.query
-    pagination = query.order_by(Post.timestamp.desc()).paginate(
-        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
-        error_out=False)
-    posts = pagination.items
     if 'active_world' in session:
         world_active = World.query.get(session['active_world'])
     else:
         world_active = ""
-    return render_template('index.html', form=form, posts=posts,
-                           show_followed=show_followed, pagination=pagination, active_world = world_active)
+    return render_template('index.html', active_world = world_active)
 
 
 @main.route('/user/<username>')

@@ -1,0 +1,10 @@
+Finish up Order changes, expansion+creation like Race
+Fix up Avatar (add movement?)
+Fix up Army stuff (also add movement?)
+
+
+center player list
+make overall font bigger
+center races list
+
+

@@ -303,6 +303,7 @@ class WorldMap(db.Model):
     terrain = db.Column(db.String(16))
     image = db.Column(db.String(16))
     city = db.relationship("City",backref='world_location',lazy='dynamic')
+    has_city = db.Column(db.Integer)
     army = db.relationship("Armies",backref='worldmap_id',lazy='dynamic')
     events = db.relationship("Events",backref="worldmap_event_id",lazy='dynamic')
     prov_bldg = db.relationship("BldgProv",backref="worldmap",lazy='dynamic')

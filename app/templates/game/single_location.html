@@ -152,6 +152,19 @@
         </tr>
     </table>
     {% endif %}
+    {% else %}
+    <table>
+        <tr>
+            <th class="title" colspan=2>Spawn Race: {{ race_cost}} | Spawn Subrace: {{ subrace_cost}} </th>
+        </tr>
+        <tr>
+            <form action="" method="post" name="spawn_race">
+            {{ spawn_race.hidden_tag() }}
+            <td>Make a New Race!</td>
+            <td><input type="submit" value="Spawn Race"></td>
+            </form>
+        </tr>
+    </table>
     {% endif %}
     {% if owns_present_order %}
     <table>

@@ -18,16 +18,7 @@ class MakeRace(Form):
     subrace = SelectField('subrace',coerce=int)
     religion = StringField('religion',validators=[DataRequired()])
     made_by = SelectField('made_by',coerce=int)
-    choices_x = []
-    choices_y = []
-    for i in range(50):
-        choices_x.append([i,str(i)+"x"])
-        choices_y.append([i,str(i)+"y"])
-    letter = SelectField("letter", coerce=int, choices=choices_x,validators=[InputRequired()])
-    number = SelectField("number", coerce=int, choices=choices_y,validators=[InputRequired()])
 
-    #letter = SelectField("letter",choices= [['A', 'A'], ['B', 'B'], ['C', 'C'], ['D', 'D'], ['E', 'E'], ['F', 'F'], ['G', 'G'], ['H', 'H'], ['I', 'I'], ['J', 'J'], ['K', 'K'], ['L', 'L'], ['M', 'M'], ['N', 'N'], ['O', 'O'], ['P', 'P'], ['Q', 'Q'], ['R', 'R'], ['S', 'S'], ['T', 'T'], ['U', 'U'], ['V', 'V'], ['W', 'W'], ['X', 'X'], ['Y', 'Y'], ['Z', 'Z']],validators=[DataRequired()])
-    #number = SelectField("number", coerce=int, choices=[[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7, '7'], [8, '8'], [9, '9'], [10, '10'], [11, '11'], [12, '12'], [13, '13'], [14, '14'], [15, '15'], [16, '16'], [17, '17'], [18, '18'], [19, '19'], [20, '20'], [21, '21'], [22, '22'], [23, '23'], [24, '24'], [25, '25'], [26, '26']],validators=[DataRequired()])
 
     def __init__(self):
         Form.__init__(self)
@@ -166,4 +157,7 @@ class CommandOrder(Form):
     submit = SubmitField('Submit')
     
 class ExpandButton(Form):
+    submit = SubmitField("Submit")
+    
+class SpawnRace(Form):
     submit = SubmitField("Submit")

@@ -1,0 +1,76 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+
+<form action="" method="post" name="makerace">
+		{{ form.hidden_tag() }}
+		<table border='1'>
+			<tr>
+				<th class="title" colspan="4">Create Race ( {{race_cost}} points ) | Create Subrace ( {{subrace_cost}} points )</th>
+			</tr>
+			
+				{% for error in form.culture.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Culture[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+				{% for error in form.race.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Race[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}             
+				{% for error in form.align.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Align[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+				{% for error in form.subrace.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Subrace[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+                {% for error in form.religion.errors %}
+                <tr>
+				<td>
+				<span style="color: red;">Religion[{{ error }}]</span><br>
+                </td>
+                </tr>
+				{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<td>Culture Name:</td>
+				<td>{{ form.culture(size=15, maxlength=140) }}</td>
+				<td>Race Name:</td>
+				<td>{{ form.race(size=15, maxlength=140) }}</td>
+            <tr>
+            </tr>
+				<td>Map Color:</td>
+                <td><input id="color" name="color" type="color"></td>
+			</tr>
+			<tr>
+				<td>Alignment:</td>
+				<td>{{ form.align(size=15, maxlength=140) }}</td>
+				<td>Subrace:</td>
+				<td>{{ form.subrace }}</td>
+            </tr>
+            <tr>
+                <td>Religion:</td>
+                <td>{{ form.religion }}</td>
+				<td>Creator:</td>
+                <td>{{ form.made_by }}</td>
+			</tr>
+			<tr>
+				<th class="sub_title" colspan="4"><input type="submit" value="Create Race!"></th>
+			</tr>
+		</table>
+	</form>\
+{% endblock %}
