@@ -178,7 +178,6 @@ def world_page(page=1):
             pointobj.points = points
             db.session.add(pointobj)
             db.session.commit()
-            flash("You did some points")
             return redirect(url_for('.world_page'))
     history = world.ret_history().paginate(page, POSTS_PER_PAGE, False)
     newplayer = AddPlayer()
@@ -410,7 +409,6 @@ def single_race(race):
         flash("That doesn't exist in the active world")
         return redirect(url_for('.world_page'))
     cities = race.controlled_cities.filter_by(is_alive=1).all()
-    form = UpdateLocation(prefix="location")
     advance_form = HistoryEntry(prefix="advance")
     advance_remove = ArmySupportFrom(prefix="remove_adv")
     advances = race.advances.all()
@@ -424,20 +422,6 @@ def single_race(race):
     for location in locations:
         choices.append([location.id,location.coords()])
     remove_form.support.choices = choices
-    if form.validate_on_submit():
-        location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first()
-        if location.race:
-            flash("There is already a race at that location")
-            return redirect(url_for('.single_race',race=race.id))
-        location.race = race.id
-        cult_religion = Orders.query.get(race.religion)
-        if cult_religion:
-            cult_religion.locations.append(location)
-            db.session.add(cult_religion)
-        db.session.add(location)
-        db.session.commit()
-        flash("Race has expanded")
-        return redirect(url_for('.single_race',race=race.id))
     if remove_form.validate_on_submit():
         location = WorldMap.query.get(remove_form.support.data)
         location.race = 0
@@ -445,6 +429,7 @@ def single_race(race):
         if cult_religion in location.orders.all():
             location.orders.remove(cult_religion)
             db.session.add(cult_religion)
+        location.race_color = 0
         db.session.add(location)
         db.session.commit()
         flash("Race has been removed from"+location.coords())
@@ -465,7 +450,6 @@ def single_race(race):
     return render_template("/game/single_race.html",
                             active_world=world,
                             race=race,
-                            form = form,
                             remove = remove_form,
                             cities=cities,
                             advance_form=advance_form,
@@ -805,9 +789,7 @@ def single_order(order):
         return redirect(url_for(".orders_page"))
     if remove_city.validate_on_submit():
         city_id = remove_city.support.data
-        print(city_id)
         order_city = Order_City.query.filter_by(order_id=order.id,city_id=city_id).first()
-        print(order_city)
         db.session.delete(order_city)
         db.session.commit()
         flash("Order has left the city")
@@ -1245,7 +1227,7 @@ def single_location(location_id):
             return redirect(url_for(".build_prov_buildings",location_id = location.id,))
         elif order == 2:
             flash("Command: Expand")
-            return redirect(url_for(".single_location",location_id = location.id))
+            return redirect(url_for(".expand_race",location_id = location.id))
         elif order == 3:
             return redirect(url_for(".single_location_make_city",location_id = location.id))
         else:
@@ -1288,8 +1270,6 @@ def single_location(location_id):
     
     label_x = [letter-1,letter,letter+1]
     label_y = [number-1,number,number+1]
-    print("Letter: ",letter)
-    print("Number: ",number)
     neighbor_lands = []
     neighbors = [[[-1,-1,],[0,-1],[+1,-1]],
                  [[-1,0,],[0,0,],[+1,0]],
@@ -1339,13 +1319,27 @@ def expand_race(location_id):
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
     race = Race.query.get(location.race)
+    points = current_user.return_points_obj(world.id)
     if not race:
         flash("Invalid resource")
         return redirect(url_for(".single_location",location_id = location.id))
+       
     letter = location.letter_coord #X
     number = location.number_coord #Y
     neighbors = []
-    
+    if request.form:
+        if points.points < point_costs[world.age]['Command Race']:
+            flash("Not enough points for that action")
+            return redirect(url_for(".single_location",location_id = location.id))
+        if 'location' in request.form:
+            expand_target = location = WorldMap.query.get(request.form['location'])
+            expand_target.race = race.id
+            expand_target.race_color = race.map_color
+            points.points -= point_costs[world.age]['Command Race']
+            db.session.add(points)
+            db.session.add(expand_target)
+            db.session.commit()
+            return redirect(url_for(".single_location",location_id = expand_target.id))
     label_x = [letter-1,letter,letter+1]
     label_y = [number-1,number,number+1]
     print("Letter: ",letter)

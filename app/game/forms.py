@@ -164,3 +164,6 @@ class CommandRace(Form):
 class CommandOrder(Form):
     command_list = SelectField("order_list", coerce=int)
     submit = SubmitField('Submit')
+    
+class ExpandButton(Form):
+    submit = SubmitField("Submit")

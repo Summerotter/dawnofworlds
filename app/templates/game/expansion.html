@@ -10,6 +10,40 @@
             <th class="map">{{letter}}</th>
         {%endfor%}
         </tr>  
+        {% for location in locations|batch(3) %}
+        <tr>
+            <th class="map">{{ location[0].letter_coord }}</th>
+            {% for spot in location %}
+        
+                {% if spot == False %}
+                    <td class="map">X</td>
+                {% elif spot.return_race() %}
+                    <td class="map">The {{ spot.return_race().culture_name}} live here.</td>
+                {% else %}
+                    <form action="" method="post" name="{{ spot.id }}">
+                    
+            <td><input type="hidden" name="location" value="{{spot.id}}"><input type="submit" value="Settle Territory">
+            </form>
+                    
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+</div>
+
+
+
+<div id="right_pane_wrapper">
+<section id="right_pane">
+    <table class="map">
+        <tr>
+            <th class="map">X/Y</th>
+        {% for letter in letters %}
+            <th class="map">{{letter}}</th>
+        {%endfor%}
+        </tr>  
     
         <tr>
         <th class="map">{{ label_y[0] }}</th>

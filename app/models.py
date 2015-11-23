@@ -297,6 +297,7 @@ class WorldMap(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     world = db.Column(db.Integer, db.ForeignKey('world.id'))
     race = db.Column(db.Integer,db.ForeignKey('race.id'),default=0)
+    race_color = db.Column(db.Integer,default=0)
     letter_coord = db.Column(db.Integer)
     number_coord = db.Column(db.Integer)
     terrain = db.Column(db.String(16))

@@ -159,3 +159,18 @@ td.nav2 a {
 td.nav2 a:hover {
     background: #bbb;
 }
+img.map_terrain {
+    position: absolute;
+    z-index: 1;
+}
+
+img.map_obj {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+}
+div.map {
+    width: 25px; 
+    height: 25px; 
+}
