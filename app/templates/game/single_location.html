@@ -259,71 +259,40 @@
     </table>
     {% endif %}
     <table class="map">
-        <tr>
-            <th class="map">X/Y</th>
+    <tr>
+        <th class="map">X/Y</th>
         {% for letter in letters %}
             <th class="map">{{letter}}</th>
-        {%endfor%}
-        </tr>  
-    
-        <tr>
-        <th class="map">{{ label_y[0] }}</th>
-            {% if locations[0] == False %}
+        {% endfor %}
+    </tr>
+    {% for row in locations|batch(r) %}
+    <tr>
+        <th class="map">{{row[0]}}</th>
+        {% for location in row[1:] %}
+                           
+            {% if location == False %}
                 <td class="map">X</td>
+            {% elif type(location) == float %}
+                <td>"issue"</td>
             {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[0].id) }}"><img src="{{ url_for('static', filename='images/' + locations[0].image) }}" /></a></td>
+                <td class="map">
+            
+        <a href="{{ url_for('.single_location',location_id=location.id) }}">
+        {% if location.race_color %}
+        <div class="map" style="box-shadow: inset 0 0 0 2px  {{ location.race_color }}">
+        {% else %}
+        <div class="map">
+        {% endif %}
+            <img class="map_terrain" src="{{ url_for('static', filename='images/' + location.image) }}" />
+        {% if location.has_city %}
+            <img class="map_obj" src="{{ url_for('static', filename='images/city_transparent.png') }}" alt="Oh hey a city"/>
+        {% endif %}
+        </div></a></td>
             {% endif %}
-            {% if locations[1] == False %}
-                <td class="map">X</td>
-            {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[1].id) }}"><img src="{{ url_for('static', filename='images/' + locations[1].image) }}" /></a></td>
-            {% endif %}
-            {% if locations[2] == False %}
-                <td class="map">X</td>
-            {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[2].id) }}"><img src="{{ url_for('static', filename='images/' + locations[2].image) }}" /></a></td>
-            {% endif %}
-        
+        {% endfor %}
         </tr>
-         <tr>
-        <th class="map">{{ label_y[1] }}</th>
-            {% if locations[3] == False %}
-                <td class="map">X</td>
-            {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[3].id) }}"><img src="{{ url_for('static', filename='images/' + locations[3].image) }}" /></a></td>
-            {% endif %}
-            {% if locations[4] == False %}
-                <td class="map">X</td>
-            {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[4].id) }}"><img src="{{ url_for('static', filename='images/' + locations[4].image) }}" /></a></td>
-            {% endif %}
-            {% if locations[5] == False %}
-                <td class="map">X</td>
-            {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[5].id) }}"><img src="{{ url_for('static', filename='images/' + locations[5].image) }}" /></a></td>
-            {% endif %}
-        
-        </tr>
-         <tr>
-        <th class="map">{{ label_y[2] }}</th>
-            {% if locations[6] == False %}
-                <td class="map">X</td>
-            {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[6].id) }}"><img src="{{ url_for('static', filename='images/' + locations[6].image) }}" /></a></td>
-            {% endif %}
-            {% if locations[7] == False %}
-                <td class="map">X</td>
-            {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[7].id) }}"><img src="{{ url_for('static', filename='images/' + locations[7].image) }}" /></a></td>
-            {% endif %}
-            {% if locations[8] == False %}
-                <td class="map">X</td>
-            {% else %}
-                <td class="map"><a href="{{ url_for('.single_location',location_id=locations[8].id) }}"><img src="{{ url_for('static', filename='images/' + locations[8].image) }}" /></a></td>
-            {% endif %}
-        
-        </tr>
-    </table>
+    {%endfor%}
+</table>
 </section>
 </div>
 
