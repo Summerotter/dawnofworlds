@@ -6,7 +6,7 @@
 {% if army %}
 	<table border="1">
 		<tr>
-			<th class="title" colspan="6">{{army.name}}</th>
+			<th class="title" colspan="8">{{army.name}}</th>
 		</tr>
 		<tr>
 			<th>Type</th>
@@ -15,6 +15,8 @@
 			<th>Owner</th>
 			<th>Culture</th>
 			<th>Location</th>
+            <th>Movement Range</th>
+            <th>Has Moved</th>
 		</tr>
 		<tr>
 			<td>{{ army.army_navy() }}</td>
@@ -31,6 +33,8 @@
 			<td><a href="{{ url_for('.userpage',userid=army.owner)}}">{{ army.owner_name() }}</a></td>
 			<td><a href="{{ url_for('.single_race',race=army.home_culture)}}">{{ army.homeculture_name() }}</a></td>
 			<td><a href="{{url_for('.single_location',location_id=army.location)}}">{{ army.return_location().coords() }}</a></td>
+            <td>{{ army.movement_range }}</td>
+            <td>{{ army.has_moved }}</td>
 		</tr>
 		</table>
 </section>
@@ -59,16 +63,10 @@
         </form>
         {%endif%}
         </tr>
-			<form action="" method="post" name="location">
-					{{ form.hidden_tag() }}
-					{% for error in form.number.errors %}
+			<form action="" method="post" name="movement">
+					{{ movement.hidden_tag() }}
 					<tr>
-						<td><span style="color: red;">Location:[{{ error }}]</span></td>
-					</tr>
-					{% endfor %}	
-					<tr>
-						<td>New Location:</td>
-						<td>{{ form.letter }}{{form.number}}</td>
+					
 						<td><input type="submit" value="Move Army!"></td>
 					</tr>
 			</form>

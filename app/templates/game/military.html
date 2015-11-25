@@ -6,7 +6,7 @@
 	{% if armies %}
 		<table>
 			<tr>
-                <th class="title" colspan="7">Armies</th>
+                <th class="title" colspan="9">Armies</th>
 			</tr>
 			<tr>
 				<th>Name</th>
@@ -16,6 +16,9 @@
                 <th>Supported From</th>
 				<th>Owner</th>
 				<th>Location</th>
+                <th>Movement Range</th>
+                <th>Has Moved</th>
+                <th>Units</th>
 			</tr>
 			{% for army in armies %}
 			<tr>
@@ -34,6 +37,9 @@
             {% endif %}
 				<td><a href="{{ url_for('.userpage',userid=army.owner)}}">{{ army.owner_name() }}</a></td>
 				<td><a href="{{url_for('.single_location',location_id=army.location)}}">{{ army.return_location().coords() }}</a></td>
+                <td>{{ army.movement_range }}</td>
+            <td>{{ army.has_moved }}</td>
+            <td>{{ army.unit_count() }}</td>
 			</tr>
 				
 			{% endfor%}

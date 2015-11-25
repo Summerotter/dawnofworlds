@@ -33,52 +33,7 @@
 <div id="right_pane_wrapper">
 <section id="right_pane">
 {% if active_world.players.count() > 0 %}
-	<form action="" method="post" name="avatar">
-		{{ form.hidden_tag() }}
-		<table>
-			<tr>
-				<th class="title" colspan="4">Create Avatar ( {{ cost }} points )</th>
-			</tr>
-			
-				{% for error in form.name.errors %}
-                <tr>
-                    <td><span style="color: red;">Name: [{{ error }}]</span></td>
-                </tr>
-				{% endfor %}
-				{% for error in form.description.errors %}
-				<tr>
-                    <td><span style="color: red;">Description: [{{ error }}]</span></td>
-                </tr>
-				{% endfor %}
-				{% for error in form.number.errors %}
-				<tr>
-                    <td><span style="color: red;">Number: [{{ error }}]</span></td>
-                </tr>
-				{% endfor %}
-				{% for error in form.god.errors %}
-				<tr>
-                    <td><span style="color: red;">Maker: [{{ error }}]</span></td>
-                </tr>
-				{% endfor %}
-				
-			
-			<tr>
-				<td>Name:</td>
-				<td>{{ form.name(size=15, maxlength=140) }}</td>
-				<td>Description:</td>
-				<td>{{ form.description(size=20, maxlength=140) }}</td>
-            </tr>
-            <tr>
-				<td>Location:</td>
-				<td>{{form.letter}}{{ form.number }}</td>
-				<td>Creator:</td>
-				<td>{{ form.god }}</td>
-			</tr>
-			<tr>
-				<th class="sub_title" colspan="4"><input type="submit" value="Create Avatar!"></th>
-			</tr>
-		</table>
-	</form>
+	
 {% else %}
 	<p>You need to have players! </p>
 {% endif %}

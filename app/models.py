@@ -7,6 +7,7 @@ import bleach
 from flask import current_app, request
 from flask.ext.login import UserMixin, AnonymousUserMixin
 from . import db, login_manager
+from random import randint
 
 
 class Permission:
@@ -607,6 +608,19 @@ class Events(db.Model):
     def return_location(self):
         return WorldMap.query.get(self.location)
         
+class Unit(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(24))
+    power = db.Column(db.Float)
+    health = db.Column(db.Integer)
+    max_health = db.Column(db.Integer)
+    assigned_army = db.Column(db.Integer, db.ForeignKey('armies.id'))
+    player = db.Column(db.Integer, db.ForeignKey("users.id"))
+    world = db.Column(db.Integer, db.ForeignKey("world.id"))
+    
+    def attack(self):
+        return random.randint(1,10)*(self.power*(self.health/self.max_health))
+        
 class Armies(db.Model):
     #and also navies!
     id = db.Column(db.Integer, primary_key=True)
@@ -620,6 +634,8 @@ class Armies(db.Model):
     world = db.Column(db.Integer,db.ForeignKey('world.id'))
     home_city = db.Column(db.Integer)
     is_alive = db.Column(db.Integer, default=1)
+    movement_range = db.Column(db.Integer, default=2)
+    has_moved = db.Column(db.Integer, default=0)
 
     def army_navy(self):
         if self.army:
@@ -644,6 +660,18 @@ class Armies(db.Model):
             
     def return_location(self):
         return WorldMap.query.get(self.location)
+        
+    def attack(self):
+        attack_total = 0
+        units = Unit.query.filter_by(assigned_army=self.id).all()
+        if units:
+            for unit in units:
+                attack_total += unit.attack()
+        return attack_total
+        
+    def unit_count(self):
+        units = Unit.query.filter_by(assigned_army=self.id).all()
+        return len(units)
 
 class TurnLog(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -664,6 +692,9 @@ class Avatars(db.Model):
     age_turn = db.Column(db.String(64))
     location = db.Column(db.Integer, db.ForeignKey('worldmap.id'))
     name = db.Column(db.String(64))
+    is_alive = db.Column(db.Integer,default=1)
+    movement_range = db.Column(db.Integer,default=3)
+    has_moved = db.Column(db.Integer,default=0)
 
     def owner_name(self):
         return User.query.get(self.owner).name

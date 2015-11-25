@@ -24,9 +24,9 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 {% if current_user.is_authenticated() %}
-                <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
+<!--                <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li> -->
                 <li><a href="{{ url_for('game.index') }}">The Game</a></li>
-                <li><a href="{{ url_for('game.player_page') }}">Players</a></li>
+<!--                <li><a href="{{ url_for('game.player_page') }}">Players</a></li> -->
                 {% if active_world %}
             <li><a href="{{ url_for('game.world_page') }}">{{ active_world.name }} : {{active_world.age_turn() }} | {{ current_user.return_points_obj(active_world.id).points }} Points</a></li>
             <li><a href="{{ url_for('game.world_map') }}">Map</a></li>

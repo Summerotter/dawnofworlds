@@ -180,11 +180,11 @@ def world_page(page=1):
             db.session.commit()
             return redirect(url_for('.world_page'))
     history = world.ret_history().paginate(page, POSTS_PER_PAGE, False)
-    newplayer = AddPlayer()
+    newplayer = AddPlayer(prefix="NewPlayer")
     advanceturn = AdvanceTurn(prefix="turn")
     updatepoints = UpdatePoints()
     advance_age = AdvanceAge(prefix="age")
-    history_entry = HistoryEntry()
+    history_entry = HistoryEntry(prefix="history")
     players = User.query.filter(~User.worlds.contains(world))
     newplayer.player_list.choices= []
     new_owner = WorldOwner()
@@ -225,45 +225,12 @@ def world_page(page=1):
         return redirect(url_for('.world_page'))
     if advanceturn.validate_on_submit():
         flash("You have advanced "+world.name+" a turn!")
-        world.turn_of_age += 1
-        world.total_turns += 1
-        db.session.add(world)
-        players = world.players
-        for player in players:
-            pointroll = randint(1,6)+randint(1,6)
-            points = player.return_points_obj(world.id)
-            if (points.points <= 5) and (points.bonus < 3):
-                points.bonus += 1
-            elif points.points > 5:
-                points.bonus = 0
-            points.points = points.points + pointroll + points.bonus
-            db.session.add(points)
-        events = world.event.all()
-        for event in events:
-            if event.duration:
-                if (event.duration >0) and (event.duration <9001):
-                    event.duration -= 1
-                    db.session.add(event)
-        db.session.commit()
+        advance_turn(world,False)
         return redirect(url_for('.world_page'))
     if advance_age.validate_on_submit():
         if world.age < 3:
             flash("You have advanced "+world.name+" to the next age!")
-            world.age += 1
-            world.turn_of_age=1
-            world.total_turns +=1
-            db.session.add(world)
-            players = world.players
-            for player in players:
-                pointroll = randint(1,6)+randint(1,6)
-                points = player.return_points_obj(world.id)
-                if (points.points <= 5) and (points.bonus < 3):
-                    points.bonus += 1
-                elif points.points > 5:
-                    points.bonus = 0
-                points.points = points.points + pointroll + points.bonus
-                db.session.add(points)
-            db.session.commit()
+            advance_turn(world,True)
         else:
             flash(world.name+" is already at the Third Age!")
         return redirect(url_for('.world_page'))
@@ -280,6 +247,43 @@ def world_page(page=1):
                            owner=owner,
                            new_owner=new_owner,)
 
+#
+def advance_turn(world, age):
+    if age:
+        world.age += 1
+        world.turn_of_age = 1
+    else:
+        world.turn_of_age +=1
+    world.total_turns += 1
+    db.session.add(world)
+    players = world.players
+    for player in players:
+        pointroll = randint(1,6)+randint(1,6)
+        points = player.return_points_obj(world.id)
+        if (points.points <= 5) and (points.bonus < 3):
+            points.bonus += 1
+        elif points.points > 5:
+            points.bonus = 0
+        points.points = points.points + pointroll + points.bonus
+        db.session.add(points)
+    avatars = Avatars.query.filter_by(world=world.id,is_alive=1,has_moved=1).all()
+    for avatar in avatars:
+        avatar.has_moved = 0
+        db.session.add(avatar)
+    armies = Armies.query.filter_by(world=world.id,is_alive=1,has_moved=1).all()
+    for army in armies:
+        army.has_moved = 0
+        db.session.add(army)
+    events = world.event.all()
+    for event in events:
+        if event.duration:
+            if (event.duration >0) and (event.duration <9001):
+                event.duration -= 1
+                db.session.add(event)
+    db.session.commit()
+
+
+                          
 @game.route("/players/<userid>/")
 @login_required
 def userpage(userid):
@@ -772,32 +776,7 @@ def avatars_page():
     else:
         player_list.append([current_user.id,current_user.name])
     form.god.choices = player_list
-    avatars = Avatars.query.filter_by(world=world.id).all()
-    if form.validate_on_submit():
-        points = current_user.return_points_obj(world.id)
-        if points.points < point_costs[world.age]['Create Avatar']:
-            flash("You do not have enough points for this")
-            return redirect(url_for(".avatars_page"))
-        new_avatar = Avatars(name = form.name.data,
-                            owner = form.god.data,
-                            location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first().id,
-                            description = form.description.data,
-                            age_turn = world.age_turn(),
-                            abs_turn= world.total_turns,
-                            world = world.id
-                            )
-        db.session.add(new_avatar)
-        hist_text = User.query.get(new_avatar.owner).name+" has spawned an avatar named "+new_avatar.name
-        world_history = WorldHistory(world=world.id,
-                                    abs_turn=world.total_turns,
-                                    age_turn=world.age_turn(),
-                                    text=hist_text,)
-        db.session.add(world_history)
-        points.points -= point_costs[world.age]['Create Avatar']
-        db.session.add(points)
-        db.session.commit()
-        flash("You have made a new avatar!")
-        return redirect(url_for(".avatars_page"))
+    avatars = Avatars.query.filter_by(world=world.id,is_alive=1).all()
     return render_template("/game/avatars.html",
                            active_world=world,
                            form=form,
@@ -811,6 +790,7 @@ def avatars_page():
 def single_avatar(avatar_id):
     world = World.query.get(session['active_world'])
     avatar = Avatars.query.get(avatar_id)
+    location = avatar.return_location()
     if avatar is None:
         flash("That doesn't exist")
         return redirect(url_for('.world_page'))
@@ -818,27 +798,99 @@ def single_avatar(avatar_id):
         flash("That doesn't exist in the active world")
         return redirect(url_for('.world_page'))
     destroy_form = Destroy_Form()
-    new_location = UpdateLocation()
     if destroy_form.validate_on_submit():
-        name = avatar.name
-        db.session.delete(avatar)
-        db.session.commit()
-        flash("You've destroyed "+name)
-        return redirect(url_for(".avatars_page"))
-    if new_location.validate_on_submit():
-        location = WorldMap.query.filter_by(letter_coord=new_location.letter.data,number_coord=new_location.number.data,world=world.id).first().id
-        avatar.location = location
+        avatar.is_alive = 0
         db.session.add(avatar)
         db.session.commit()
-        flash("You've updated the location")
-        return redirect(url_for(".single_avatar",avatar_id=avatar_id))
+        flash(avatar.name,"has been killed.")
+        return redirect(url_for(".avatars_page"))
+    command_avatar = CommandRace(prefix="command_avatar")
+    commands = [[0,"Move Avatar"],]
+    if not location.race:
+        commands.append([1,"Create Race"],)
+    if location.race and location.return_race().creator == avatar.owner:
+        commands.append([2,"Command Race"],)
+        commands.append([5,'Found Order'])
+    city = location.return_live_city()
+    if not city and location.race and location.return_race().creator == avatar.owner:
+        commands.append([6,"Found City"],)
+    elif city and city.return_owner_player() == avatar.owner:
+        commands.append([3,'Command City'],)
+    orders = location.orders.all()
+    owns_present_order = False
+    for i in orders:
+        if avatar.owner == i.owner:
+            owns_present_order = True
+            break
+    if owns_present_order:
+        commands.append([4,'Command Order'])
+    command_avatar.command_list.choices = commands
+    command_cost = point_costs[world.age]['Command Avatar']
+    if command_avatar.validate_on_submit():
+        option = command_avatar.command_list.data
+        if option == 1:
+            flash("Create Race")
+        elif option == 2:
+            flash("Command Race")
+        elif option == 3:
+            flash("Command City")
+        elif option == 4:
+            flash("Command Order")
+        elif option == 5:
+            flash("Found Order")
+        elif option == 6:
+            flash("Found City")
+        elif option == 0:
+            return redirect(url_for('.move_avatar',avatar_id=avatar.id))
+        else:
+            flash("Well, shoot. Error.")
+
+    locations, letters, r = neighbors(location, 2)
     return render_template("/game/single_avatar.html",
                            active_world=world,
                            avatar=avatar,
                            destroyform=destroy_form,
-                           location=new_location,
+                           locations=locations,
+                           letters=letters,
+                           r=r,
+                           command_avatar=command_avatar,
+                           command_cost=command_cost,
                            )
-
+#                           
+@game.route("/avatars/<avatar_id>/movement", methods=['GET'])
+@login_required
+def move_avatar(avatar_id):
+    world = World.query.get(session['active_world'])
+    avatar = Avatars.query.get(avatar_id)
+    if avatar.has_moved:
+        flash("This Avatar has already moved thus turn.")
+        return redirect(url_for(".single_avatar",avatar_id=avatar.id))
+    location = avatar.return_location()
+    locations,letters,r = neighbors(location, avatar.movement_range)
+    return render_template("/game/move_avatar.html",
+        active_world=world,
+        avatar=avatar,
+        locations=locations,
+        letters=letters,
+        r=r,
+        )
+#
+@game.route("/avatars/<avatar_id>/movement",methods=['POST'])
+@login_required
+def move_avatar_process(avatar_id):
+    avatar = Avatars.query.get(avatar_id)
+    if request.form:
+        if request.form['location']:
+            avatar.location = request.form['location']
+            avatar.has_moved = 1
+            db.session.add(avatar)
+            db.session.commit()
+        else:
+            flash("Issue on request-location")
+    else:
+        flash("Issue on request")
+    return redirect(url_for(".single_avatar",avatar_id=avatar.id))
+        
 @game.route("/prov",methods=['GET','POST'])
 @login_required
 #For things like walls, bridges, farmland, forts
@@ -999,6 +1051,9 @@ def single_army(armyid):
         flash("That doesn't exist in the active world")
         return redirect(url_for('.world_page'))
     form=UpdateLocation()
+    movement = AvatarMovement(prefix="move")
+    if movement.validate_on_submit():
+        return redirect(url_for(".army_movement",armyid=army.id))
     rename=Rename()
     support=ArmySupportFrom()
     cities = City.query.filter_by(owned_by=army.home_culture).all()
@@ -1036,8 +1091,43 @@ def single_army(armyid):
                            rename=rename,
                            cities=citychoice,
                            support=support,
+                           movement=movement,
                            )
+#
+@game.route("/army/<armyid>/movement",methods=['GET'])
+@login_required
+def army_movement(armyid):
+    world = World.query.get(session['active_world'])
+    army = Armies.query.get(armyid)
+    if army.has_moved:
+        flash("This Army has already moved thus turn.")
+        return redirect(url_for(".single_army",armyid=army.id))
+    location = army.return_location()
+    locations,letters,r = neighbors(location, army.movement_range)
+    return render_template("/game/army_movement.html",
+        active_world=world,
+        army=army,
+        locations=locations,
+        letters=letters,
+        r=r,
+        )
 
+@game.route("/army/<armyid>/movement",methods=['POST'])
+@login_required
+def do_army_movement(armyid):
+    army = Armies.query.get(armyid)
+    if request.form:
+        if request.form['location']:
+            army.location = request.form['location']
+            army.has_moved = 1
+            db.session.add(army)
+            db.session.commit()
+        else:
+            flash("Issue on request-location")
+    else:
+        flash("Issue on request")
+    return redirect(url_for(".single_army",armyid=army.id))
+                           
 @game.route("/army/<armyid>/disband")
 @login_required
 def disband_army(armyid):
@@ -1108,6 +1198,7 @@ def single_location(location_id):
     points = current_user.return_points_obj(world.id)
     terrain_form = ChangeTerrain(prefix="terrain")
     spawn_race = SpawnRace(prefix="spawnrace")
+    spawn_avatar = SpawnRace(prefix="spawnavatar")
     terrain_options = [['G','grassland.png',"Grassland",],['W','water.png',"Water",],
     ['M','mountains.png',"Mountains",],['J','jungle.png',"Jungle",],['F','forest.png',"Forest",],['H','hills.png',"Hills",]]
     form_options = []
@@ -1140,6 +1231,11 @@ def single_location(location_id):
     if race and not city:
         commands.append([3,'Found City'])
     command_race_form.command_list.choices = commands
+    if spawn_avatar.validate_on_submit():
+        if points.points < point_costs[world.age]['Create Avatar']:
+            flash("Not enough points to spawn an avatar")
+            return redirect(url_for(".single_location",location_id=location.id))
+        return redirect(url_for(".make_avatar", location_id=location.id,))
     if spawn_race.validate_on_submit():
         if points.points < point_costs[world.age]['Create Subrace']:
             flash("Not enough points to spawn a Race or Subrace")
@@ -1189,7 +1285,7 @@ def single_location(location_id):
             owns_present_order = True
             break
             
-    r = 4
+    r = 2
     neighbor_lands, label_x, map_radius= neighbors(location, r)
         
     return render_template("/game/single_location.html",
@@ -1213,8 +1309,58 @@ def single_location(location_id):
                             spawn_race = spawn_race,
                             r=map_radius,
                             type=type,
+                            spawn_avatar=spawn_avatar,
                             )
 #
+@game.route("/map/<location_id>/create-avatar/",methods=["GET","POST"])
+@login_required
+def make_avatar(location_id):
+    world = World.query.get(session['active_world'])
+    location = WorldMap.query.get(location_id)
+    form = MakeAvatar()
+    players = world.players.all()
+    player_list = []
+    if current_user.id == world.owner:
+        for player in players:
+            player_list.append([player.id,player.name])
+    else:
+        player_list.append([current_user.id,current_user.name])
+    form.god.choices = player_list
+    if form.validate_on_submit():
+        points = current_user.return_points_obj(world.id)
+        if points.points < point_costs[world.age]['Create Avatar']:
+            flash("You do not have enough points for this")
+            return redirect(url_for(".single_location",location_id=location.id))
+        new_avatar = Avatars(name = form.name.data,
+                            owner = form.god.data,
+                            location = location.id,
+                            description = form.description.data,
+                            age_turn = world.age_turn(),
+                            abs_turn= world.total_turns,
+                            world = world.id
+                            )
+        db.session.add(new_avatar)
+        hist_text = User.query.get(new_avatar.owner).name+" has spawned an avatar named "+new_avatar.name
+        world_history = WorldHistory(world=world.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    text=hist_text,)
+        db.session.add(world_history)
+        points.points -= point_costs[world.age]['Create Avatar']
+        db.session.add(points)
+        db.session.commit()
+        flash("You have made a new avatar!")
+        return redirect(url_for(".avatars_page"))
+    locations, letters, r = neighbors(location, 2)
+    return render_template("/game/make_avatar.html",
+                            active_world=world,
+                            location=location,
+                            locations = locations,
+                            letters = letters,
+                            r=r,
+                            form=form,
+                            )
+
 def neighbors(location, r):
     letter = location.letter_coord #X
     number = location.number_coord #Y

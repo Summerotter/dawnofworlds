@@ -1,0 +1,24 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+	<table>
+		<tr>
+			<th class="title" colspan="5">The Avatar {{avatar.name}}</th>
+		</tr>
+		<tr>
+			<th>Owner</th>
+			<th>Description</th>
+			<th>Year Made</th>
+			<th>Location</th>
+            <th>Movement Range</th>
+		</tr>
+		<tr>
+			<td><a href="{{url_for('.userpage',userid=avatar.owner)}}">{{ avatar.owner_name() }}</a></td>
+			<td>{{ avatar.description }}</td>
+			<td>{{ avatar.age_turn }}</td>
+			<td><a href="{{url_for('.single_location',location_id=avatar.location)}}">{{ avatar.return_location().coords() }}</a></td>
+            <td>{{ avatar.movement_range }}</td>
+		</tr>
+	</table>
+    {% include 'movement_map.html' %}
+{% endblock %}

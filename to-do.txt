@@ -1,10 +1,14 @@
 Finish up Order changes, expansion+creation like Race
-Fix up Avatar (add movement?)
-Fix up Army stuff (also add movement?)
-
 
 center player list
-make overall font bigger
+
 center races list
 
 
+Move 'has avatar spawned a race' bool to World. Once per *world*, or Once per *player*?
+Create-Order needs to be redone and moved to single_location.
+Maybe split up single_location actions up, into location/action and do_action?
+
+Unit Creation and editing.
+
+Cities have 'non-movable armies'?

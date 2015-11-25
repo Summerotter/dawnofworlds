@@ -166,6 +166,17 @@
         </tr>
     </table>
     {% endif %}
+    <table>
+        <tr>
+            <th class="title" colspan=2>"Create Avatar: {{ avatar_cost }} </th>
+        </tr>
+        <tr>
+            <form = action="" method="post" name="create_avatar">
+            {{ spawn_avatar.hidden_tag() }}
+            <td>Create a New Avatar</td>
+            <td><input type="submit" value="Create Avatar"></td>
+        </tr>
+    </table>
     {% if owns_present_order %}
     <table>
        <tr>
@@ -272,8 +283,6 @@
                            
             {% if location == False %}
                 <td class="map">X</td>
-            {% elif type(location) == float %}
-                <td>"issue"</td>
             {% else %}
                 <td class="map">
             

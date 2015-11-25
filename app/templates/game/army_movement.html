@@ -1,0 +1,42 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+	<table border="1">
+		<tr>
+			<th class="title" colspan="8">{{army.name}}</th>
+		</tr>
+		<tr>
+			<th>Type</th>
+			<th>Raised From</th>
+            <th>Supported From</th>
+			<th>Owner</th>
+			<th>Culture</th>
+			<th>Location</th>
+            <th>Movement Range</th>
+            <th>Has Moved</th>
+		</tr>
+		<tr>
+			<td>{{ army.army_navy() }}</td>
+            {% if not army.home_city %}
+                <td>Orphaned</td>
+            {% else %}
+                <td><a href="{{ url_for('.single_city',cityid=army.home_city)}}">{{ army.homecity_name() }}</a></td>
+            {% endif %}
+            {% if army.supported_from %}
+                <td><a href=" {{ url_for('.single_city',cityid=army.supported_from)}}">{{ army.supporting_city() }}</a></td>
+            {% else %}
+            <td>{{army.supporting_city()}}</td>
+            {% endif %}
+			<td><a href="{{ url_for('.userpage',userid=army.owner)}}">{{ army.owner_name() }}</a></td>
+			<td><a href="{{ url_for('.single_race',race=army.home_culture)}}">{{ army.homeculture_name() }}</a></td>
+			<td><a href="{{url_for('.single_location',location_id=army.location)}}">{{ army.return_location().coords() }}</a></td>
+            <td>{{ army.movement_range }}</td>
+            <td>{{ army.has_moved }}</td>
+		</tr>
+		</table>
+</section>
+</div>
+{% include 'movement_map.html' %}
+{% endblock %}

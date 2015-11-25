@@ -1,4 +1,5 @@
 from flask.ext.wtf import Form
+from flask.ext.wtf import Form
 from wtforms import StringField, BooleanField, TextAreaField, IntegerField, SelectField, RadioField, HiddenField, SubmitField
 from wtforms.validators import DataRequired, Length, InputRequired
 from app.models import World, Race
@@ -33,17 +34,8 @@ class MakeAvatar(Form):
     name = StringField("name", validators=[DataRequired()])
     god = SelectField('owner',coerce=int)
     description = StringField("description")
-    x_coords = []
-    y_coords = []
-    for i in range(50):
-        x_coords.append([i,"x"+str(i)])
-        y_coords.append([i,"y"+str(i)])
-    
-    letter = SelectField("letter", coerce=int, choices=x_coords,validators=[InputRequired()])
-    number = SelectField("number", coerce=int, choices=y_coords,validators=[InputRequired()])
     def __init__(self):
         Form.__init__(self)
-
    
 class MakeCity(Form):
     name = StringField("name", validators=[DataRequired()])
@@ -161,3 +153,6 @@ class ExpandButton(Form):
     
 class SpawnRace(Form):
     submit = SubmitField("Submit")
+
+class AvatarMovement(Form):
+    move = HiddenField("move")
