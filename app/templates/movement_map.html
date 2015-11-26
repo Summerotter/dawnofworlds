@@ -23,11 +23,15 @@
         {% else %}
         <div class="map">
         {% endif %}
-        <input type="image" class="map_terrain" src="{{ url_for('static', filename='images/' + location.image) }}" alt="{{location.letter,location.number }}" />
+        <img class="map_terrain" src="{{ url_for('static', filename='images/' + location.image) }}"/>
         {% if location.has_city %}
-            <img class="map_obj" src="{{ url_for('static', filename='images/city_transparent.png') }}" alt="Oh hey a city"/>
+            <input type="image" class="map_obj" src="{{ url_for('static', filename='images/city_transparent.png') }}" alt="Oh hey a city"/>
         {% endif %}
-        </div></a></form></td>
+        <input type="image" class="map_button" src="{{ url_for('static', filename='images/transparent_test.png') }}"/>
+        </div>
+        
+        
+        </a></form></td>
             {% endif %}
         {% endfor %}
         </tr>

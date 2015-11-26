@@ -180,7 +180,7 @@ def world_page(page=1):
             db.session.commit()
             return redirect(url_for('.world_page'))
     history = world.ret_history().paginate(page, POSTS_PER_PAGE, False)
-    newplayer = AddPlayer(prefix="NewPlayer")
+    newplayer = AddPlayer()
     advanceturn = AdvanceTurn(prefix="turn")
     updatepoints = UpdatePoints()
     advance_age = AdvanceAge(prefix="age")
