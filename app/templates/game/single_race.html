@@ -80,6 +80,15 @@
         <tr>
             <th class="title">Controls</th>
         </tr>
+        {% if current_user.id == active_world.owner %}
+        <tr>
+            <form action="" method="post" name="new owner">
+            {{ new_owner.hidden_tag() }}
+            <td>New Owner: {{ new_owner.player_list }}</td>
+            <td><input type="submit" value="New Owner"></td>
+            </form>
+        </tr>
+        {% endif %}
         <tr>
             <form action="" method="post" name="contract">
             {{ remove.hidden_tag() }}

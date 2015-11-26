@@ -166,10 +166,8 @@ def activate(world_id):
 #Expanded basic info ont he world,player list, and add players.
 #Needs to have an edit for player names and worldname, here.
 def world_page(page=1):
+    world_check()
     world = World.query.get(session['active_world'])
-    if world is None:
-        flash("You need to select a world before accessing this page")
-        return redirect(url_for('.index'))
     if request.form:
         if 'points' in request.form:
             points = request.form['points']
@@ -282,7 +280,10 @@ def advance_turn(world, age):
                 db.session.add(event)
     db.session.commit()
 
-
+def world_check():
+    world = World.query.get(session['active_world'])
+    if not world:
+        return redirect(url_for('.index'))
                           
 @game.route("/players/<userid>/")
 @login_required
@@ -306,11 +307,10 @@ def player_page():
 #Create races here. Need to allow edits for alignment and advances
 #Maybe specific /races/<racename> page?
 def races_page():
+    world_check()
     world = World.query.get(session['active_world'])
-    races = Race.query.filter_by(world_id=world.id).all()
-    if world is None:
-        flash("You need to select a world before accessing this page")
-        return redirect(url_for('.index'))
+    races = Race.query.filter_by(world_id=world.id,).all()
+
     
     return render_template("/game/races.html",
                            active_world=world,
@@ -323,6 +323,7 @@ def races_page():
 @game.route("/races/<race>/",methods=['GET','POST'])
 @login_required
 def single_race(race):
+    world_check()
     race = Race.query.get(race)
     world = World.query.get(session['active_world'])
     if race is None:
@@ -345,6 +346,22 @@ def single_race(race):
     for location in locations:
         choices.append([location.id,location.coords()])
     remove_form.support.choices = choices
+    players = User.query.filter(~User.worlds.contains(world))
+    player_list = []
+    new_owner = AddPlayer()
+    for i in players:
+        if not i.id == race.creator:
+            player_list.append([i.id, i.username])
+    new_owner.player_list.choices = player_list
+    if new_owner.validate_on_submit():
+        race.creator = new_owner.player_list.data
+        cult_religion = Order.query.get(race.religion)
+        cult_religion.owner = race.creator
+        db.session.add(race)
+        db.session.add(cult_religion)
+        db.session.commit()
+        flash("Race",race.culture_name,"is now owned by",race.made_by())
+        return redirect(url_for(".single_race",race=race.id))
     if remove_form.validate_on_submit():
         location = WorldMap.query.get(remove_form.support.data)
         location.race = 0
@@ -378,6 +395,7 @@ def single_race(race):
                             advance_form=advance_form,
                             advance_remove=advance_remove,
                             advances=advances,
+                            new_owner=new_owner,
                             )
 
 @game.route("/cities", methods=["GET", "POST"])
@@ -385,10 +403,8 @@ def single_race(race):
 #Found cities, build buildings
 #Considering /cities/<cityid> page for buildings @advances
 def cities_page():
+    world_check()
     world = World.query.get(session['active_world'])
-    if world is None:
-        flash("You need to select a world before accessing this page")
-        return redirect(url_for('.index'))
     races = Race.query.filter_by(world_id=world.id).all()
     cities = City.query.filter_by(world_id=world.id).all()
     return render_template("/game/cities.html",
@@ -396,16 +412,43 @@ def cities_page():
                            races=races,
                            cities=cities,
                            )
+                           
+@game.route("/cities/<cityid>/resettle", methods=['POST'])
+@login_required
+def resettle_city(cityid):
+    world_check()
+    world = World.query.get(session['active_world'])
+    city = City.query.get(cityid)
+    location = city.return_location()
+    points = current_user.return_points_obj(world.id)
+    if points.points < point_costs[world.age]['Command Race']:
+        flash("Not enough points for this action")
+        return redirect(url_for(".single_city",cityid=cityid))
+    if location.race:
+        flash("There's already a race here.")
+        return redirect(url_for(".single_city",cityid=cityid))
+    location.race = city.owned_by
+    db.session.add(location)
+    points.points -= point_costs[world.age]['Command Race']
+    db.session.add(points)
+    db.session.commit()
+    flash("You've successfully recolonized the hinterlands of",city.name)
+    return redirect(url_for(".single_city",cityid=cityid))
 
 @game.route("/cities/<cityid>",methods=['GET','POST'])
 @game.route('/cities/<cityid>/<int:page>', methods=['GET', 'POST'])
 @login_required
 def single_city(cityid,page=1):
+    world_check()
     world = World.query.get(session['active_world'])
     city = City.query.get(cityid)
     player_owner = city.return_owner_player()
     world_owner = world.owner
     points = current_user.return_points_obj(world.id)
+    location = city.return_location()
+    race_check = True
+    if not location.race and location.race != city.owned_by:
+        race_check = False
     command_city_cost = point_costs[world.age]['Command City']
     command_order_cost = point_costs[world.age]['Command Order']
     if city is None:
@@ -613,16 +656,15 @@ def single_city(cityid,page=1):
                            command_order_cost=command_order_cost,
                            advance_cost = point_costs[world.age]['Advance City'],
                            at_max_advance = at_max_advance,
+                           race_check=race_check,
                            )
 
 @game.route("/orders",methods=['GET','POST'])
 @login_required
 #Create orders. Perhaps subpage for expanding/removing?
 def orders_page():
+    world_check()
     world = World.query.get(session['active_world'])
-    if world is None:
-        flash("You need to select a world before accessing this page")
-        return redirect(url_for('.index'))
     players = world.players.all()
     form = MakeOrder()
     player_list = []
@@ -669,6 +711,7 @@ def orders_page():
 @game.route("/orders/<order>/", methods=['GET','POST'])
 @login_required
 def single_order(order):
+    world_check()
     order = Orders.query.get(order)
     world = World.query.get(session['active_world'])
     if order is None:
@@ -763,10 +806,8 @@ def single_order(order):
 #Create an avatar! Should build a 'create race' button here for that ability
 #Should that be checked by player..
 def avatars_page():
+    world_check()
     world = World.query.get(session['active_world'])
-    if world is None:
-        flash("You need to select a world before accessing this page")
-        return redirect(url_for('.index'))
     form = MakeAvatar()
     players = world.players.all()
     player_list = []
@@ -788,6 +829,7 @@ def avatars_page():
 @game.route("/avatars/<avatar_id>",methods=['GET','POST'])
 @login_required
 def single_avatar(avatar_id):
+    world_check()
     world = World.query.get(session['active_world'])
     avatar = Avatars.query.get(avatar_id)
     location = avatar.return_location()
@@ -860,6 +902,7 @@ def single_avatar(avatar_id):
 @game.route("/avatars/<avatar_id>/movement", methods=['GET'])
 @login_required
 def move_avatar(avatar_id):
+    world_check()
     world = World.query.get(session['active_world'])
     avatar = Avatars.query.get(avatar_id)
     if avatar.has_moved:
@@ -878,6 +921,7 @@ def move_avatar(avatar_id):
 @game.route("/avatars/<avatar_id>/movement",methods=['POST'])
 @login_required
 def move_avatar_process(avatar_id):
+    world_check()
     avatar = Avatars.query.get(avatar_id)
     if request.form:
         if request.form['location']:
@@ -895,6 +939,7 @@ def move_avatar_process(avatar_id):
 @login_required
 #For things like walls, bridges, farmland, forts
 def prov_buildings_page():
+    world_check()
     world = World.query.get(session['active_world'])
     buildings = BldgProv.query.filter_by(world_in=world.id).all()
     races = Race.query.filter_by(world_id=world.id).all()
@@ -904,6 +949,7 @@ def prov_buildings_page():
 
 @game.route("/prov/<bldg>",methods=['GET','POST'])
 def single_provbldg(bldg):
+    world_check()
     world = World.query.get(session['active_world'])
     building = BldgProv.query.get(bldg)
     if building is None:
@@ -959,6 +1005,7 @@ def single_provbldg(bldg):
 @login_required
 #For when events are played
 def events_page():
+    world_check()
     form = MakeEvent()
     world = World.query.get(session['active_world'])
     players = world.players.all()
@@ -1032,6 +1079,7 @@ def events_page():
 #Create armies and navies
 #Seperate control page per?
 def military_page():
+    world_check()
     world = World.query.get(session['active_world'])
     armies = world.armies.all()
     return render_template("/game/military.html",
@@ -1042,6 +1090,7 @@ def military_page():
 @game.route("/army/<armyid>",methods=['GET','POST'])
 @login_required
 def single_army(armyid):
+    world_check()
     world = World.query.get(session['active_world'])
     army = Armies.query.get(armyid)
     if army is None:
@@ -1097,6 +1146,7 @@ def single_army(armyid):
 @game.route("/army/<armyid>/movement",methods=['GET'])
 @login_required
 def army_movement(armyid):
+    world_check()
     world = World.query.get(session['active_world'])
     army = Armies.query.get(armyid)
     if army.has_moved:
@@ -1115,6 +1165,7 @@ def army_movement(armyid):
 @game.route("/army/<armyid>/movement",methods=['POST'])
 @login_required
 def do_army_movement(armyid):
+    world_check()
     army = Armies.query.get(armyid)
     if request.form:
         if request.form['location']:
@@ -1131,6 +1182,7 @@ def do_army_movement(armyid):
 @game.route("/army/<armyid>/disband")
 @login_required
 def disband_army(armyid):
+    world_check()
     army = Armies.query.get(armyid)
     armyname = army.name
     army.is_alive=0
@@ -1148,6 +1200,7 @@ def disband_army(armyid):
 @game.route("/map")
 @login_required
 def world_map():
+    world_check()
     world = World.query.get(session['active_world'])
     letters = ["",]
     for i in range(world.size):
@@ -1163,6 +1216,7 @@ def world_map():
 @game.route("/map/regen")
 @login_required
 def world_map_regen():
+    world_check()
     world = World.query.get(session['active_world'])
     scale = 1/48.0
     base = randint(1,48274)
@@ -1193,6 +1247,7 @@ def world_map_regen():
 @game.route("/map/<location_id>", methods=['GET','POST'])
 @login_required
 def single_location(location_id):
+    world_check()
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
     points = current_user.return_points_obj(world.id)
@@ -1287,7 +1342,9 @@ def single_location(location_id):
             
     r = 2
     neighbor_lands, label_x, map_radius= neighbors(location, r)
-        
+    
+    
+    
     return render_template("/game/single_location.html",
                             active_world=world,
                             location=location,
@@ -1307,6 +1364,9 @@ def single_location(location_id):
                             locations = neighbor_lands,
                             letters = label_x,
                             spawn_race = spawn_race,
+                            race_cost = point_costs[world.age]['Create Race'],
+                            subrace_cost = point_costs[world.age]['Create Subrace'],
+                            avatar_cost = point_costs[world.age]['Create Avatar'],
                             r=map_radius,
                             type=type,
                             spawn_avatar=spawn_avatar,
@@ -1315,6 +1375,7 @@ def single_location(location_id):
 @game.route("/map/<location_id>/create-avatar/",methods=["GET","POST"])
 @login_required
 def make_avatar(location_id):
+    world_check()
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
     form = MakeAvatar()
@@ -1389,6 +1450,7 @@ def neighbors(location, r):
 @game.route("/map/<location_id>/create-race/",methods=["GET","POST"])
 @login_required
 def make_race(location_id):
+    world_check()
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
     races = Race.query.filter_by(world_id=world.id).all()
@@ -1486,6 +1548,7 @@ def make_race(location_id):
 @game.route("/map/<location_id>/expand-race/",methods=['GET','POST'])
 @login_required
 def expand_race(location_id):
+    world_check()
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
     race = Race.query.get(location.race)
@@ -1546,6 +1609,7 @@ def expand_race(location_id):
 @game.route("/map/<location_id>/make-city/", methods=['GET','POST'])
 @login_required
 def single_location_make_city(location_id):
+    world_check()
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
     race = Race.query.get(location.race)
@@ -1606,6 +1670,7 @@ def single_location_make_city(location_id):
 @login_required
 #For things like walls, bridges, farmland, forts
 def build_prov_buildings(location_id):
+    world_check()
     world = World.query.get(session['active_world'])
     builder_source = session['builder_source']
     points = current_user.return_points_obj(world.id)

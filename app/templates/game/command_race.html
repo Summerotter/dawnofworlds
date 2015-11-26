@@ -1,0 +1,48 @@
+{% block page_content %}
+<div id="right_pane_wrapper">
+<section id="right_pane">
+    <table>
+        <tr>
+            <th class="title">Controls</th>
+        </tr>
+        {% if current_user.id == active_world.owner %}
+        <tr>
+            <form action="" method="post" name="new owner">
+            {{ new_owner.hidden_tag() }}
+            <td>New Owner: {{ new_owner.player_list }}</td>
+            <td><input type="submit" value="New Owner"></td>
+            </form>
+        </tr>
+        {% endif %}
+        <tr>
+            <td colspan="3">Go to Specificl Pop Location to Expand<td>
+        </tr>
+        <tr>
+            <form action="" method="post" name="contract">
+            {{ remove.hidden_tag() }}
+            <td>Contract from location</td>
+            <td> {{ remove.support }}</td>
+            <td><input type="submit" value="Boatmurdered"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="add_advance">
+            {{ advance_form.hidden_tag() }}
+            <td>Add Advance:</td>
+            <td> {{advance_form.text}}</td>
+            <td><input type="submit" value="Add Advance"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="remove_advance">
+            {{ advance_remove.hidden_tag() }}
+            <td>Remove Advance</td>
+            <td> {{advance_remove.support}}</td>
+            <td><input type="submit" value="Remove Advance"></td>
+            </form>
+        </tr>
+    </table>
+    
+</section>
+</div>
+{% endblock %}

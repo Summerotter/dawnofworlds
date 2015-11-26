@@ -12,3 +12,12 @@ Maybe split up single_location actions up, into location/action and do_action?
 Unit Creation and editing.
 
 Cities have 'non-movable armies'?
+
+Change Command Race to seperate command_race page, pass along point-costs somehow. Allows for Command Race/Command-Avatar-CR/Command Order-CR.
+Command order - point cost extra for nonowners, or just remove that entirely
+
+Allow ownership-change of orders [Owner only]
+
+Kill off races with 0 locations or cities. [Currently, they become hidden]
+
+Add: Import Old World for new world. All old races/orders become Orphaned, avatars become Tombstone Provencial items, armies destroyed, etc.

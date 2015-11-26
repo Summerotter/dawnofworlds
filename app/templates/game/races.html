@@ -22,6 +22,7 @@
             <th>Cities</th>
 		</tr>
 		{% for race in races %}
+            {% if race.location.count() + race.controlled_cities.count() > 0 %}
 		<tr>
 			<th align=left><a href="/game/races/{{ race.id}}">{{ race.culture_name }}</th>
 			<td>{{ race.race_name }}</td>
@@ -39,6 +40,7 @@
             <td>{{race.location.count()}}</td>
             <td>{{race.controlled_cities.count() }}</td>
 		</tr>
+            {% endif %}
 		{% endfor %}
 	</table>
 	{% else %}
