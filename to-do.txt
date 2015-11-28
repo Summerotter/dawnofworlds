@@ -6,7 +6,8 @@ center races list
 
 
 Move 'has avatar spawned a race' bool to World. Once per *world*, or Once per *player*?
-Create-Order needs to be redone and moved to single_location.
+Create-Order needs to be redone and moved to single_location/city.
+
 Maybe split up single_location actions up, into location/action and do_action?
 
 Unit Creation and editing.
@@ -18,6 +19,14 @@ Command order - point cost extra for nonowners, or just remove that entirely
 
 Allow ownership-change of orders [Owner only]
 
-Kill off races with 0 locations or cities. [Currently, they become hidden]
+Kill off races with 0 locations or cities [ They become hidden]
 
 Add: Import Old World for new world. All old races/orders become Orphaned, avatars become Tombstone Provencial items, armies destroyed, etc.
+
+location-found_order
+location-command_order
+location-command_race
+city-found_order
+city-command-order
+city-command_race
+city-command-city
