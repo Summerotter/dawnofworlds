@@ -2,6 +2,12 @@
 {% extends "/base.html" %}
 {% block page_content %}
 
+<p>Making a race is a serious undertaking, creating a race of sophonts to work your will upon the world. Take care, as others may influence them as well!</p>
+<p>Culture: The name of the culture or specific peoples. Examples: French, Sudanese, Navajo.<br>
+Race: The name of the species of people. Examples: Humans, Elves, Dwarves.<br>
+Subrace: This race splintered off another race instead of being made entirely new. Examples: High Men --> Barbarian Men, High Elves --> Wood Elves, Wolves --> Dogs<br>
+Religion: Every race as a cultural set of beliefs through which the Gods can motivate them. They do not have to be a religion by standard meaning, but the term remains the same. Examples: Christianity, Animism, Bhuddism.</p>
+</p>
 <form action="" method="post" name="makerace">
 		{{ form.hidden_tag() }}
 		<table border='1'>
@@ -23,13 +29,6 @@
                 </td>
                 </tr>
 				{% endfor %}             
-				{% for error in form.align.errors %}
-                <tr>
-				<td>
-				<span style="color: red;">Align[{{ error }}]</span><br>
-                </td>
-                </tr>
-				{% endfor %}
 				{% for error in form.subrace.errors %}
                 <tr>
 				<td>
@@ -55,10 +54,6 @@
             </tr>
 				<td>Map Color:</td>
                 <td><input id="color" name="color" type="color"></td>
-			</tr>
-			<tr>
-				<td>Alignment:</td>
-				<td>{{ form.align(size=15, maxlength=140) }}</td>
 				<td>Subrace:</td>
 				<td>{{ form.subrace }}</td>
             </tr>

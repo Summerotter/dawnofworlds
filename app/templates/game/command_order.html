@@ -1,0 +1,57 @@
+<!-- extend base layout -->
+{% extends "/base.html" %}
+{% block page_content %}
+<h1><center>Controlling {{ order.name }} at {{ location.coords() }}</center></h1>
+<div class="map" id="left_pane_wrapper">
+<section id="left_pane">
+   <table class="map">
+    <tr>
+        <th class="map">X/Y</th>
+        {% for letter in letters %}
+            <th class="map">{{letter}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in locations|batch(r) %}
+    <tr>
+        <th class="map">{{row[0]}}</th>
+        {% for location in row[1:] %}
+                           
+            {% if location == False %}
+                <td class="map">X</td>
+            {% else %}
+                <td class="map">
+            
+        <a href="{{ url_for('.single_location',location_id=location.id) }}">
+        {% if location.race_color %}
+        <div class="map" style="box-shadow: inset 0 0 0 2px  {{ location.race_color }}">
+        {% else %}
+        <div class="map">
+        {% endif %}
+            <img class="map_terrain" src="{{ url_for('static', filename='images/' + location.image) }}" />
+        {% if location.has_city %}
+            <img class="map_obj" src="{{ url_for('static', filename='images/city_transparent.png') }}" alt="Oh hey a city"/>
+        {% endif %}
+        </div></a></td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+    {%endfor%}
+</table>
+</section>
+</div>
+
+<div id="right_pane_wrapper">
+<section id="right_pane">
+    <table>
+        <tr>
+            <th class="title">Controls</th>
+        </tr>
+        <tr>
+            <td>HAHA THERE ARE NO</td><td>CONTROLS HERE</td>
+        </tr>
+        
+    </table>
+    
+</section>
+</div>
+{% endblock %}

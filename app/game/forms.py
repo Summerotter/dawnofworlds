@@ -15,7 +15,6 @@ class MakeWorld(Form):
 class MakeRace(Form):
     culture = StringField('culture_name',validators=[DataRequired()])
     race = StringField('race_name',validators=[DataRequired()])
-    align = IntegerField('alignment', validators=[InputRequired()])
     subrace = SelectField('subrace',coerce=int)
     religion = StringField('religion',validators=[DataRequired()])
     made_by = SelectField('made_by',coerce=int)
@@ -39,7 +38,7 @@ class MakeAvatar(Form):
    
 class MakeCity(Form):
     name = StringField("name", validators=[DataRequired()])
-    alignment= IntegerField("alignment",validators=[InputRequired()])
+    
     
 class MakeOrder(Form):
     owner = SelectField("owners",coerce=int)

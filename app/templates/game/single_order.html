@@ -55,7 +55,7 @@
             <tr>
                 <th class="title" colspan='3'>Controls</th>
             </tr>
-        <tr>
+<!--        <tr>
             <form action="" method="post" name="expand">
             {{ expand.hidden_tag() }}
             <td>Expand to Location</td>
@@ -70,7 +70,7 @@
             <td> {{city_expand.support}}</td>
             <td><input type="submit" value="Expand to a city!"></td>
             </form>
-        </tr>
+        </tr> -->
         <tr>
             <form action="" method="post" name="contract_city">
             {{ remove_city.hidden_tag() }}
@@ -87,6 +87,7 @@
             <td><input type="submit" value="Boatmurdered"></td>
             </form>
         </tr>
+            {% if current_user.id == active_world.owner %}
 			<form action="" method="post" name="destroy">
 			{{ destroyform.hidden_tag() }}
 				{% for error in destroyform.destroy.error %}
@@ -99,7 +100,8 @@
 				<td>Destroy Confirm:</td>
 				<td>{{destroyform.destroy}}</td>
 				<td><input type="submit" value="DESTROY"></td>
-                </form>
+                </form></tr>
+            {% endif %}
 		</table>
 {% else %}
 {{ redirect(url_for("orders_page")) }}

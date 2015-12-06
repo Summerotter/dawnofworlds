@@ -51,7 +51,7 @@
     {% if orders %}
     <table>
         <tr>
-            <th class="title" colspan="3">Orders in Province</th>
+            <th class="title" colspan="4">Orders in Province</th>
         </tr>
         <tr>
             <th width="30%">Name</th>
@@ -63,6 +63,11 @@
                 <td><a href="{{ url_for('.single_order',order=item.id) }}">{{item.name}}</a></td>
                 <td>{{item.order_type()}}</td>
                 <td><a href="{{ url_for('.userpage',userid=item.owner) }}">{{item.owner_name()}}</a></td>
+                {% if item.owner == current_user.id %}
+                <td><a href="{{ url_for('.single_location_command_order',location_id=location.id,order_id=item.id)}}">Command Order</a></td>
+                {% else %}
+                <td></td>
+                {% endif %}
             </tr>
         {% endfor %}
     </table>
@@ -178,7 +183,7 @@
             </form>
         </tr>
     </table>
-    {% if owns_present_order %}
+<!--    {% if owns_present_order %}
     <table>
        <tr>
         <th class="title" colspan=2>Command Order | Point Cost: {{ command_order_cost }}</th>
@@ -191,7 +196,7 @@
             </form>
         </tr>
     </table>
-    {% endif %}
+    {% endif %} -->
     {% if avatars %}
     <table>
         <tr>

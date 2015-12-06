@@ -1309,17 +1309,17 @@ def single_location(location_id):
         else:
             flash("Error occured")
             return redirect(url_for(".single_location",location_id = location.id))
-    if command_order_form.validate_on_submit():
-        command = command_order_form.command_list.data
-        if command == 1:
-            session['builder_source'] = "Command Order"
-            return redirect(url_for(".build_prov_buildings",location_id = location.id,))
-        elif command == 2:
-            flash("Command: Expand")
-            return redirect(url_for(".single_location",location_id = location.id))
-        else:
-            flash("Error occured")
-            return redirect(url_for(".single_location",location_id = location.id))
+#    if command_order_form.validate_on_submit():
+#        command = command_order_form.command_list.data
+#        if command == 1:
+#            session['builder_source'] = "Command Order"
+#            return redirect(url_for(".build_prov_buildings",location_id = location.id,))
+#        elif command == 2:
+#            session['builder_source'] = "Command Order"
+#            return redirect(url_for(".single_location_command_order",location_id = location.id, order_id= ))
+ #       else:
+ #           flash("Error occured")
+ #           return redirect(url_for(".single_location",location_id = location.id))
     if terrain_form.validate_on_submit():
         if points.points < point_costs[world.age]['Shape Land']:
             flash("Not enough points for this action")
@@ -1495,7 +1495,7 @@ def make_race(location_id):
         new_race = Race(race_name=form.race.data,
                         culture_name=form.culture.data,
                         map_color = color,
-                        alignment = form.align.data,
+                        alignment = 0,
                         world_id=world.id,
                         abs_turn_made=world.total_turns,
                         subrace = form.subrace.data,
@@ -1544,6 +1544,21 @@ def make_race(location_id):
                            form=form,
                            )
 #
+@game.route("/map/<location_id>/expand-race/<order_id>", methods=['GET','POST'])
+@login_required
+def single_location_command_order(location_id,order_id):
+    world_check()
+    world = World.query.get(session['active_world'])
+    location = WorldMap.query.get(location_id)
+    order = Orders.query.get(order_id)
+    points = current_user.return_points_obj(world.id)
+    if not order:
+        flash("Invalid Resource")
+        return redirect(url_for(".single_location",location_id = location.id))
+    r = 2
+    neighbor_lands, label_x, map_radius= neighbors(location, r)
+    return render_template("/game/command_order.html",active_world=world,user=current_user,points=points,
+    locations=neighbor_lands,letters=label_x,r=map_radius,order=order,location=location)
 
 @game.route("/map/<location_id>/expand-race/",methods=['GET','POST'])
 @login_required
@@ -1634,7 +1649,7 @@ def single_location_make_city(location_id):
                          built_by = race.id,
                          owned_by = race.id,
                          location = location.id,
-                         alignment=form.alignment.data,
+                         alignment=0,
                          age_turn = world.age_turn(),
                          turn_built = world.total_turns,
                          )

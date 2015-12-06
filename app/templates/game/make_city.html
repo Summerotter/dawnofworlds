@@ -14,18 +14,11 @@
 				<span style="color: red;">Name: [{{ error }}]</span><br>
                 </td></tr>
             {% endfor %}
-            {% for error in form.alignment.errors %}
-                <tr><td>
-				<span style="color: red;">Alignment:[{{ error }}]</span><br>
-                </td></tr>
-            {% endfor %}
 				
 			
 			<tr>
 				<td>Name:</td>
 				<td>{{ form.name(size=15, maxlength=140) }}</td>
-				<td>Alignment:</td>
-				<td>{{ form.alignment(size=20, maxlength=140) }}</td>
             </tr>
             <tr>
 				<td>Location:</td>
