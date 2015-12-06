@@ -1645,6 +1645,7 @@ def single_location_make_city(location_id):
                                     age_turn=world.age_turn(),
                                     text=hist_text,)
         db.session.add(new_history)
+        db.session.commit()
         city = City.query.order_by(City.id.desc()).first()
         history = CityHistory(cityid=city.id,
                                     abs_turn=world.total_turns,
