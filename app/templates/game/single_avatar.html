@@ -27,7 +27,7 @@
 </div>
 <div id="right_pane_wrapper">
 <section id="right_pane">
-    {% if current_user.id == avatar.god or current_user.id == active_world.owner %}
+    {% if current_user.id == avatar.owner or current_user.id == active_world.owner %}
 	<table>
         <tr>
             <th class="title" colspan="3">Avatar Controls</th>
