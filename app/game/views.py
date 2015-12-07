@@ -734,6 +734,12 @@ def single_order(order):
     if order.world != world.id:
         flash("That doesn't exist in the active world")
         return redirect(url_for('.world_page'))
+    rename = Rename()
+    if rename.validate_on_submit():
+        order.name = rename.new_name.data
+        db.session.add(order)
+        db.session.commit()
+        return redirect(url_for(".single_order",order=order.id))
     destroyform = Destroy_Form(prefix="destroy")
     expand = UpdateLocation(prefix="expand")
     
@@ -813,6 +819,7 @@ def single_order(order):
                             cities = city_list,
                             city_expand=city_expand,
                             remove_city=remove_city,
+                            rename=rename,
                             )
 
 @game.route("/avatars",methods=['GET','POST'])

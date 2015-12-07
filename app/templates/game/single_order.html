@@ -55,6 +55,14 @@
             <tr>
                 <th class="title" colspan='3'>Controls</th>
             </tr>
+            <tr>
+            <form action="" method="post" name="rename">
+            {{ rename.hidden_tag() }}
+            <td>Rename Order</td>
+            <td>{{ rename.new_name }}</td>
+            <td><input type="submit" value="Rename Order"></td>
+            </form>
+            </tr>
 <!--        <tr>
             <form action="" method="post" name="expand">
             {{ expand.hidden_tag() }}
