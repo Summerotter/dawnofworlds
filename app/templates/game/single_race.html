@@ -89,6 +89,24 @@
             </form>
         </tr>
         {% endif %}
+        {% if current_user.id == race.creator or current_user.id == active_world.owner %}
+        <tr>
+            <form action="" method="post" name="rename race">
+            {{ rename_race.hidden_tag() }}
+            <td>New Racial Name:</td>
+            <td> {{ rename_race.new_name }}</td>
+            <td><input type="submit" value="Rename Race"></td>
+            </form>
+        </tr>
+        <tr>
+            <form action="" method="post" name="rename culture">
+            {{ rename_culture.hidden_tag() }}
+            <td>New Cultural Name</td>
+            <td>{{ rename_culture.new_name }}</td>
+            <td><input type="submit" value="Rename Culture"></td>
+            </form>
+        </tr>
+        {% endif %}
         <tr>
             <form action="" method="post" name="contract">
             {{ remove.hidden_tag() }}

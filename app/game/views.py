@@ -332,6 +332,18 @@ def single_race(race):
     if race.world_id != world.id:
         flash("That doesn't exist in the active world")
         return redirect(url_for('.world_page'))
+    rename_race = Rename(prefix="rename_race")
+    rename_culture = Rename(prefix="rename_culture")
+    if rename_race.validate_on_submit():
+        race.race_name = rename_race.new_name.data
+        db.session.add(race)
+        db.session.commit()
+        return redirect(url_for(".single_race",race=race.id))
+    if rename_culture.validate_on_submit():
+        race.culture_name = rename_culture.new_name.data
+        db.session.add(race)
+        db.session.commit()
+        return redirect(url_for(".single_race",race=race.id))
     cities = race.controlled_cities.filter_by(is_alive=1).all()
     advance_form = HistoryEntry(prefix="advance")
     advance_remove = ArmySupportFrom(prefix="remove_adv")
@@ -396,6 +408,8 @@ def single_race(race):
                             advance_remove=advance_remove,
                             advances=advances,
                             new_owner=new_owner,
+                            rename_culture=rename_culture,
+                            rename_race=rename_race,
                             )
 
 @game.route("/cities", methods=["GET", "POST"])
