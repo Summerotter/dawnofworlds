@@ -6,6 +6,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from flask.ext.pagedown import PageDown
 from config import config
+import os
 
 bootstrap = Bootstrap()
 mail = Mail()
@@ -41,3 +42,6 @@ def create_app(config_name):
     #app.register_blueprint(game_blueprint)
 
     return app
+#
+
+app = create_app(os.getenv('FLASK_CONFIG') or 'default')    
