@@ -182,6 +182,10 @@
             <td><input type="submit" value="Create Avatar"></td>
             </form>
         </tr>
+        <tr>
+            <th class="title" colspan=2><a href="{{ url_for('.make_event',location_id=location.id) }}">Play Event: {{ event_cost }} Points</a> </th>
+        </tr>
+        
     </table>
 <!--    {% if owns_present_order %}
     <table>

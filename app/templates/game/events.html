@@ -40,51 +40,8 @@
 </div>
 <div id="right_pane_wrapper">
 <section id="right_pane">
-	{% if players %}
-	<form action="" method="post" name="buildings">
-		{{ form.hidden_tag() }}
-			<table>
-				<tr>
-					<th class="title" colspan="4">Play Events (Points Cost: {{cost}} )</th>
-				</tr>
-				
-					{% for error in form.number.errors %}
-                    <tr>
-                        <td><span style="color: red;">Name: [{{ error }}]</span></td>
-                    </tr>
-					{% endfor %}
-					{% for error in form.event_info.errors %}
-					<tr>
-                        <td><span style="color: red;">Info: [{{ error }}]</span></td>
-                    </tr>
-					{% endfor %}
-					{% for error in form.played_by.errors %}
-					<tr>
-                        <td><span style="color: red;">Played by: [{{ error }}]</span></td>
-                    </tr>
-					{% endfor %}
-                <tr>
-					<td>Location:</td>
-					<td>{{ form.letter }}{{form.number}}</td>
-                </tr>
-                <tr>
-					<td>Description:</td>
-					<td>{{ form.event_info(size=20, maxlength=140) }}</td>
-                </tr>
-                <tr>
-                    <td>Duration</td>
-                    <td>{{ form.duration }}</td>
-                </tr>
-                <tr>
-					<td>Played By</td>
-					<td>{{ form.played_by }}</td>
-				</tr>
-				<tr>
-					<th class="sub_title" colspan="3"><input type="submit" value="Make Event!"></th>
-				</tr>
-			</table>
-		</form>
-        <form action="" method="post" name="buildings">
+	{% if events %}
+ <form action="" method="post" name="buildings">
 		{{ remove_event.hidden_tag() }}
             <table>
                 <tr>
@@ -97,9 +54,7 @@
 				</tr>
 			</table>
 		</form>
-	{% else %}
-	<p>Events are only caused by players</p>
-	{% endif %}
-</section>
+        {% endif %}
+    </section>
 </div>
 {% endblock %}

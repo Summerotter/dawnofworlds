@@ -1,0 +1,9 @@
+[01:37] <Tyred> description "<Your thing>"
+[01:37] <Tyred> author      "<You thing>"
+[01:37] <Tyred> start on runlevel [2345]
+[01:37] <Tyred> stop on runlevel [!2345]
+[01:37] <Tyred> respawn
+[01:37] <Tyred> pre-start script
+[01:37] <Tyred>   <if you need to cd into the directory because you may have relative pathing>
+[01:37] <Tyred> end script
+[01:37] <Tyred> exec <your command>

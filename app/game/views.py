@@ -1027,18 +1027,12 @@ def single_provbldg(bldg):
 #For when events are played
 def events_page():
     world_check()
-    form = MakeEvent()
     world = World.query.get(session['active_world'])
     players = world.players.all()
     player_list = []
+    player_list.append([current_user.id,current_user.name])
     points = current_user.return_points_obj(world.id)
     cost = point_costs[world.age]['Event']
-    if current_user.id == world.owner:
-        for player in players:
-            player_list.append([player.id,player.name])
-    else:
-        player_list.append([current_user.id,current_user.name])
-    form.played_by.choices = player_list
     events = world.event.all()
     remove_event = RemoveEvent(prefix="remove")
     remove_event_list = []
@@ -1047,30 +1041,6 @@ def events_page():
             remove_event_list.append([event.id,event.event_info])
     remove_event.played_by.choices = player_list
     remove_event.removal.choices = remove_event_list
-    if form.validate_on_submit():
-        if points.points < cost:
-            flash("You lack sufficient points for this action")
-            return redirect(url_for('.events_page'))
-        new_event = Events(location = WorldMap.query.filter_by(letter_coord=form.letter.data,number_coord=form.number.data,world=world.id).first().id,
-                          event_info=form.event_info.data,
-                          played_by=form.played_by.data,
-                          world=world.id,
-                          age_turn = world.age_turn(),
-                          abs_turn = world.total_turns,
-                          duration = form.duration.data,
-                          )
-        db.session.add(new_event)
-        hist_text = new_event.event_info+" in "+new_event.return_location().coords()+". Played by: "+new_event.playedby_name()
-        world_history = WorldHistory(world=world.id,
-                                    abs_turn=world.total_turns,
-                                    age_turn=world.age_turn(),
-                                    text=hist_text,)
-        db.session.add(world_history)
-        points.points -= cost
-        db.session.add(points)
-        db.session.commit()
-        flash("You played a new event")
-        return redirect(url_for('.events_page'))
     if remove_event.validate_on_submit():
         if points.points < cost:
             flash("You lack sufficient points for this action")
@@ -1089,9 +1059,7 @@ def events_page():
         return redirect(url_for(".events_page"))
     return render_template("/game/events.html",
                            active_world=world,
-                           form=form,
                            events=events,
-                           players=players,
                            cost=cost,
                            remove_event=remove_event,)
 
@@ -1388,11 +1356,57 @@ def single_location(location_id):
                             race_cost = point_costs[world.age]['Create Race'],
                             subrace_cost = point_costs[world.age]['Create Subrace'],
                             avatar_cost = point_costs[world.age]['Create Avatar'],
+                            event_cost = point_costs[world.age]["Event"],
                             r=map_radius,
                             type=type,
                             spawn_avatar=spawn_avatar,
                             )
 #
+@game.route("/map/<location_id>/make-event/",methods=["GET","POST"])
+@login_required
+def make_event(location_id):
+    world_check()
+    world = World.query.get(session['active_world'])
+    location = WorldMap.query.get(location_id)
+    points = current_user.return_points_obj(world.id)
+    form = MakeEvent()
+    players = world.players.all()
+    player_list = []
+    if current_user.id == world.owner:
+        for player in players:
+            player_list.append([player.id,player.name])
+    else:
+        player_list.append([current_user.id,current_user.name])
+    form.played_by.choices = player_list
+    if form.validate_on_submit():
+        cost = point_costs[world.age]['Event']
+        if points.points < cost:
+            flash("You lack sufficient points for this action")
+            return redirect(url_for('.single_location', location_id=location_id))
+        new_event = Events(location = location_id,
+                          event_info=form.event_info.data,
+                          played_by=form.played_by.data,
+                          world=world.id,
+                          age_turn = world.age_turn(),
+                          abs_turn = world.total_turns,
+                          duration = form.duration.data,
+                          )
+        db.session.add(new_event)
+        hist_text = new_event.event_info+" in "+new_event.return_location().coords()+". Played by: "+new_event.playedby_name()
+        world_history = WorldHistory(world=world.id,
+                                    abs_turn=world.total_turns,
+                                    age_turn=world.age_turn(),
+                                    text=hist_text,)
+        db.session.add(world_history)
+        points.points -= cost
+        db.session.add(points)
+        db.session.commit()
+        flash("You played a new event")
+        return redirect(url_for('.single_location', location_id=location_id))
+    return render_template("/game/make_event.html",active_world=world,location=location, form=form,points=points,)
+
+
+
 @game.route("/map/<location_id>/create-avatar/",methods=["GET","POST"])
 @login_required
 def make_avatar(location_id):

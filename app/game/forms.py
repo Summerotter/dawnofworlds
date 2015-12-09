@@ -78,14 +78,6 @@ class MakeEvent(Form):
     event_info = StringField("event_info", validators=[DataRequired()])
     played_by = SelectField("played_by", coerce=int)
     duration = SelectField("duration", coerce=int, choices=[[9001,'Forever'],[1,'One Turn'],[2,'Two Turn'],[3,'Three Turn'],[4,'Four Turn'],[5,'Five Turn'],])
-    x_coords = []
-    y_coords = []
-    for i in range(50):
-        x_coords.append([i,"x"+str(i)])
-        y_coords.append([i,"y"+str(i)])
-    
-    letter = SelectField("letter", coerce=int, choices=x_coords,validators=[InputRequired()])
-    number = SelectField("number", coerce=int, choices=y_coords,validators=[InputRequired()])
 #    def __init__(self):
 #        Form.__init__(self)
 

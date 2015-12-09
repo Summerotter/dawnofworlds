@@ -1,0 +1,51 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+{% block page_content %}
+<div id="left_pane_wrapper">
+<section id="left_pane">
+<p><h2>What is an event?</h2> 
+<br>Currently there are no mechanics backing it up, but an event can spawn resources, or have them be lost. Specific technologys can be targeted, or granted - although not as strong as Advances! It takes an Event to remove an Event.</p>
+<p>From the Base Rules: Event - Through this power come the changing of fortunes for an Avatar, Order, City, or Civilization. A gold mine may be found, a storm at sea may strike a fleet, an Avatar may escape death, plague, famine, drought may strike, or technologies may be
+lost. These are the great, unplanned winds of fortune that blow through the history of the world.</p>
+</section>
+</div>
+<div id="right_pane_wrapper">
+<section id="right_pane">
+	<form action="" method="post" name="buildings">
+		{{ form.hidden_tag() }}
+			<table>
+				<tr>
+					<th class="title" colspan="4">Play Events (Points Cost: {{cost}} )</th>
+				</tr>
+					{% for error in form.event_info.errors %}
+					<tr>
+                        <td><span style="color: red;">Info: [{{ error }}]</span></td>
+                    </tr>
+					{% endfor %}
+					{% for error in form.played_by.errors %}
+					<tr>
+                        <td><span style="color: red;">Played by: [{{ error }}]</span></td>
+                    </tr>
+					{% endfor %}
+                <tr>
+					<td>Description:</td>
+					<td>{{ form.event_info(size=20, maxlength=140) }}</td>
+                </tr>
+                <tr>
+                    <td>Duration</td>
+                    <td>{{ form.duration }}</td>
+                </tr>
+                <tr>
+					<td>Played By</td>
+					<td>{{ form.played_by }}</td>
+				</tr>
+				<tr>
+					<th class="sub_title" colspan="3"><input type="submit" value="Make Event!"></th>
+				</tr>
+			</table>
+		</form>
+</section>
+</div>
+{% endblock %}
