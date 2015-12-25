@@ -358,7 +358,7 @@ def single_race(race):
     for location in locations:
         choices.append([location.id,location.coords()])
     remove_form.support.choices = choices
-    players = User.query.filter(~User.worlds.contains(world))
+    players = User.query.filter(User.worlds.contains(world))
     player_list = []
     new_owner = AddPlayer()
     for i in players:
