@@ -367,7 +367,7 @@ def single_race(race):
     new_owner.player_list.choices = player_list
     if new_owner.validate_on_submit():
         race.creator = new_owner.player_list.data
-        cult_religion = Order.query.get(race.religion)
+        cult_religion = Orders.query.get(race.religion)
         cult_religion.owner = race.creator
         db.session.add(race)
         db.session.add(cult_religion)
