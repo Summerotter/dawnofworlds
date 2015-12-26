@@ -64,16 +64,16 @@
                 {% if current_user == owner %}
                     <form action="" method="post" name="points">
                     <td><input type="hidden" name="player" value="{{player.id}}">
-                    <input type="number" name="points" value={{ player_points[player.id].points}}>  <input type="submit" value="Submit"></td></form>
+                    <input type="number" name="points" value={{player_points[str(player.id)].points}}>  <input type="submit" value="Submit"></td></form>
                 {% else %}
-                     <td>{{ player_points[player.id].points}}</td>
+                     <td>{{player_points[str(player.id)].points}}</td>
                  {% endif %}
                  
                 <!--Is Ready Section --> 
-                {% if current_user == player %}
+                {% if current_user == player.id %}
                     <form action="" method="post" name="is_ready">
                     <td><input type="hidden" name="player" value="{{player.id}}">
-                    {% if player_points[player.id].is_ready %}
+                    {% if player_points[str(player.id)].is_ready %}
                         <input type="checkbox" name="is_ready" value=1 checked>
                     {% else %}
                         <input type="checkbox" name="is_ready" value=1> 
@@ -81,7 +81,7 @@
                     <input type="submit" value="Make Ready"></td>
                     </form>
                 {% else %}
-                    {% if player_points[player.id].is_ready %}
+                    {% if player_points[str(player.id)].is_ready %}
                         <td>READY</td>
                     {% else %}
                         <td>Not Ready</td>

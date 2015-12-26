@@ -727,6 +727,7 @@ class PowerPoints(db.Model):
     world = db.Column(db.Integer,db.ForeignKey('world.id'))
     points = db.Column(db.Integer,default=0)
     bonus = db.Column(db.Integer,default=0)
+    is_ready = db.Column(db.Integer,default=0)
     
 class CityAdvances(db.Model):
     id = db.Column(db.Integer,primary_key=True)

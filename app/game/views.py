@@ -177,6 +177,14 @@ def world_page(page=1):
             db.session.add(pointobj)
             db.session.commit()
             return redirect(url_for('.world_page'))
+        if 'is_ready' in request.form:
+            player = request.form['player']
+            is_ready = request.form['is_ready']
+            pointobj = PowerPoints.query.filter_by(world=world.id,player=player).first()
+            pointobj.is_ready = is_ready
+            db.session.add(pointobj)
+            db.session.commit()
+            return redirect(url_for('.world_page'))
     history = world.ret_history().paginate(page, POSTS_PER_PAGE, False)
     newplayer = AddPlayer()
     advanceturn = AdvanceTurn(prefix="turn")
@@ -232,10 +240,14 @@ def world_page(page=1):
         else:
             flash(world.name+" is already at the Third Age!")
         return redirect(url_for('.world_page'))
+    player_points = {}
+    for player in players:
+        player_points[player.id] =  player.return_points_obj(world.id)
     return render_template("/game/world.html",
                            active_world=world,
                            newplayer=newplayer,
                            players=players,
+                           player_points = player_points,
                            advance_turn=advanceturn,
                            advance_age=advance_age,
                            User=User,
@@ -372,7 +384,8 @@ def single_race(race):
         db.session.add(race)
         db.session.add(cult_religion)
         db.session.commit()
-        flash("Race",race.culture_name,"is now owned by",race.made_by())
+        text = "Race",race.culture_name,"is now owned by",race.made_by()
+        flash(text)
         return redirect(url_for(".single_race",race=race.id))
     if remove_form.validate_on_submit():
         location = WorldMap.query.get(remove_form.support.data)
