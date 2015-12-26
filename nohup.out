@@ -1,0 +1,1841 @@
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+68.8.58.109 - - [02/Dec/2015 21:00:19] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:19] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:27] "GET /auth/login HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:40] "POST /auth/login HTTP/1.1" 302 -
+68.8.58.109 - - [02/Dec/2015 21:00:40] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:42] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:46] "GET /game/activate/3 HTTP/1.1" 302 -
+68.8.58.109 - - [02/Dec/2015 21:00:46] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:49] "GET /game/map HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:50] "GET /static/images/grassland.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:50] "GET /static/images/forest.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:50] "GET /static/images/hills.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:50] "GET /static/images/water.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:00:50] "GET /static/images/mountains.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:18:35] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:18:43] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:18:44] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:18:47] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:18:51] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:25:26] "GET /game/races HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:25:29] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:25:32] "POST /game/world HTTP/1.1" 302 -
+68.8.58.109 - - [02/Dec/2015 21:25:32] "GET /game/world HTTP/1.1" 200 -
+99.3.160.146 - - [02/Dec/2015 21:30:37] "GET / HTTP/1.1" 200 -
+99.3.160.146 - - [02/Dec/2015 21:30:37] "GET /static/styles.css HTTP/1.1" 200 -
+99.243.33.150 - - [02/Dec/2015 21:30:37] "GET / HTTP/1.1" 200 -
+99.243.33.150 - - [02/Dec/2015 21:30:38] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:31:08] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:31:08] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:31:18] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:33:04] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:33:04] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:33:04] "GET /static/favicon.ico HTTP/1.1" 200 -
+135.23.210.14 - - [02/Dec/2015 21:33:39] "GET / HTTP/1.1" 200 -
+135.23.210.14 - - [02/Dec/2015 21:33:40] "GET /static/styles.css HTTP/1.1" 200 -
+135.23.210.14 - - [02/Dec/2015 21:33:47] "GET /auth/register HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:36:20] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:36:20] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:36:20] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:37:40] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:37:41] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:37:41] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.113.47.5 - - [02/Dec/2015 21:40:30] "GET / HTTP/1.1" 200 -
+68.113.47.5 - - [02/Dec/2015 21:40:30] "GET /static/styles.css HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:40:38] "GET / HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:40:39] "GET /static/styles.css HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:40:50] "GET / HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:40:56] "GET / HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:40:57] "GET /static/styles.css HTTP/1.1" 200 -
+50.38.41.94 - - [02/Dec/2015 21:41:37] "GET / HTTP/1.1" 200 -
+50.38.41.94 - - [02/Dec/2015 21:41:37] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:42:09] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:42:09] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:42:09] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:43:17] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:43:18] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:43:18] "GET /static/favicon.ico HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:45:02] "GET /auth/login HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:45:04] "GET /auth/register HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:45:22] "POST /auth/register HTTP/1.1" 302 -
+send: 'ehlo [192.210.193.210]\r\n'
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-STARTTLS\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'STARTTLS\r\n'
+reply: b'220 2.0.0 Ready to start TLS\r\n'
+reply: retcode (220); Msg: b'2.0.0 Ready to start TLS'
+send: 'ehlo [192.210.193.210]\r\n'
+76.90.243.207 - - [02/Dec/2015 21:45:22] "GET /auth/login HTTP/1.1" 200 -
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nAUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'AUTH PLAIN AGRhd25vZndvcmxkc2dhbWVAZ21haWwuY29tAGRhd25vZndvcmxkczEyMzQ=\r\n'
+reply: b'235 2.7.0 Accepted\r\n'
+reply: retcode (235); Msg: b'2.7.0 Accepted'
+send: 'mail FROM:<Dawn> size=1886\r\n'
+reply: b'250 2.1.0 OK k66sm2280823ioi.43 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.0 OK k66sm2280823ioi.43 - gsmtp'
+send: 'rcpt TO:<umbra.exe@gmail.com>\r\n'
+reply: b'250 2.1.5 OK k66sm2280823ioi.43 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.5 OK k66sm2280823ioi.43 - gsmtp'
+send: 'data\r\n'
+reply: b'354  Go ahead k66sm2280823ioi.43 - gsmtp\r\n'
+reply: retcode (354); Msg: b'Go ahead k66sm2280823ioi.43 - gsmtp'
+data: (354, b'Go ahead k66sm2280823ioi.43 - gsmtp')
+send: b'Content-Type: multipart/mixed; boundary="===============8436029135005989769=="\r\nMIME-Version: 1.0\r\nSubject: [DOW] Confirm Your Account\r\nFrom: Dawn\r\nTo: umbra.exe@gmail.com\r\nDate: Wed, 02 Dec 2015 21:45:22 -0500\r\nMessage-ID: <20151203024522.20308.64860@dawnofworlds>\r\n\r\n--===============8436029135005989769==\r\nContent-Type: multipart/alternative; boundary="===============7499010196618296615=="\r\nMIME-Version: 1.0\r\n\r\n--===============7499010196618296615==\r\nContent-Type: text/plain; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\nDear Umbra.Exe,\r\n\r\nWelcome to Dawn of Worlds!\r\n\r\nTo confirm your account please click on the following link:\r\n\r\nhttp://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDcyMiwiZXhwIjoxNDQ5MTE0MzIyfQ.eyJjb25maXJtIjo0fQ.SYxOix8UAAVGusBmpz07NEkJOYw3gOVMthqIYcec0gI\r\n\r\nSincerely,\r\n\r\nThe DOW Team\r\n\r\nNote: replies to this email address are not monitored.\r\n--===============7499010196618296615==\r\nContent-Type: text/html; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\n<p>Dear Umbra.Exe,</p>\r\n<p>Welcome to <b>Dawn of Worlds</b>!</p>\r\n<p>To confirm your account please <a href="http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDcyMiwiZXhwIjoxNDQ5MTE0MzIyfQ.eyJjb25maXJtIjo0fQ.SYxOix8UAAVGusBmpz07NEkJOYw3gOVMthqIYcec0gI">click here</a>. You will then need to proceed to Log In to finalize.</p>\r\n<p>Alternatively, you can paste the following link in your browser\'s address bar:</p>\r\n<p>http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDcyMiwiZXhwIjoxNDQ5MTE0MzIyfQ.eyJjb25maXJtIjo0fQ.SYxOix8UAAVGusBmpz07NEkJOYw3gOVMthqIYcec0gI</p>\r\n<p>Sincerely,</p>\r\n<p>The DoW Team</p>\r\n<p><small>Note: replies to this email address are not monitored.</small></p>\r\n--===============7499010196618296615==--\r\n\r\n--===============8436029135005989769==--\r\n.\r\n'
+reply: b'250 2.0.0 OK 1449110724 k66sm2280823ioi.43 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.0.0 OK 1449110724 k66sm2280823ioi.43 - gsmtp'
+data: (250, b'2.0.0 OK 1449110724 k66sm2280823ioi.43 - gsmtp')
+send: 'quit\r\n'
+reply: b'221 2.0.0 closing connection k66sm2280823ioi.43 - gsmtp\r\n'
+reply: retcode (221); Msg: b'2.0.0 closing connection k66sm2280823ioi.43 - gsmtp'
+121.222.10.70 - - [02/Dec/2015 21:46:01] "GET / HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:46:03] "GET /auth/register HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:46:23] "POST /auth/register HTTP/1.1" 302 -
+send: 'ehlo [192.210.193.210]\r\n'
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-STARTTLS\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'STARTTLS\r\n'
+reply: b'220 2.0.0 Ready to start TLS\r\n'
+reply: retcode (220); Msg: b'2.0.0 Ready to start TLS'
+121.222.10.70 - - [02/Dec/2015 21:46:23] "GET /auth/login HTTP/1.1" 200 -
+send: 'ehlo [192.210.193.210]\r\n'
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nAUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'AUTH PLAIN AGRhd25vZndvcmxkc2dhbWVAZ21haWwuY29tAGRhd25vZndvcmxkczEyMzQ=\r\n'
+reply: b'235 2.7.0 Accepted\r\n'
+reply: retcode (235); Msg: b'2.7.0 Accepted'
+send: 'mail FROM:<Dawn> size=1882\r\n'
+reply: b'250 2.1.0 OK f78sm2309948iod.4 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.0 OK f78sm2309948iod.4 - gsmtp'
+send: 'rcpt TO:<revates@hotmail.com>\r\n'
+reply: b'250 2.1.5 OK f78sm2309948iod.4 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.5 OK f78sm2309948iod.4 - gsmtp'
+send: 'data\r\n'
+reply: b'354  Go ahead f78sm2309948iod.4 - gsmtp\r\n'
+reply: retcode (354); Msg: b'Go ahead f78sm2309948iod.4 - gsmtp'
+data: (354, b'Go ahead f78sm2309948iod.4 - gsmtp')
+send: b'Content-Type: multipart/mixed; boundary="===============9208829139293702568=="\r\nMIME-Version: 1.0\r\nSubject: [DOW] Confirm Your Account\r\nFrom: Dawn\r\nTo: revates@hotmail.com\r\nDate: Wed, 02 Dec 2015 21:46:23 -0500\r\nMessage-ID: <20151203024623.20308.43447@dawnofworlds>\r\n\r\n--===============9208829139293702568==\r\nContent-Type: multipart/alternative; boundary="===============5047841639526226484=="\r\nMIME-Version: 1.0\r\n\r\n--===============5047841639526226484==\r\nContent-Type: text/plain; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\nDear Revates,\r\n\r\nWelcome to Dawn of Worlds!\r\n\r\nTo confirm your account please click on the following link:\r\n\r\nhttp://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDc4MywiZXhwIjoxNDQ5MTE0MzgzfQ.eyJjb25maXJtIjo1fQ.A2fKaLNvQ6VEzrh4dAAY0qX0hQ04h_Z3P-FD-ImVsGw\r\n\r\nSincerely,\r\n\r\nThe DOW Team\r\n\r\nNote: replies to this email address are not monitored.\r\n--===============5047841639526226484==\r\nContent-Type: text/html; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\n<p>Dear Revates,</p>\r\n<p>Welcome to <b>Dawn of Worlds</b>!</p>\r\n<p>To confirm your account please <a href="http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDc4MywiZXhwIjoxNDQ5MTE0MzgzfQ.eyJjb25maXJtIjo1fQ.A2fKaLNvQ6VEzrh4dAAY0qX0hQ04h_Z3P-FD-ImVsGw">click here</a>. You will then need to proceed to Log In to finalize.</p>\r\n<p>Alternatively, you can paste the following link in your browser\'s address bar:</p>\r\n<p>http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDc4MywiZXhwIjoxNDQ5MTE0MzgzfQ.eyJjb25maXJtIjo1fQ.A2fKaLNvQ6VEzrh4dAAY0qX0hQ04h_Z3P-FD-ImVsGw</p>\r\n<p>Sincerely,</p>\r\n<p>The DoW Team</p>\r\n<p><small>Note: replies to this email address are not monitored.</small></p>\r\n--===============5047841639526226484==--\r\n\r\n--===============9208829139293702568==--\r\n.\r\n'
+reply: b'250 2.0.0 OK 1449110784 f78sm2309948iod.4 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.0.0 OK 1449110784 f78sm2309948iod.4 - gsmtp'
+data: (250, b'2.0.0 OK 1449110784 f78sm2309948iod.4 - gsmtp')
+send: 'quit\r\n'
+reply: b'221 2.0.0 closing connection f78sm2309948iod.4 - gsmtp\r\n'
+reply: retcode (221); Msg: b'2.0.0 closing connection f78sm2309948iod.4 - gsmtp'
+76.90.243.207 - - [02/Dec/2015 21:46:33] "GET /auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDcyMiwiZXhwIjoxNDQ5MTE0MzIyfQ.eyJjb25maXJtIjo0fQ.SYxOix8UAAVGusBmpz07NEkJOYw3gOVMthqIYcec0gI HTTP/1.1" 302 -
+76.90.243.207 - - [02/Dec/2015 21:46:34] "GET /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDcyMiwiZXhwIjoxNDQ5MTE0MzIyfQ.eyJjb25maXJtIjo0fQ.SYxOix8UAAVGusBmpz07NEkJOYw3gOVMthqIYcec0gI HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:46:35] "GET /static/favicon.ico HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:46:56] "POST /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDcyMiwiZXhwIjoxNDQ5MTE0MzIyfQ.eyJjb25maXJtIjo0fQ.SYxOix8UAAVGusBmpz07NEkJOYw3gOVMthqIYcec0gI HTTP/1.1" 302 -
+76.90.243.207 - - [02/Dec/2015 21:46:57] "GET /auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDcyMiwiZXhwIjoxNDQ5MTE0MzIyfQ.eyJjb25maXJtIjo0fQ.SYxOix8UAAVGusBmpz07NEkJOYw3gOVMthqIYcec0gI HTTP/1.1" 302 -
+76.90.243.207 - - [02/Dec/2015 21:46:57] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:47:21] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:47:38] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:47:38] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:48:09] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:48:12] "POST /game/world HTTP/1.1" 302 -
+68.8.58.109 - - [02/Dec/2015 21:48:13] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 21:48:15] "POST /game/world HTTP/1.1" 302 -
+68.8.58.109 - - [02/Dec/2015 21:48:15] "GET /game/world HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:48:54] "GET /game/index/ HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 21:49:16] "GET /game/activate/3 HTTP/1.1" 302 -
+76.90.243.207 - - [02/Dec/2015 21:49:16] "GET /game/index/ HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:50:57] "GET /auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDc4MywiZXhwIjoxNDQ5MTE0MzgzfQ.eyJjb25maXJtIjo1fQ.A2fKaLNvQ6VEzrh4dAAY0qX0hQ04h_Z3P-FD-ImVsGw HTTP/1.1" 302 -
+121.222.10.70 - - [02/Dec/2015 21:50:58] "GET /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDc4MywiZXhwIjoxNDQ5MTE0MzgzfQ.eyJjb25maXJtIjo1fQ.A2fKaLNvQ6VEzrh4dAAY0qX0hQ04h_Z3P-FD-ImVsGw HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:50:58] "GET /static/favicon.ico HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:14] "POST /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDc4MywiZXhwIjoxNDQ5MTE0MzgzfQ.eyJjb25maXJtIjo1fQ.A2fKaLNvQ6VEzrh4dAAY0qX0hQ04h_Z3P-FD-ImVsGw HTTP/1.1" 302 -
+121.222.10.70 - - [02/Dec/2015 21:51:14] "GET /auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTExMDc4MywiZXhwIjoxNDQ5MTE0MzgzfQ.eyJjb25maXJtIjo1fQ.A2fKaLNvQ6VEzrh4dAAY0qX0hQ04h_Z3P-FD-ImVsGw HTTP/1.1" 302 -
+121.222.10.70 - - [02/Dec/2015 21:51:15] "GET / HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:31] "GET /game/index/ HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:37] "GET /game/activate/3 HTTP/1.1" 302 -
+121.222.10.70 - - [02/Dec/2015 21:51:38] "GET /game/index/ HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:43] "GET /game/map HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:45] "GET /static/images/grassland.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:45] "GET /static/images/forest.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:45] "GET /static/images/hills.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:45] "GET /static/images/water.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:45] "GET /static/images/mountains.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:46] "GET /game/races HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:46] "GET /static/images/water.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:46] "GET /static/images/grassland.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:46] "GET /static/images/hills.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:51:46] "GET /static/images/forest.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:52:18] "GET /game/index/ HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:53:13] "GET /game/map HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:53:15] "GET /static/images/mountains.png HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:53:23] "GET /game/avatars HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 21:53:26] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:03] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:08] "POST /game/world HTTP/1.1" 302 -
+68.8.58.109 - - [02/Dec/2015 22:00:09] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:11] "POST /game/world HTTP/1.1" 302 -
+68.8.58.109 - - [02/Dec/2015 22:00:11] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:14] "GET /game/map HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:14] "GET /static/images/hills.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:14] "GET /static/images/grassland.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:14] "GET /static/images/forest.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:14] "GET /static/images/water.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:14] "GET /static/images/mountains.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:15] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:00:23] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:02:22] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:02:27] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:02:28] "GET /static/images/forest.png HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:02:28] "GET /static/images/grassland.png HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:02:28] "GET /static/images/hills.png HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:02:28] "GET /static/images/water.png HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:02:33] "GET /game/map/2010 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:02:35] "GET /static/images/mountains.png HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:03:03] "GET /game/map/1828 HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:03:32] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:03:45] "GET /favicon.ico HTTP/1.1" 404 -
+68.8.58.109 - - [02/Dec/2015 22:05:46] "GET /game/world HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:06:11] "GET /game/map/1930 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:11:28] "GET /game/map/1695 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:15:40] "GET /game/map/1744 HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:19:40] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:19:46] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:19:46] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:20:39] "GET /game/races HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:20:41] "GET /game/cities HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:20:42] "GET /game/races HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 22:20:44] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:32:08] "GET /game/map/1844 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:32:21] "GET /game/map/1742 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:32:30] "GET /game/map/1690 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:32:31] "GET /game/map/1788 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:32:56] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:37:25] "GET /game/map/1844 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:37:31] "GET /game/map/1895 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:37:33] "GET /game/map/1945 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:37:43] "GET /game/map/1895 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:38:09] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:38:54] "GET /game/map/1844 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:38:59] "GET /game/map/1844 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:39:03] "GET /game/map/1946 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:39:06] "GET /game/map/1844 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:39:23] "GET /game/map/1895 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:39:25] "GET /game/map/1945 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:39:29] "GET /game/map/1944 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:39:32] "GET /game/map/1945 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:39:42] "GET /game/map HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:45:28] "GET / HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:45:32] "GET /game/index/ HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:45:35] "GET /game/races HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:45:38] "GET /game/map HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:45:43] "GET /game/map/2020 HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:45:49] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:46:20] "GET /game/map/1482 HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:47:08] "GET /game/cities HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:47:10] "GET /game/orders HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:47:12] "GET /game/avatars HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:47:13] "GET /game/prov HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:47:16] "GET /game/map HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:51:19] "GET /game/map/2211 HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:51:24] "GET /game/map/2211 HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:51:37] "GET /game/map/1432 HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 22:51:43] "POST /game/map/2211 HTTP/1.1" 302 -
+121.222.10.70 - - [02/Dec/2015 22:51:44] "GET /game/map/2211/create-race/ HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 22:55:57] "POST /game/map/1432 HTTP/1.1" 302 -
+76.90.243.207 - - [02/Dec/2015 22:55:58] "GET /game/map/1432/create-race/ HTTP/1.1" 200 -
+121.222.10.70 - - [02/Dec/2015 23:00:18] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 23:10:22] "GET /game/index/ HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 23:10:29] "GET / HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 23:10:31] "GET /game/races HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 23:16:52] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 23:16:54] "GET /game/military HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 23:17:08] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 23:17:52] "GET /game/orders HTTP/1.1" 200 -
+76.90.243.207 - - [02/Dec/2015 23:17:53] "GET /game/avatars HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 23:33:47] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 23:33:47] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 23:33:49] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 23:44:14] "GET //game/ HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 23:44:48] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [02/Dec/2015 23:44:52] "GET //game/randomchar HTTP/1.1" 404 -
+68.8.58.109 - - [02/Dec/2015 23:45:12] "GET /game/randomchar HTTP/1.1" 200 -
+24.61.103.199 - - [02/Dec/2015 23:53:07] "GET /game/randomchar HTTP/1.1" 200 -
+24.61.103.199 - - [02/Dec/2015 23:53:08] "GET /static/styles.css HTTP/1.1" 200 -
+24.61.103.199 - - [02/Dec/2015 23:53:08] "GET /static/favicon.ico HTTP/1.1" 200 -
+72.73.203.54 - - [02/Dec/2015 23:53:14] "GET /game/randomchar HTTP/1.1" 200 -
+72.73.203.54 - - [02/Dec/2015 23:53:15] "GET /static/styles.css HTTP/1.1" 200 -
+72.73.203.54 - - [02/Dec/2015 23:53:15] "GET /static/favicon.ico HTTP/1.1" 200 -
+24.61.103.199 - - [02/Dec/2015 23:53:21] "GET /game/randomchar HTTP/1.1" 200 -
+101.160.31.9 - - [02/Dec/2015 23:53:58] "GET /game/randomchar HTTP/1.1" 200 -
+101.160.31.9 - - [02/Dec/2015 23:53:58] "GET /static/styles.css HTTP/1.1" 200 -
+101.160.31.9 - - [02/Dec/2015 23:53:59] "GET /static/favicon.ico HTTP/1.1" 200 -
+101.160.31.9 - - [02/Dec/2015 23:54:02] "GET /game/randomchar HTTP/1.1" 200 -
+101.160.31.9 - - [02/Dec/2015 23:56:36] "GET /game/randomchar HTTP/1.1" 200 -
+72.91.103.83 - - [03/Dec/2015 00:03:34] "GET / HTTP/1.1" 200 -
+72.91.103.83 - - [03/Dec/2015 00:03:35] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:09:47] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:09:48] "GET /game/world HTTP/1.1" 200 -
+207.62.148.179 - - [03/Dec/2015 00:15:03] "GET /game/randomchar HTTP/1.1" 200 -
+207.62.148.179 - - [03/Dec/2015 00:15:04] "GET /static/styles.css HTTP/1.1" 200 -
+207.62.148.179 - - [03/Dec/2015 00:15:04] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:22:45] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:22:45] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:22:45] "GET /static/favicon.ico HTTP/1.1" 200 -
+73.44.244.107 - - [03/Dec/2015 00:24:57] "GET / HTTP/1.1" 200 -
+73.44.244.107 - - [03/Dec/2015 00:24:57] "GET /static/styles.css HTTP/1.1" 200 -
+73.44.244.107 - - [03/Dec/2015 00:26:06] "GET / HTTP/1.1" 200 -
+73.44.244.107 - - [03/Dec/2015 00:26:22] "GET /favicon.ico HTTP/1.1" 404 -
+121.222.10.70 - - [03/Dec/2015 00:39:47] "GET /game/randomchar HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:49:01] "GET /game/players HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 00:52:00] "GET /game/randomchar HTTP/1.1" 200 -
+99.187.157.55 - - [03/Dec/2015 00:54:10] "GET / HTTP/1.1" 200 -
+99.187.157.55 - - [03/Dec/2015 00:54:11] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:54:30] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:54:31] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:54:31] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:58:41] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:58:41] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:58:42] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:58:44] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:58:44] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 00:58:44] "GET /static/favicon.ico HTTP/1.1" 200 -
+24.61.17.99 - - [03/Dec/2015 01:03:13] "GET / HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 04:12:36] "GET /static/favicon.ico HTTP/1.1" 200 -
+97.121.158.16 - - [03/Dec/2015 04:21:17] "GET /game/randomchar HTTP/1.1" 200 -
+97.121.158.16 - - [03/Dec/2015 04:21:17] "GET /static/styles.css HTTP/1.1" 200 -
+97.121.158.16 - - [03/Dec/2015 04:21:17] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 05:13:33] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 05:13:34] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 05:13:36] "GET /auth/login HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 05:13:44] "POST /auth/login HTTP/1.1" 302 -
+68.8.58.109 - - [03/Dec/2015 05:13:44] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 05:13:46] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 05:13:53] "GET /game/players HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 05:13:57] "GET /game/activate/3 HTTP/1.1" 302 -
+68.8.58.109 - - [03/Dec/2015 05:13:57] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [03/Dec/2015 05:13:59] "GET /game/world HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 05:58:19] "GET /game/map/1432/create-race/ HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 05:58:19] "GET /static/styles.css HTTP/1.1" 200 -
+198.223.198.190 - - [03/Dec/2015 07:00:09] "GET / HTTP/1.1" 200 -
+198.223.198.190 - - [03/Dec/2015 07:00:10] "GET /static/styles.css HTTP/1.1" 200 -
+198.223.198.190 - - [03/Dec/2015 07:00:43] "GET / HTTP/1.1" 200 -
+24.55.194.94 - - [03/Dec/2015 07:56:38] "GET /game/randomchar HTTP/1.1" 200 -
+24.55.194.94 - - [03/Dec/2015 07:56:38] "GET /static/styles.css HTTP/1.1" 200 -
+24.55.194.94 - - [03/Dec/2015 07:56:39] "GET /static/favicon.ico HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:09:38] "GET / HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:09:39] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:09:42] "GET /auth/login HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:09:51] "POST /auth/login HTTP/1.1" 302 -
+172.56.40.18 - - [03/Dec/2015 19:09:51] "GET / HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:09:58] "GET /game/index/ HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:10:00] "GET /game/make-world/ HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:10:13] "POST /game/make-world/ HTTP/1.1" 302 -
+172.56.40.18 - - [03/Dec/2015 19:10:13] "GET /game/index/ HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:14:52] "GET /game/activate/4 HTTP/1.1" 302 -
+172.56.40.18 - - [03/Dec/2015 19:14:53] "GET /game/index/ HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:14:56] "GET /game/map HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:14:58] "GET /static/images/forest.png HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:14:58] "GET /static/images/grassland.png HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:14:58] "GET /static/images/water.png HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:14:58] "GET /static/images/hills.png HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:14:58] "GET /static/images/mountains.png HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:15:06] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:15:10] "POST /game/world HTTP/1.1" 302 -
+172.56.40.18 - - [03/Dec/2015 19:15:10] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:15:24] "POST /game/world HTTP/1.1" 302 -
+172.56.40.18 - - [03/Dec/2015 19:15:24] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:34:43] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:34:44] "GET /static/styles.css HTTP/1.1" 304 -
+172.56.40.18 - - [03/Dec/2015 19:35:35] "GET / HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:42:49] "GET / HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:42:49] "GET /static/styles.css HTTP/1.1" 304 -
+76.90.243.207 - - [03/Dec/2015 19:42:54] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:42:55] "GET /static/images/forest.png HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:42:55] "GET /static/images/grassland.png HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:42:55] "GET /static/images/hills.png HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:42:55] "GET /static/images/water.png HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:43:04] "GET /static/images/mountains.png HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:44:39] "GET /game/map/1482 HTTP/1.1" 200 -
+76.90.243.207 - - [03/Dec/2015 19:44:41] "GET /game/map/1432 HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:45:27] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:54:37] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 19:54:37] "GET /static/styles.css HTTP/1.1" 304 -
+76.90.243.207 - - [03/Dec/2015 20:08:40] "POST /game/map/1432 HTTP/1.1" 302 -
+76.90.243.207 - - [03/Dec/2015 20:08:40] "GET /game/map/1432/create-race/ HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 20:24:51] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 20:24:52] "GET /static/styles.css HTTP/1.1" 304 -
+172.56.40.18 - - [03/Dec/2015 21:17:34] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 21:17:34] "GET /static/styles.css HTTP/1.1" 304 -
+172.56.40.18 - - [03/Dec/2015 22:29:38] "GET /game/world HTTP/1.1" 200 -
+172.56.40.18 - - [03/Dec/2015 22:29:39] "GET /static/styles.css HTTP/1.1" 304 -
+76.90.243.207 - - [04/Dec/2015 02:05:33] "GET /game/index/ HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 04:59:25] "GET /static/favicon.ico HTTP/1.1" 200 -
+174.118.39.126 - - [04/Dec/2015 08:11:39] "GET / HTTP/1.1" 200 -
+174.118.39.126 - - [04/Dec/2015 08:11:39] "GET /static/styles.css HTTP/1.1" 200 -
+50.181.107.22 - - [04/Dec/2015 12:25:43] "GET /game/randomchar HTTP/1.1" 200 -
+50.181.107.22 - - [04/Dec/2015 12:25:43] "GET /static/styles.css HTTP/1.1" 200 -
+50.181.107.22 - - [04/Dec/2015 12:25:43] "GET /static/favicon.ico HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 18:27:32] "GET /static/favicon.ico HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:30:26] "GET /game/map/1432/create-race/ HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:30:27] "GET /static/styles.css HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:32:21] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:32:22] "GET /static/images/grassland.png HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:32:22] "GET /static/images/forest.png HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:32:22] "GET /static/images/water.png HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:32:22] "GET /static/images/hills.png HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:32:22] "GET /static/images/mountains.png HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:34:11] "GET /game/map/1432 HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:34:27] "GET /game/map/1432 HTTP/1.1" 200 -
+76.90.243.207 - - [04/Dec/2015 20:34:48] "POST /game/map/1432 HTTP/1.1" 302 -
+76.90.243.207 - - [04/Dec/2015 20:34:48] "GET /game/map/1432/create-race/ HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 00:08:14] "GET /static/favicon.ico HTTP/1.1" 200 -
+178.159.24.239 - - [05/Dec/2015 03:36:47] "GET /game/randomchar HTTP/1.1" 200 -
+178.159.24.239 - - [05/Dec/2015 03:36:48] "GET /static/styles.css HTTP/1.1" 200 -
+178.159.24.239 - - [05/Dec/2015 03:36:48] "GET /static/favicon.ico HTTP/1.1" 200 -
+178.159.24.239 - - [05/Dec/2015 03:36:57] "GET /game/randomchar HTTP/1.1" 200 -
+178.159.24.239 - - [05/Dec/2015 03:37:03] "GET /game/randomchar HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 04:57:25] "GET /game/map/1432/create-race/ HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 04:57:39] "GET /static/styles.css HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 04:58:27] "GET /static/favicon.ico HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 14:25:15] "GET /static/favicon.ico HTTP/1.1" 200 -
+94.6.198.131 - - [05/Dec/2015 15:07:13] "GET / HTTP/1.1" 200 -
+94.6.198.131 - - [05/Dec/2015 15:07:14] "GET /static/styles.css HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 18:42:02] "GET /game/map/1432/create-race/ HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 18:42:02] "GET /static/styles.css HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 22:12:50] "GET /static/favicon.ico HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:41:57] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:41:58] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:42:02] "GET /auth/login HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:42:07] "POST /auth/login HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:42:14] "POST /auth/login HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:42:24] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:42:33] "POST /auth/register HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:43:01] "GET / HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:43:01] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:43:01] "POST /auth/register HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:43:04] "GET /auth/login HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:43:16] "POST /auth/login HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 22:43:16] "GET / HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:43:44] "GET /game/index/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:44:03] "GET /game/activate/4 HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 22:44:05] "GET /game/index/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:44:36] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:44:43] "GET /auth/logout HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 22:44:44] "GET / HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:44:46] "GET /auth/register HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:45:01] "POST /auth/register HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:46:31] "POST /auth/register HTTP/1.1" 302 -
+send: 'ehlo [192.210.193.210]\r\n'
+172.56.40.108 - - [05/Dec/2015 22:46:31] "GET /auth/login HTTP/1.1" 200 -
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-STARTTLS\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'STARTTLS\r\n'
+reply: b'220 2.0.0 Ready to start TLS\r\n'
+reply: retcode (220); Msg: b'2.0.0 Ready to start TLS'
+send: 'ehlo [192.210.193.210]\r\n'
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nAUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'AUTH PLAIN AGRhd25vZndvcmxkc2dhbWVAZ21haWwuY29tAGRhd25vZndvcmxkczEyMzQ=\r\n'
+reply: b'235 2.7.0 Accepted\r\n'
+reply: retcode (235); Msg: b'2.7.0 Accepted'
+send: 'mail FROM:<Dawn> size=1875\r\n'
+reply: b'250 2.1.0 OK s95sm7514541ioe.16 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.0 OK s95sm7514541ioe.16 - gsmtp'
+send: 'rcpt TO:<test2@test.com>\r\n'
+reply: b'250 2.1.5 OK s95sm7514541ioe.16 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.5 OK s95sm7514541ioe.16 - gsmtp'
+send: 'data\r\n'
+reply: b'354  Go ahead s95sm7514541ioe.16 - gsmtp\r\n'
+reply: retcode (354); Msg: b'Go ahead s95sm7514541ioe.16 - gsmtp'
+data: (354, b'Go ahead s95sm7514541ioe.16 - gsmtp')
+send: b'Content-Type: multipart/mixed; boundary="===============2975818883599995190=="\r\nMIME-Version: 1.0\r\nSubject: [DOW] Confirm Your Account\r\nFrom: Dawn\r\nTo: test2@test.com\r\nDate: Sat, 05 Dec 2015 22:46:31 -0500\r\nMessage-ID: <20151206034631.20308.92929@dawnofworlds>\r\n\r\n--===============2975818883599995190==\r\nContent-Type: multipart/alternative; boundary="===============1945003745657697101=="\r\nMIME-Version: 1.0\r\n\r\n--===============1945003745657697101==\r\nContent-Type: text/plain; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\nDear Henry2,\r\n\r\nWelcome to Dawn of Worlds!\r\n\r\nTo confirm your account please click on the following link:\r\n\r\nhttp://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3MzU5MSwiZXhwIjoxNDQ5Mzc3MTkxfQ.eyJjb25maXJtIjo2fQ.O5-wppvtraGdrP98bvBccxuTR9qWRBUFwLSJzo8jr_E\r\n\r\nSincerely,\r\n\r\nThe DOW Team\r\n\r\nNote: replies to this email address are not monitored.\r\n--===============1945003745657697101==\r\nContent-Type: text/html; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\n<p>Dear Henry2,</p>\r\n<p>Welcome to <b>Dawn of Worlds</b>!</p>\r\n<p>To confirm your account please <a href="http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3MzU5MSwiZXhwIjoxNDQ5Mzc3MTkxfQ.eyJjb25maXJtIjo2fQ.O5-wppvtraGdrP98bvBccxuTR9qWRBUFwLSJzo8jr_E">click here</a>. You will then need to proceed to Log In to finalize.</p>\r\n<p>Alternatively, you can paste the following link in your browser\'s address bar:</p>\r\n<p>http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3MzU5MSwiZXhwIjoxNDQ5Mzc3MTkxfQ.eyJjb25maXJtIjo2fQ.O5-wppvtraGdrP98bvBccxuTR9qWRBUFwLSJzo8jr_E</p>\r\n<p>Sincerely,</p>\r\n<p>The DoW Team</p>\r\n<p><small>Note: replies to this email address are not monitored.</small></p>\r\n--===============1945003745657697101==--\r\n\r\n--===============2975818883599995190==--\r\n.\r\n'
+reply: b'250 2.0.0 OK 1449373593 s95sm7514541ioe.16 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.0.0 OK 1449373593 s95sm7514541ioe.16 - gsmtp'
+data: (250, b'2.0.0 OK 1449373593 s95sm7514541ioe.16 - gsmtp')
+send: 'quit\r\n'
+reply: b'221 2.0.0 closing connection s95sm7514541ioe.16 - gsmtp\r\n'
+reply: retcode (221); Msg: b'2.0.0 closing connection s95sm7514541ioe.16 - gsmtp'
+172.56.40.108 - - [05/Dec/2015 22:46:47] "GET /game/players HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 22:46:47] "GET /auth/login?next=%2Fgame%2Fplayers HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:46:57] "POST /auth/login?next=%2Fgame%2Fplayers HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 22:46:57] "GET /game/players HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:48:23] "POST /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:48:39] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:48:39] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:48:41] "GET /auth/login HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:48:43] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:48:59] "POST /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:51:41] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:51:41] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:51:44] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:51:53] "POST /auth/register HTTP/1.1" 200 -
+24.136.146.49 - - [05/Dec/2015 22:52:07] "GET / HTTP/1.1" 200 -
+24.136.146.49 - - [05/Dec/2015 22:52:09] "GET /static/styles.css HTTP/1.1" 200 -
+24.136.146.49 - - [05/Dec/2015 22:52:15] "GET / HTTP/1.1" 200 -
+24.136.146.49 - - [05/Dec/2015 22:52:28] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:52:45] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:52:45] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:52:48] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:52:57] "POST /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:53:07] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:53:08] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:53:17] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:53:25] "POST /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:53:37] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:53:37] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:53:39] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:53:45] "POST /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:54:12] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:54:12] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:54:14] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:54:18] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 22:54:18] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:56:46] "GET /game/players HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:56:46] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 22:56:47] "GET /static/favicon.ico HTTP/1.1" 200 -
+71.89.200.87 - - [05/Dec/2015 23:00:01] "GET / HTTP/1.1" 200 -
+71.89.200.87 - - [05/Dec/2015 23:00:01] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:01:06] "GET /game/players HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:01:06] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:01:06] "GET /static/favicon.ico HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:01:21] "GET / HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:01:21] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:01:24] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:01:36] "POST /auth/register HTTP/1.1" 302 -
+75.169.56.120 - - [05/Dec/2015 23:01:36] "GET /auth/login HTTP/1.1" 200 -
+send: 'ehlo [192.210.193.210]\r\n'
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-STARTTLS\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'STARTTLS\r\n'
+reply: b'220 2.0.0 Ready to start TLS\r\n'
+reply: retcode (220); Msg: b'2.0.0 Ready to start TLS'
+send: 'ehlo [192.210.193.210]\r\n'
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nAUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'AUTH PLAIN AGRhd25vZndvcmxkc2dhbWVAZ21haWwuY29tAGRhd25vZndvcmxkczEyMzQ=\r\n'
+reply: b'235 2.7.0 Accepted\r\n'
+reply: retcode (235); Msg: b'2.7.0 Accepted'
+send: 'mail FROM:<Dawn> size=1880\r\n'
+reply: b'250 2.1.0 OK u24sm7492022ioi.14 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.0 OK u24sm7492022ioi.14 - gsmtp'
+send: 'rcpt TO:<marupa.asaki@gmail.com>\r\n'
+reply: b'250 2.1.5 OK u24sm7492022ioi.14 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.5 OK u24sm7492022ioi.14 - gsmtp'
+send: 'data\r\n'
+reply: b'354  Go ahead u24sm7492022ioi.14 - gsmtp\r\n'
+reply: retcode (354); Msg: b'Go ahead u24sm7492022ioi.14 - gsmtp'
+data: (354, b'Go ahead u24sm7492022ioi.14 - gsmtp')
+send: b'Content-Type: multipart/mixed; boundary="===============2368735997807371680=="\r\nMIME-Version: 1.0\r\nSubject: [DOW] Confirm Your Account\r\nFrom: Dawn\r\nTo: marupa.asaki@gmail.com\r\nDate: Sat, 05 Dec 2015 23:01:36 -0500\r\nMessage-ID: <20151206040136.20308.3648@dawnofworlds>\r\n\r\n--===============2368735997807371680==\r\nContent-Type: multipart/alternative; boundary="===============3792592913050309162=="\r\nMIME-Version: 1.0\r\n\r\n--===============3792592913050309162==\r\nContent-Type: text/plain; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\nDear Kurin,\r\n\r\nWelcome to Dawn of Worlds!\r\n\r\nTo confirm your account please click on the following link:\r\n\r\nhttp://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDQ5NiwiZXhwIjoxNDQ5Mzc4MDk2fQ.eyJjb25maXJtIjo3fQ.avEpQIRoZP0SNFN57MKQ_spQUJMiV4YTaFE_x8xy5wo\r\n\r\nSincerely,\r\n\r\nThe DOW Team\r\n\r\nNote: replies to this email address are not monitored.\r\n--===============3792592913050309162==\r\nContent-Type: text/html; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\n<p>Dear Kurin,</p>\r\n<p>Welcome to <b>Dawn of Worlds</b>!</p>\r\n<p>To confirm your account please <a href="http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDQ5NiwiZXhwIjoxNDQ5Mzc4MDk2fQ.eyJjb25maXJtIjo3fQ.avEpQIRoZP0SNFN57MKQ_spQUJMiV4YTaFE_x8xy5wo">click here</a>. You will then need to proceed to Log In to finalize.</p>\r\n<p>Alternatively, you can paste the following link in your browser\'s address bar:</p>\r\n<p>http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDQ5NiwiZXhwIjoxNDQ5Mzc4MDk2fQ.eyJjb25maXJtIjo3fQ.avEpQIRoZP0SNFN57MKQ_spQUJMiV4YTaFE_x8xy5wo</p>\r\n<p>Sincerely,</p>\r\n<p>The DoW Team</p>\r\n<p><small>Note: replies to this email address are not monitored.</small></p>\r\n--===============3792592913050309162==--\r\n\r\n--===============2368735997807371680==--\r\n.\r\n'
+reply: b'250 2.0.0 OK 1449374497 u24sm7492022ioi.14 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.0.0 OK 1449374497 u24sm7492022ioi.14 - gsmtp'
+data: (250, b'2.0.0 OK 1449374497 u24sm7492022ioi.14 - gsmtp')
+send: 'quit\r\n'
+reply: b'221 2.0.0 closing connection u24sm7492022ioi.14 - gsmtp\r\n'
+reply: retcode (221); Msg: b'2.0.0 closing connection u24sm7492022ioi.14 - gsmtp'
+75.169.56.120 - - [05/Dec/2015 23:02:02] "GET /auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDQ5NiwiZXhwIjoxNDQ5Mzc4MDk2fQ.eyJjb25maXJtIjo3fQ.avEpQIRoZP0SNFN57MKQ_spQUJMiV4YTaFE_x8xy5wo HTTP/1.1" 302 -
+75.169.56.120 - - [05/Dec/2015 23:02:02] "GET /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDQ5NiwiZXhwIjoxNDQ5Mzc4MDk2fQ.eyJjb25maXJtIjo3fQ.avEpQIRoZP0SNFN57MKQ_spQUJMiV4YTaFE_x8xy5wo HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:02:03] "GET /static/favicon.ico HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:02:11] "POST /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDQ5NiwiZXhwIjoxNDQ5Mzc4MDk2fQ.eyJjb25maXJtIjo3fQ.avEpQIRoZP0SNFN57MKQ_spQUJMiV4YTaFE_x8xy5wo HTTP/1.1" 302 -
+75.169.56.120 - - [05/Dec/2015 23:02:12] "GET /auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDQ5NiwiZXhwIjoxNDQ5Mzc4MDk2fQ.eyJjb25maXJtIjo3fQ.avEpQIRoZP0SNFN57MKQ_spQUJMiV4YTaFE_x8xy5wo HTTP/1.1" 302 -
+75.169.56.120 - - [05/Dec/2015 23:02:12] "GET / HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:02:41] "GET /game/players HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:02:42] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:02:42] "GET /static/favicon.ico HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:02:45] "GET /game/index/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:02:47] "GET /game/activate/4 HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:02:48] "GET /game/index/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:02:55] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:02:55] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:02:59] "POST /game/world HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:03:00] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:03:19] "POST /game/world HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:03:19] "GET /game/world HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:03:48] "GET / HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:03:48] "GET /static/styles.css HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:03:54] "GET / HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:03:54] "GET /static/styles.css HTTP/1.1" 304 -
+208.102.4.38 - - [05/Dec/2015 23:04:59] "GET / HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:04:59] "GET /static/styles.css HTTP/1.1" 304 -
+208.102.4.38 - - [05/Dec/2015 23:05:08] "GET /auth/register HTTP/1.1" 200 -
+50.26.71.61 - - [05/Dec/2015 23:05:23] "GET / HTTP/1.1" 200 -
+50.26.71.61 - - [05/Dec/2015 23:05:23] "GET /static/styles.css HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:07:01] "GET /auth/register HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:07:40] "GET /game/index/ HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:07:44] "GET /game/activate/4 HTTP/1.1" 302 -
+75.169.56.120 - - [05/Dec/2015 23:07:45] "GET /game/index/ HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:07:48] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:07:50] "GET /game/cities HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:32] "GET /game/prov HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:33] "GET /game/avatars HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:34] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:37] "GET /game/map HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:38] "GET /static/images/forest.png HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:38] "GET /static/images/grassland.png HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:38] "GET /static/images/water.png HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:38] "GET /static/images/hills.png HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:08:38] "GET /static/images/mountains.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:09:04] "POST /auth/register HTTP/1.1" 302 -
+send: 'ehlo [192.210.193.210]\r\n'
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-STARTTLS\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'STARTTLS\r\n'
+reply: b'220 2.0.0 Ready to start TLS\r\n'
+reply: retcode (220); Msg: b'2.0.0 Ready to start TLS'
+208.102.4.38 - - [05/Dec/2015 23:09:05] "GET /auth/login HTTP/1.1" 200 -
+send: 'ehlo [192.210.193.210]\r\n'
+reply: b'250-smtp.googlemail.com at your service, [192.210.193.210]\r\n'
+reply: b'250-SIZE 35882577\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-CHUNKING\r\n'
+reply: b'250 SMTPUTF8\r\n'
+reply: retcode (250); Msg: b'smtp.googlemail.com at your service, [192.210.193.210]\nSIZE 35882577\n8BITMIME\nAUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8'
+send: 'AUTH PLAIN AGRhd25vZndvcmxkc2dhbWVAZ21haWwuY29tAGRhd25vZndvcmxkczEyMzQ=\r\n'
+reply: b'235 2.7.0 Accepted\r\n'
+reply: retcode (235); Msg: b'2.7.0 Accepted'
+send: 'mail FROM:<Dawn> size=1876\r\n'
+reply: b'250 2.1.0 OK s95sm7538810ioe.16 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.0 OK s95sm7538810ioe.16 - gsmtp'
+send: 'rcpt TO:<nightly41@hotmail.com>\r\n'
+reply: b'250 2.1.5 OK s95sm7538810ioe.16 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.1.5 OK s95sm7538810ioe.16 - gsmtp'
+send: 'data\r\n'
+reply: b'354  Go ahead s95sm7538810ioe.16 - gsmtp\r\n'
+reply: retcode (354); Msg: b'Go ahead s95sm7538810ioe.16 - gsmtp'
+data: (354, b'Go ahead s95sm7538810ioe.16 - gsmtp')
+send: b'Content-Type: multipart/mixed; boundary="===============1953438913830769565=="\r\nMIME-Version: 1.0\r\nSubject: [DOW] Confirm Your Account\r\nFrom: Dawn\r\nTo: nightly41@hotmail.com\r\nDate: Sat, 05 Dec 2015 23:09:05 -0500\r\nMessage-ID: <20151206040904.20308.87086@dawnofworlds>\r\n\r\n--===============1953438913830769565==\r\nContent-Type: multipart/alternative; boundary="===============3673381124966061116=="\r\nMIME-Version: 1.0\r\n\r\n--===============3673381124966061116==\r\nContent-Type: text/plain; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\nDear drg,\r\n\r\nWelcome to Dawn of Worlds!\r\n\r\nTo confirm your account please click on the following link:\r\n\r\nhttp://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDk0NCwiZXhwIjoxNDQ5Mzc4NTQ0fQ.eyJjb25maXJtIjo4fQ.OvBeXK2bfHHGb487kyywJiAmdiRhfAzLWTCynSCWEy8\r\n\r\nSincerely,\r\n\r\nThe DOW Team\r\n\r\nNote: replies to this email address are not monitored.\r\n--===============3673381124966061116==\r\nContent-Type: text/html; charset="utf-8"\r\nMIME-Version: 1.0\r\nContent-Transfer-Encoding: 7bit\r\n\r\n<p>Dear drg,</p>\r\n<p>Welcome to <b>Dawn of Worlds</b>!</p>\r\n<p>To confirm your account please <a href="http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDk0NCwiZXhwIjoxNDQ5Mzc4NTQ0fQ.eyJjb25maXJtIjo4fQ.OvBeXK2bfHHGb487kyywJiAmdiRhfAzLWTCynSCWEy8">click here</a>. You will then need to proceed to Log In to finalize.</p>\r\n<p>Alternatively, you can paste the following link in your browser\'s address bar:</p>\r\n<p>http://192.210.193.210:5000/auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDk0NCwiZXhwIjoxNDQ5Mzc4NTQ0fQ.eyJjb25maXJtIjo4fQ.OvBeXK2bfHHGb487kyywJiAmdiRhfAzLWTCynSCWEy8</p>\r\n<p>Sincerely,</p>\r\n<p>The DoW Team</p>\r\n<p><small>Note: replies to this email address are not monitored.</small></p>\r\n--===============3673381124966061116==--\r\n\r\n--===============1953438913830769565==--\r\n.\r\n'
+reply: b'250 2.0.0 OK 1449374946 s95sm7538810ioe.16 - gsmtp\r\n'
+reply: retcode (250); Msg: b'2.0.0 OK 1449374946 s95sm7538810ioe.16 - gsmtp'
+data: (250, b'2.0.0 OK 1449374946 s95sm7538810ioe.16 - gsmtp')
+send: 'quit\r\n'
+reply: b'221 2.0.0 closing connection s95sm7538810ioe.16 - gsmtp\r\n'
+reply: retcode (221); Msg: b'2.0.0 closing connection s95sm7538810ioe.16 - gsmtp'
+208.102.4.38 - - [05/Dec/2015 23:09:17] "GET /auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDk0NCwiZXhwIjoxNDQ5Mzc4NTQ0fQ.eyJjb25maXJtIjo4fQ.OvBeXK2bfHHGb487kyywJiAmdiRhfAzLWTCynSCWEy8 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:09:17] "GET /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDk0NCwiZXhwIjoxNDQ5Mzc4NTQ0fQ.eyJjb25maXJtIjo4fQ.OvBeXK2bfHHGb487kyywJiAmdiRhfAzLWTCynSCWEy8 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:09:18] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:09:27] "POST /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDk0NCwiZXhwIjoxNDQ5Mzc4NTQ0fQ.eyJjb25maXJtIjo4fQ.OvBeXK2bfHHGb487kyywJiAmdiRhfAzLWTCynSCWEy8 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:09:34] "POST /auth/login?next=%2Fauth%2Fconfirm%2FeyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDk0NCwiZXhwIjoxNDQ5Mzc4NTQ0fQ.eyJjb25maXJtIjo4fQ.OvBeXK2bfHHGb487kyywJiAmdiRhfAzLWTCynSCWEy8 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:09:34] "GET /auth/confirm/eyJhbGciOiJIUzI1NiIsImlhdCI6MTQ0OTM3NDk0NCwiZXhwIjoxNDQ5Mzc4NTQ0fQ.eyJjb25maXJtIjo4fQ.OvBeXK2bfHHGb487kyywJiAmdiRhfAzLWTCynSCWEy8 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:09:34] "GET / HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:10:32] "GET /game/index/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:10:40] "GET /game/index/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:10:40] "GET /static/styles.css HTTP/1.1" 304 -
+208.102.4.38 - - [05/Dec/2015 23:10:40] "GET /auth/login HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:10:40] "GET /static/styles.css HTTP/1.1" 304 -
+208.102.4.38 - - [05/Dec/2015 23:11:05] "GET /game/index/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:13:25] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:13:30] "POST /game/world HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:13:31] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:13:35] "POST /game/world HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:13:35] "GET /game/world HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:14:11] "GET /game/orders HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:14:23] "GET /game/index/ HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:15:27] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:15:33] "GET /game/world HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:15:35] "GET /game/index/ HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:15:50] "GET /game/map HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:15:50] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:15:52] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:16:53] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:16:53] "GET /static/styles.css HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:16:54] "GET /static/favicon.ico HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:17:31] "GET /game/map HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:17:33] "GET /game/map/3658 HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:17:36] "POST /game/map/3658 HTTP/1.1" 302 -
+75.169.56.120 - - [05/Dec/2015 23:17:36] "GET /game/map/3658/create-race/ HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:18:12] "POST /game/map/3658/create-race/ HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:19:22] "POST /game/map/3658/create-race/ HTTP/1.1" 302 -
+75.169.56.120 - - [05/Dec/2015 23:19:22] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:19:29] "GET /game/orders HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:03] "GET /game/orders HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:10] "GET /game/orders/1/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:38] "GET /game/map HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:20:41] "GET /game/orders/1/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:41] "GET /static/images/forest.png HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:41] "GET /static/images/grassland.png HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:41] "GET /static/images/water.png HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:41] "GET /static/images/hills.png HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:41] "GET /static/images/mountains.png HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:20:43] "GET /game/map/3658 HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:21:10] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:21:13] "GET /game/players/7/ HTTP/1.1" 302 -
+75.169.56.120 - - [05/Dec/2015 23:21:13] "GET /user/Kurin HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:21:16] "GET /game/orders HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:21:18] "GET /game/cities HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:21:19] "GET /game/races HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:21:21] "GET /game/map HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:21:23] "GET /game/map/3658 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:21:49] "GET /game/activate/4 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:21:49] "GET /game/index/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:21:56] "GET /game/world HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:22:08] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:22:09] "GET /static/images/grassland.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:22:09] "GET /static/images/water.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:22:09] "GET /static/images/forest.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:22:09] "GET /static/images/hills.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:22:12] "GET /static/images/mountains.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:22:21] "GET /game/map/4929 HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:22:39] "GET /game/map/3658 HTTP/1.1" 200 -
+75.169.56.120 - - [05/Dec/2015 23:22:39] "GET /static/styles.css HTTP/1.1" 304 -
+75.169.56.120 - - [05/Dec/2015 23:22:39] "GET /static/images/grassland.png HTTP/1.1" 304 -
+75.169.56.120 - - [05/Dec/2015 23:22:39] "GET /static/images/forest.png HTTP/1.1" 304 -
+75.169.56.120 - - [05/Dec/2015 23:22:39] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:23:52] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:23:57] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:23:57] "GET /game/map/4929/create-avatar/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:24:56] "POST /game/map/4929/create-avatar/ HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:24:56] "GET /game/avatars HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:25:10] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:26:10] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:26:10] "GET /game/map/4929/create-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:29:27] "POST /game/map/4929/create-race/ HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:12] "GET /game/map/1432 HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:12] "GET /static/images/grassland.png HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:17] "GET /static/images/forest.png HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:18] "GET /game/map HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:19] "GET /static/images/hills.png HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:19] "GET /static/images/water.png HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:20] "GET /static/images/mountains.png HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:21] "POST /game/map/1432 HTTP/1.1" 302 -
+76.90.243.207 - - [05/Dec/2015 23:30:21] "GET /game/map/1432/create-race/ HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:30:54] "GET /game/map/1432 HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:31:24] "POST /game/map/1432/create-race/ HTTP/1.1" 302 -
+76.90.243.207 - - [05/Dec/2015 23:31:24] "GET /game/races HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:31:30] "POST /game/map/4929/create-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:31:30] "GET /game/races HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:31:45] "GET /game/orders/3/ HTTP/1.1" 200 -
+76.90.243.207 - - [05/Dec/2015 23:32:15] "GET /game/orders/2/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:33:37] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:34:15] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:34:54] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:34:56] "GET /game/orders HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:34:59] "GET /game/avatars HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:35:03] "GET /game/events HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:35:04] "GET /game/military HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:35:06] "GET /game/races HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:35:11] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:36:08] "GET /game/map/4881 HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:36:14] "POST /game/map/4881 HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:36:14] "GET /game/map/4881 HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:36:16] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:36:22] "POST /game/world HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:36:23] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:36:29] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:36:34] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:36:38] "POST /game/map/5204 HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:36:38] "GET /game/map/5204/create-race/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:37:14] "POST /game/map/5204/create-race/ HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:37:17] "GET /game/races HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:37:24] "GET /game/players/1/ HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:37:27] "GET /user/Summercat HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:37:32] "GET /game/races/4 HTTP/1.1" 301 -
+172.56.40.108 - - [05/Dec/2015 23:37:33] "GET /game/races/4/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:37:39] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:38:42] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:38:53] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:39:08] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:39:18] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:39:19] "GET /game/map/4929/create-avatar/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:39:24] "GET /favicon.ico HTTP/1.1" 404 -
+208.102.4.38 - - [05/Dec/2015 23:39:24] "GET /favicon.ico HTTP/1.1" 404 -
+208.102.4.38 - - [05/Dec/2015 23:39:29] "POST /game/map/4929 HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:39:30] "GET /game/races/3/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:39:38] "GET /game/map/4929/create-avatar/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:40:16] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:40:21] "POST /game/map/5204 HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:40:24] "GET /game/map/5204/create-avatar/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:40:27] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:40:38] "POST /game/map/5204 HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:40:38] "GET /game/map/5204/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:40:41] "GET /game/races/3/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:40:46] "POST /game/map/5204/expand-race/ HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:40:46] "GET /game/map/5153 HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:41:02] "GET /game/map/5154 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:41:10] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:41:11] "GET /game/map/4929/create-avatar/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:41:15] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:41:15] "GET /game/map/4929/create-avatar/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:41:17] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:41:18] "GET /game/map/4929/create-avatar/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:42:11] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:42:12] "GET /game/map/4929/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:42:46] "POST /game/map/4929/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:42:46] "GET /game/map/4879 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:43:01] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:43:01] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:47:11] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:47:36] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:47:36] "GET /game/map/4929/make-city/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:23] "POST /game/map/4929/make-city/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1649, in single_location_make_city
+    history = CityHistory(cityid=city.id,
+AttributeError: 'NoneType' object has no attribute 'id'
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:48:24] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:49:49] "GET /game/cities HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:49:53] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:01] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:05] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:09] "POST /game/map/5204 HTTP/1.1" 302 -
+172.56.40.108 - - [05/Dec/2015 23:50:09] "GET /game/map/5204/make-city/ HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:18] "POST /game/map/5204/make-city/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1649, in single_location_make_city
+    history = CityHistory(cityid=city.id,
+AttributeError: 'NoneType' object has no attribute 'id'
+172.56.40.108 - - [05/Dec/2015 23:50:18] "GET /game/map/5204/make-city/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:19] "GET /game/map/5204/make-city/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:19] "GET /game/map/5204/make-city/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:19] "GET /game/map/5204/make-city/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:20] "GET /game/map/5204/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:20] "GET /game/map/5204/make-city/?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+172.56.40.108 - - [05/Dec/2015 23:50:20] "GET /game/map/5204/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:50:41] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=source&frm=140464361654984&s=uH3FxPqbrvKeJxwKMQtB HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:53:02] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:53:03] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:48] "POST /game/map/4929/make-city/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1649, in single_location_make_city
+    history = CityHistory(cityid=city.id,
+AttributeError: 'NoneType' object has no attribute 'id'
+208.102.4.38 - - [05/Dec/2015 23:55:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:49] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:49] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:49] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:49] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:49] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:51] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:55:52] "GET /game/orders HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:56:10] "GET /game/orders/3/ HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:56:18] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:56:35] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:56:42] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:56:42] "GET /game/map/4929/make-prov-bldg HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:59:48] "POST /game/map/4929/make-prov-bldg HTTP/1.1" 302 -
+208.102.4.38 - - [05/Dec/2015 23:59:49] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [05/Dec/2015 23:59:59] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:00:08] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:00:17] "GET /game/prov/1 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:00:33] "GET /game/map/4879 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:00:40] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:00:43] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:00:43] "GET /game/map/4929/make-city/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:06] "POST /game/map/4929/make-city/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1649, in single_location_make_city
+    history = CityHistory(cityid=city.id,
+AttributeError: 'NoneType' object has no attribute 'id'
+208.102.4.38 - - [06/Dec/2015 00:01:06] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:06] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:07] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:07] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:07] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:07] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:07] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:07] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:07] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:14] "GET /game/map/4829 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:17] "GET /game/map/4879 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:18] "GET /game/map/4829 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:26] "GET /game/map/4879 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:31] "POST /game/map/4879 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:01:31] "GET /game/map/4879/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:35] "POST /game/map/4879/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:01:37] "GET /game/map/4829 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:45] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:50] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:01:51] "GET /game/map/4929/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:01:53] "POST /game/map/4929/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:01:54] "GET /game/map/4979 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:00] "POST /game/map/4979 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:02:01] "GET /game/map/4979/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:03] "POST /game/map/4979/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:02:03] "GET /game/map/5029 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:06] "GET /game/map/5029 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:09] "POST /game/map/5029 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:02:09] "GET /game/map/5029/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:11] "POST /game/map/5029/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:02:11] "GET /game/map/5079 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:14] "GET /game/map/5079 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:17] "GET /game/map/4979 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:19] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:22] "GET /game/map/4927 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:28] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:38] "GET /game/map/4979 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:41] "GET /game/map/5079 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:02:47] "POST /game/map/5079 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:02:47] "GET /game/map/5079/make-city/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:11] "POST /game/map/5079/make-city/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1649, in single_location_make_city
+    history = CityHistory(cityid=city.id,
+AttributeError: 'NoneType' object has no attribute 'id'
+208.102.4.38 - - [06/Dec/2015 00:03:11] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:11] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:11] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:11] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:12] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:12] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:12] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:12] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:12] "GET /game/map/5079/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:16] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:18] "GET /game/avatars HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:20] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:27] "GET /game/orders HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:31] "GET /game/orders/1/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:34] "GET /game/orders/4/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:42] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:03:49] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:30] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:36] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:11:36] "GET /game/map/4929/make-city/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:47] "POST /game/map/4929/make-city/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1649, in single_location_make_city
+    history = CityHistory(cityid=city.id,
+AttributeError: 'NoneType' object has no attribute 'id'
+208.102.4.38 - - [06/Dec/2015 00:11:47] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:47] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:11:48] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:16] "POST /game/map/4929/make-city/ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1649, in single_location_make_city
+    history = CityHistory(cityid=city.id,
+AttributeError: 'NoneType' object has no attribute 'id'
+208.102.4.38 - - [06/Dec/2015 00:12:16] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:16] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:16] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:16] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:16] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:17] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:17] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:18] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=source&frm=140464380556960&s=uH3FxPqbrvKeJxwKMQtB HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:21] "GET /game/map/4929/make-city/?__debugger__=yes&cmd=source&frm=140464381238968&s=uH3FxPqbrvKeJxwKMQtB HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:12:33] "GET /game/prov HTTP/1.1" 200 -
+ * Detected change in '/DoW/dawnofworlds/app/game/views.py', reloading
+Letter:  36
+Number:  3
+Letter:  30
+Number:  28
+Letter:  29
+Number:  28
+Letter:  30
+Number:  28
+Letter:  31
+Number:  28
+Letter:  32
+Number:  28
+ * Restarting with stat
+172.56.40.108 - - [06/Dec/2015 00:17:38] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:17:48] "GET /game/cities HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:17:51] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:17:57] "GET /game/prov HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:18:03] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:18:10] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:18:13] "POST /game/map/5204 HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 00:18:13] "GET /game/map/5204/make-prov-bldg HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:18:27] "POST /game/map/5204/make-prov-bldg HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 00:18:27] "GET /game/prov HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:18:34] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:18:41] "POST /game/map/5204 HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 00:18:45] "GET /game/map/5204/make-city/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:18:53] "POST /game/map/5204/make-city/ HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 00:18:54] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:19:12] "POST /game/map/4929/make-city/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:19:12] "GET /game/cities HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:20:20] "GET /game/cities/1 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:21:07] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:21:08] "GET /static/images/city_transparent.png HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:39:18] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:39:33] "POST /game/world HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 00:39:34] "GET /game/world HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:39:55] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:39:56] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:39:59] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:40:03] "GET /static/images/city_transparent.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:40:09] "GET /game/map/4829 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:40:14] "POST /game/map/4829 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:40:14] "GET /game/map/4829/make-city/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:41:25] "POST /game/map/4829/make-city/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:41:26] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:41:30] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:41:32] "GET /game/races HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:41:43] "GET /game/races/3 HTTP/1.1" 301 -
+208.102.4.38 - - [06/Dec/2015 00:41:44] "GET /game/races/3/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:41:52] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:41:57] "GET /game/avatars HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:41:58] "GET /game/orders HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:09] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:16] "GET /game/map/4928 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:21] "GET /game/map/4928 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:22] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:25] "POST /game/map/4929 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:42:26] "GET /game/map/4929/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:28] "POST /game/map/4929/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:42:28] "GET /game/map/4928 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:30] "GET /game/map/4928 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:51] "GET /game/map/4928 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:42:54] "POST /game/map/4928 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:42:54] "GET /game/map/4928/make-prov-bldg HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:44:41] "POST /game/map/4928/make-prov-bldg HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:44:41] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:44:54] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:44:56] "GET /game/prov/3 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:44:59] "GET /game/world HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:45:15] "GET /game/index/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:45:20] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:45:21] "GET /static/images/water.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:45:22] "GET /static/images/grassland.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:45:41] "GET /game/map/4979 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:47:41] "GET /game/map/4979 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:47:43] "GET /game/map/5079 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:47:45] "GET /game/map/5029 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:47:49] "POST /game/map/5029 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:47:49] "GET /game/map/5029/make-city/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:49:23] "POST /game/map/5029/make-city/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:49:23] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:49:35] "GET /game/cities/4 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:49:45] "GET /game/cities/2 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:51:43] "POST /game/cities/2 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:51:43] "GET /game/cities/2 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:53:13] "POST /game/cities/2 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:53:13] "GET /game/cities/2 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:54:34] "POST /game/cities/2 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:54:34] "GET /game/cities/2 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:55:49] "POST /game/cities/2 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:55:49] "GET /game/cities/2 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:55:56] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:55:58] "GET /game/cities/3 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:56:19] "POST /game/cities/3 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:56:19] "GET /game/cities/3 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:56:45] "POST /game/cities/3 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:56:46] "GET /game/cities/3 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:56:56] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:57:02] "GET /game/cities/4 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:57:09] "GET /game/cities/2 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:57:17] "GET /game/cities/3 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:57:31] "POST /game/cities/3 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:57:31] "GET /game/cities/3 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:57:46] "GET /game/world HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:58:12] "GET /game/players/7/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:58:13] "GET /user/Kurin HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:58:15] "GET /game/players/8/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:58:16] "GET /user/drg HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:58:19] "GET /game/players/1/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 00:58:19] "GET /user/Summercat HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:58:33] "GET /game/races HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:58:52] "GET /game/races/3/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:07] "GET /game/orders HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:09] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:10] "GET /game/races HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:12] "GET /game/avatars HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:15] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:16] "GET /static/images/forest.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:16] "GET /static/images/hills.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:21] "GET /static/images/mountains.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:31] "GET /game/map/5079 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 00:59:37] "GET /game/world HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:53] "GET /game/map/4979 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 00:59:53] "GET /game/map/4979 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 01:00:44] "GET /game/map/4929 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 01:01:07] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:01:14] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 01:01:14] "GET /game/map/4758 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:01:20] "GET /game/cities/1 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 01:01:25] "GET /game/map/4930 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 01:01:31] "POST /game/map/4930 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 01:01:31] "GET /game/map/4930/create-race/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:01:31] "GET /game/races/4/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:20:56] "GET /game/orders HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:21:03] "GET /game/orders HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:21:22] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:21:29] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:21:35] "GET /game/orders HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:21:42] "GET /game/orders/4/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:21:48] "GET /game/orders HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:21:50] "GET /game/orders/3/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:21:57] "POST /game/orders/3/ HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 01:21:57] "GET /game/orders/3/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:22:01] "GET /game/world HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:22:04] "GET /game/map HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:22:07] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:23:13] "GET /game/map/5154 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:23:16] "POST /game/map/5154 HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 01:23:16] "GET /game/map/5154/create-race/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:23:33] "POST /game/map/5154/create-race/ HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 01:23:34] "GET /game/races HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:23:40] "GET /game/map/5154/create-race/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:23:46] "POST /game/map/5154/create-race/ HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 01:23:47] "GET /game/races HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:23:58] "GET /game/orders/5/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:24:11] "POST /game/orders/5/ HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 01:24:11] "GET /game/orders/5/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:24:18] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:34:56] "POST /game/map/5204 HTTP/1.1" 302 -
+172.56.40.108 - - [06/Dec/2015 01:34:56] "GET /game/map/5204/expand-race/ HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:42:49] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:44:16] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:44:16] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:44:17] "GET /static/images/grassland.png HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:44:17] "GET /static/images/water.png HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:44:17] "GET /static/images/city_transparent.png HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 01:44:17] "GET /static/favicon.ico HTTP/1.1" 200 -
+ * Detected change in '/DoW/dawnofworlds/app/game/views.py', reloading
+Letter:  30
+Number:  28
+Letter:  36
+Number:  3
+ * Restarting with stat
+208.102.4.38 - - [06/Dec/2015 02:08:06] "GET /game/map/4930 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:11] "GET /static/styles.css HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:11] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:12] "GET /static/images/mountains.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:12] "GET /static/images/city_transparent.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:12] "GET /static/images/hills.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:12] "GET /static/images/forest.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:26] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:27] "GET /static/images/grassland.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:08:27] "GET /static/images/water.png HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:09:33] "GET /game/map/5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:09:34] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:09:34] "GET /static/images/grassland.png HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:09:34] "GET /static/images/water.png HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:09:34] "GET /static/images/city_transparent.png HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:09:35] "GET /static/favicon.ico HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:10:11] "GET /game/map/5204 HTTP/1.1" 302 -
+76.90.243.207 - - [06/Dec/2015 02:10:11] "GET /auth/login?next=%2Fgame%2Fmap%2F5204 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 02:10:38] "GET /game/map/5204 HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:10:44] "POST /auth/login?next=%2Fgame%2Fmap%2F5204 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:12:38] "GET /game/map/5204/expand-race/4 HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:13:12] "GET /game/orders HTTP/1.1" 200 -
+172.56.40.108 - - [06/Dec/2015 02:13:16] "GET /game/orders/5/ HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:16:38] "POST /auth/login?next=%2Fgame%2Fmap%2F5204 HTTP/1.1" 302 -
+76.90.243.207 - - [06/Dec/2015 02:16:38] "GET /game/map/5204 HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1250, in single_location
+    world_check()
+  File "/DoW/dawnofworlds/app/game/views.py", line 284, in world_check
+    world = World.query.get(session['active_world'])
+  File "/usr/local/lib/python3.4/dist-packages/werkzeug/local.py", line 368, in <lambda>
+    __getitem__ = lambda x, i: x._get_current_object()[i]
+KeyError: 'active_world'
+76.90.243.207 - - [06/Dec/2015 02:16:39] "GET /game/map/5204?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:16:39] "GET /game/map/5204?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:16:39] "GET /game/map/5204?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:16:39] "GET /game/map/5204?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:16:39] "GET /game/map/5204?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:16:39] "GET /game/map/5204?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:16:39] "GET /game/map/5204?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+76.90.243.207 - - [06/Dec/2015 02:16:43] "GET /favicon.ico HTTP/1.1" 404 -
+172.56.40.108 - - [06/Dec/2015 02:18:33] "GET /game/map/5154 HTTP/1.1" 200 -
+50.178.189.106 - - [06/Dec/2015 04:54:08] "GET /game/randomchar HTTP/1.1" 200 -
+50.178.189.106 - - [06/Dec/2015 04:54:08] "GET /static/styles.css HTTP/1.1" 200 -
+50.178.189.106 - - [06/Dec/2015 04:54:08] "GET /static/favicon.ico HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:33:30] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:33:31] "GET /static/styles.css HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:48:52] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:48:54] "GET /auth/login HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:08] "POST /auth/login HTTP/1.1" 302 -
+68.8.58.109 - - [06/Dec/2015 06:49:08] "GET / HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:10] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:11] "GET /game/activate/1 HTTP/1.1" 302 -
+68.8.58.109 - - [06/Dec/2015 06:49:11] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:13] "GET /game/activate/4 HTTP/1.1" 302 -
+68.8.58.109 - - [06/Dec/2015 06:49:13] "GET /game/index/ HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:14] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:17] "GET /game/map HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:17] "GET /static/images/hills.png HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:17] "GET /static/images/city_transparent.png HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:17] "GET /static/images/forest.png HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:17] "GET /static/images/water.png HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:17] "GET /static/images/grassland.png HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:17] "GET /static/images/mountains.png HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:25] "GET /game/cities HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:26] "GET /game/orders HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:27] "GET /game/avatars HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:34] "GET /game/prov HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:38] "GET /game/world HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:40] "GET /game/orders HTTP/1.1" 200 -
+68.8.58.109 - - [06/Dec/2015 06:49:41] "GET /game/orders/3/ HTTP/1.1" 200 -
+77.162.196.185 - - [06/Dec/2015 12:00:44] "GET /game/randomchar HTTP/1.1" 200 -
+77.162.196.185 - - [06/Dec/2015 12:00:44] "GET /static/styles.css HTTP/1.1" 200 -
+77.162.196.185 - - [06/Dec/2015 12:00:45] "GET /static/favicon.ico HTTP/1.1" 200 -
+72.73.203.54 - - [06/Dec/2015 12:07:51] "GET /game/randomchar HTTP/1.1" 200 -
+72.73.203.54 - - [06/Dec/2015 12:07:52] "GET /static/styles.css HTTP/1.1" 200 -
+81.107.177.224 - - [06/Dec/2015 12:12:05] "GET /game/randomchar HTTP/1.1" 200 -
+81.107.177.224 - - [06/Dec/2015 12:12:06] "GET /static/favicon.ico HTTP/1.1" 200 -
+81.107.177.224 - - [06/Dec/2015 12:12:06] "GET /static/styles.css HTTP/1.1" 200 -
+81.107.177.224 - - [06/Dec/2015 12:12:07] "GET /game/randomchar HTTP/1.1" 200 -
+92.239.254.16 - - [06/Dec/2015 12:24:18] "GET /game/randomchar HTTP/1.1" 200 -
+92.239.254.16 - - [06/Dec/2015 12:24:18] "GET /static/styles.css HTTP/1.1" 200 -
+92.239.254.16 - - [06/Dec/2015 12:24:19] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:21:40] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:21:41] "GET /static/styles.css HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:21:41] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:21:44] "GET /game/cities/4 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:21:48] "GET /game/cities/3 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:21:56] "GET /game/cities/4 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:22:08] "POST /game/cities/4 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:22:08] "GET /game/cities/4 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:22:14] "GET /game/cities/3 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:22:21] "GET /game/cities/4 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:22:24] "POST /game/cities/4 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:22:24] "GET /game/cities/4 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:23:44] "POST /game/cities/4 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:23:44] "GET /game/cities/4 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:01] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:02] "GET /static/images/hills.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:02] "GET /static/images/forest.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:05] "GET /static/images/mountains.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:28] "GET /game/map/4829 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:35] "GET /game/map/4779 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:37] "GET /game/map/4829 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:42] "POST /game/map/4829 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:24:43] "GET /game/map/4829/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:48] "POST /game/map/4829/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:24:49] "GET /game/map/4779 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:24:51] "GET /game/map/4779 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:01] "POST /game/map/4779 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:25:01] "GET /game/map/4779/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:03] "POST /game/map/4779/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:25:03] "GET /game/map/4728 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:11] "POST /game/map/4728 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:25:11] "GET /game/map/4728/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:13] "POST /game/map/4728/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:25:13] "GET /game/map/4677 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:18] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:37] "GET /game/map/4677 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:40] "GET /game/map/4676 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:42] "GET /game/map/4677 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:46] "POST /game/map/4677 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:25:47] "GET /game/map/4677/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:49] "POST /game/map/4677/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:25:49] "GET /game/map/4676 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:56] "GET /game/map/4675 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:25:57] "GET /game/map/4676 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:06] "GET /game/map/4675 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:08] "POST /game/map/4675 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:09] "GET /game/map/4675 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:12] "GET /game/map/4627 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:13] "GET /game/map/4629 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:15] "GET /game/map/4677 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:23] "POST /game/map/4677 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:23] "GET /game/map/4677/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:25] "POST /game/map/4677/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:25] "GET /game/map/4627 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:29] "GET /game/map/4627 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:33] "POST /game/map/4627 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:33] "GET /game/map/4627/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:35] "POST /game/map/4627/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:35] "GET /game/map/4577 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:38] "GET /game/map/4577 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:41] "POST /game/map/4577 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:41] "GET /game/map/4577/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:43] "POST /game/map/4577/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:47] "GET /game/map/4527 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:50] "POST /game/map/4527 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:51] "GET /game/map/4527/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:53] "POST /game/map/4527/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:53] "GET /game/map/4477 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:26:58] "POST /game/map/4477 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:26:58] "GET /game/map/4477/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:00] "POST /game/map/4477/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:27:00] "GET /game/map/4427 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:06] "POST /game/map/4427 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:27:06] "GET /game/map/4427/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:07] "POST /game/map/4427/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:27:08] "GET /game/map/4377 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:11] "POST /game/map/4377 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:27:11] "GET /game/map/4377/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:15] "POST /game/map/4377/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:27:15] "GET /game/map/4327 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:19] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:23] "GET /static/images/city_transparent.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:51] "GET /game/map/4327 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:56] "POST /game/map/4327 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:27:56] "GET /game/map/4327/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:27:58] "POST /game/map/4327/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:27:58] "GET /game/map/4276 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:02] "POST /game/map/4276 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:28:03] "GET /game/map/4276/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:04] "POST /game/map/4276/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:28:04] "GET /game/map/4225 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:15] "POST /game/map/4225 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:28:15] "GET /game/map/4225/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:17] "POST /game/map/4225/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:28:17] "GET /game/map/4174 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:21] "POST /game/map/4174 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:28:22] "GET /game/map/4174/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:23] "POST /game/map/4174/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:28:23] "GET /game/map/4123 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:30] "GET /game/map/4174 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:33] "GET /game/map/4123 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:49] "POST /game/map/4123 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:28:50] "GET /game/map/4123/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:52] "POST /game/map/4123/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:28:52] "GET /game/map/4072 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:28:59] "POST /game/map/4072 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:29:00] "GET /game/map/4072/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:02] "POST /game/map/4072/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:29:06] "GET /game/map/4021 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:07] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:23] "GET /game/map/4174 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:28] "POST /game/map/4174 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:29:29] "GET /game/map/4174/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:33] "POST /game/map/4174/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:29:33] "GET /game/map/4224 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:36] "GET /game/map/4174 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:42] "POST /game/map/4174 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:29:42] "GET /game/map/4174/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:43] "POST /game/map/4174/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:29:48] "GET /game/map/4124 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:54] "POST /game/map/4124 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:29:54] "GET /game/map/4124/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:29:56] "POST /game/map/4124/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:29:56] "GET /game/map/4074 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:30:01] "POST /game/map/4074 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:30:02] "GET /game/map/4074/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:30:05] "POST /game/map/4074/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:30:05] "GET /game/map/4025 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:30:13] "POST /game/map/4025 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:30:13] "GET /game/map/4025/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:30:16] "POST /game/map/4025/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:30:16] "GET /game/map/4075 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:30:21] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:30:35] "GET /game/map/4224 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:31:14] "POST /game/map/4224 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:31:14] "GET /game/map/4224/make-prov-bldg HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:31:48] "POST /game/map/4224/make-prov-bldg HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:31:48] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:32:08] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:32:20] "GET /game/map/4074 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:32:23] "POST /game/map/4074 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:32:23] "GET /game/map/4074/make-prov-bldg HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:32:56] "POST /game/map/4074/make-prov-bldg HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:32:56] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:33:01] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:33:36] "GET /game/map/4021 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:33:41] "POST /game/map/4021 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:33:41] "GET /game/map/4021/make-city/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:35:18] "POST /game/map/4021/make-city/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:35:19] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:35:53] "GET /game/cities/5 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:37:42] "POST /game/cities/5 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:37:42] "GET /game/cities/5 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:38:14] "POST /game/cities/5 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:38:14] "GET /game/cities/5 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:39:00] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:39:06] "GET /static/images/water.png HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:39:13] "GET /game/map/4225 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:39:21] "GET /game/map/4225 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:39:26] "POST /game/map/4225 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:39:26] "GET /game/map/4225/expand-race/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:39:28] "POST /game/map/4225/expand-race/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:39:28] "GET /game/map/4176 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:39:34] "POST /game/map/4176 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:39:34] "GET /game/map/4176/make-city/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:39:59] "POST /game/map/4176/make-city/ HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:39:59] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:40:13] "GET /game/cities/6 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:41:05] "POST /game/cities/6 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:41:06] "GET /game/cities/6 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:41:44] "POST /game/cities/6 HTTP/1.1" 302 -
+208.102.4.38 - - [06/Dec/2015 13:41:44] "GET /game/cities/6 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:41:50] "GET /game/races HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:41:58] "GET /game/cities HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:41:59] "GET /game/orders HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:42:07] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:42:08] "GET /game/avatars HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:42:10] "GET /game/avatars/1 HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:42:20] "GET /game/military HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:42:26] "GET /game/prov HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:42:28] "GET /game/events HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:42:38] "GET /game/index/ HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 13:42:41] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 20:25:40] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 20:25:43] "GET /static/styles.css HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 20:25:43] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [06/Dec/2015 20:25:44] "GET /static/images/grassland.png HTTP/1.1" 200 -
+ * Detected change in '/DoW/dawnofworlds/app/game/views.py', reloading
+Letter:  28
+Number:  28
+Letter:  27
+Number:  28
+Letter:  26
+Number:  27
+Letter:  25
+Number:  26
+Letter:  25
+Number:  26
+Letter:  24
+Number:  26
+Letter:  23
+Number:  26
+Letter:  22
+Number:  26
+Letter:  21
+Number:  26
+Letter:  20
+Number:  26
+Letter:  19
+Number:  26
+Letter:  18
+Number:  26
+Letter:  17
+Number:  25
+Letter:  16
+Number:  24
+Letter:  15
+Number:  23
+Letter:  14
+Number:  22
+Letter:  13
+Number:  21
+Letter:  15
+Number:  23
+Letter:  15
+Number:  23
+Letter:  14
+Number:  23
+Letter:  13
+Number:  23
+Letter:  12
+Number:  24
+Letter:  16
+Number:  24
+ * Restarting with stat
+172.56.41.181 - - [06/Dec/2015 22:04:53] "GET / HTTP/1.1" 200 -
+172.56.41.181 - - [06/Dec/2015 22:04:53] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.181 - - [06/Dec/2015 22:04:55] "GET /auth/login HTTP/1.1" 200 -
+172.56.41.181 - - [06/Dec/2015 22:05:02] "POST /auth/login HTTP/1.1" 302 -
+172.56.41.181 - - [06/Dec/2015 22:05:02] "GET / HTTP/1.1" 200 -
+172.56.41.181 - - [06/Dec/2015 22:05:05] "GET /game/index/ HTTP/1.1" 200 -
+172.56.41.181 - - [06/Dec/2015 22:05:07] "GET /game/activate/4 HTTP/1.1" 302 -
+172.56.41.181 - - [06/Dec/2015 22:05:08] "GET /game/index/ HTTP/1.1" 200 -
+172.56.41.181 - - [06/Dec/2015 22:05:13] "GET /game/orders HTTP/1.1" 200 -
+172.56.41.181 - - [06/Dec/2015 22:05:16] "GET /game/orders/1/ HTTP/1.1" 200 -
+172.56.41.181 - - [06/Dec/2015 22:05:24] "POST /game/orders/1/ HTTP/1.1" 302 -
+172.56.41.181 - - [06/Dec/2015 22:05:24] "GET /game/orders/1/ HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 01:47:07] "GET / HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 01:47:34] "GET /game/world HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 01:47:37] "GET /game/players HTTP/1.1" 200 -
+76.220.61.78 - - [07/Dec/2015 01:47:47] "GET / HTTP/1.1" 200 -
+76.220.61.78 - - [07/Dec/2015 01:47:47] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 01:52:39] "GET / HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 01:52:41] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 01:52:42] "GET /game/world HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 02:10:04] "GET /game/world HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 02:10:04] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 02:10:05] "GET /static/favicon.ico HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 02:10:24] "GET /game/players/7/ HTTP/1.1" 302 -
+172.56.41.181 - - [07/Dec/2015 02:10:24] "GET /user/Kurin HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 02:11:17] "GET /game/orders HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 02:11:21] "GET /game/orders/5/ HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 02:11:30] "POST /game/orders/5/ HTTP/1.1" 302 -
+172.56.41.181 - - [07/Dec/2015 02:11:30] "GET /game/orders/5/ HTTP/1.1" 200 -
+172.56.41.181 - - [07/Dec/2015 02:11:36] "GET /game/orders HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:14:52] "GET /game/map HTTP/1.1" 302 -
+104.175.254.151 - - [07/Dec/2015 19:14:52] "GET /auth/login?next=%2Fgame%2Fmap HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:14:53] "GET /static/styles.css HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:14:54] "GET /static/favicon.ico HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:02] "POST /auth/login?next=%2Fgame%2Fmap HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:08] "POST /auth/login?next=%2Fgame%2Fmap HTTP/1.1" 302 -
+104.175.254.151 - - [07/Dec/2015 19:15:08] "GET /game/map HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1224, in world_map
+    world_check()
+  File "/DoW/dawnofworlds/app/game/views.py", line 284, in world_check
+    world = World.query.get(session['active_world'])
+  File "/usr/local/lib/python3.4/dist-packages/werkzeug/local.py", line 368, in <lambda>
+    __getitem__ = lambda x, i: x._get_current_object()[i]
+KeyError: 'active_world'
+104.175.254.151 - - [07/Dec/2015 19:15:08] "GET /game/map?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:08] "GET /game/map?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:08] "GET /game/map?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:08] "GET /game/map?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:09] "GET /game/map?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:09] "GET /game/map?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:09] "GET /game/map?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:13] "GET /favicon.ico HTTP/1.1" 404 -
+104.175.254.151 - - [07/Dec/2015 19:15:16] "POST /auth/login?next=%2Fgame%2Fmap HTTP/1.1" 302 -
+104.175.254.151 - - [07/Dec/2015 19:15:16] "GET /game/map HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1836, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1820, in wsgi_app
+    response = self.make_response(self.handle_exception(e))
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1403, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python3.4/dist-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.4/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python3.4/dist-packages/flask_login.py", line 658, in decorated_view
+    return func(*args, **kwargs)
+  File "/DoW/dawnofworlds/app/game/views.py", line 1224, in world_map
+    world_check()
+  File "/DoW/dawnofworlds/app/game/views.py", line 284, in world_check
+    world = World.query.get(session['active_world'])
+  File "/usr/local/lib/python3.4/dist-packages/werkzeug/local.py", line 368, in <lambda>
+    __getitem__ = lambda x, i: x._get_current_object()[i]
+KeyError: 'active_world'
+104.175.254.151 - - [07/Dec/2015 19:15:16] "GET /game/map?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:16] "GET /game/map?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:16] "GET /game/map?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:16] "GET /game/map?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:16] "GET /game/map?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:16] "GET /game/map?__debugger__=yes&cmd=resource&f=source.png HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:26] "POST /auth/login?next=%2Fgame%2Fmap HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:15:29] "GET /auth/reset HTTP/1.1" 302 -
+104.175.254.151 - - [07/Dec/2015 19:15:30] "GET / HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:18:04] "GET /game/index/ HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:18:14] "GET /auth/change-password HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:18:21] "GET /auth/change-email HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:18:25] "GET /game/index/ HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:18:33] "GET /game/activate/3 HTTP/1.1" 302 -
+104.175.254.151 - - [07/Dec/2015 19:18:34] "GET /game/index/ HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:18:39] "GET /game/races HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:18:47] "GET /game/races/2 HTTP/1.1" 301 -
+104.175.254.151 - - [07/Dec/2015 19:18:47] "GET /game/races/2/ HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:18:54] "GET /game/orders/2/ HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:19:48] "GET /game/map/1432 HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:19:48] "GET /static/images/forest.png HTTP/1.1" 200 -
+104.175.254.151 - - [07/Dec/2015 19:19:48] "GET /static/images/grassland.png HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 19:57:46] "GET / HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 19:57:47] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 19:59:25] "GET / HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 19:59:26] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 19:59:45] "GET / HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 19:59:46] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:00:18] "GET / HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:00:18] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:00:18] "GET /static/favicon.ico HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:00:26] "GET /auth/login HTTP/1.1" 200 -
+80.197.95.146 - - [07/Dec/2015 20:08:50] "GET / HTTP/1.1" 200 -
+80.197.95.146 - - [07/Dec/2015 20:08:51] "GET /static/styles.css HTTP/1.1" 200 -
+80.197.95.146 - - [07/Dec/2015 20:08:51] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:01] "GET / HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:02] "GET /static/styles.css HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:02] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:06] "GET /auth/login HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:41] "POST /auth/login HTTP/1.1" 302 -
+208.102.4.38 - - [07/Dec/2015 20:09:41] "GET / HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:43] "GET /game/index/ HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:46] "GET /game/activate/4 HTTP/1.1" 302 -
+208.102.4.38 - - [07/Dec/2015 20:09:46] "GET /game/index/ HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:52] "GET /game/map HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:53] "GET /static/images/forest.png HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:53] "GET /static/images/grassland.png HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:53] "GET /static/images/water.png HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:53] "GET /static/images/hills.png HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:56] "GET /static/images/city_transparent.png HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:56] "GET /static/images/mountains.png HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:09:57] "GET /game/world HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:10:01] "GET /game/players/8/ HTTP/1.1" 302 -
+208.102.4.38 - - [07/Dec/2015 20:10:01] "GET /user/drg HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 20:10:04] "GET /favicon.ico HTTP/1.1" 404 -
+208.102.4.38 - - [07/Dec/2015 20:10:04] "GET /favicon.ico HTTP/1.1" 404 -
+208.102.4.38 - - [07/Dec/2015 20:10:17] "GET /game/map HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:40:49] "GET /randomchar HTTP/1.1" 404 -
+172.56.41.252 - - [07/Dec/2015 20:40:50] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:40:50] "GET /static/favicon.ico HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:40:55] "GET /game/randomchar HTTP/1.1" 200 -
+24.61.17.99 - - [07/Dec/2015 20:41:46] "GET /game/randomchar HTTP/1.1" 200 -
+24.61.17.99 - - [07/Dec/2015 20:41:46] "GET /static/styles.css HTTP/1.1" 200 -
+24.61.17.99 - - [07/Dec/2015 20:41:47] "GET /static/favicon.ico HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:57:09] "GET /game/randomchar HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 20:57:14] "GET /game/randomchar HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 21:43:34] "GET /game/randomchar HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 21:43:34] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 21:43:35] "GET /static/favicon.ico HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 21:47:40] "GET / HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 21:47:41] "GET /static/styles.css HTTP/1.1" 200 -
+208.102.4.38 - - [07/Dec/2015 21:47:41] "GET /static/favicon.ico HTTP/1.1" 200 -
+81.107.177.224 - - [07/Dec/2015 21:48:31] "GET / HTTP/1.1" 200 -
+81.107.177.224 - - [07/Dec/2015 21:48:31] "GET /static/favicon.ico HTTP/1.1" 200 -
+81.107.177.224 - - [07/Dec/2015 21:48:31] "GET /static/styles.css HTTP/1.1" 200 -
+172.56.41.252 - - [07/Dec/2015 22:12:59] "GET / HTTP/1.1" 200 -

@@ -101,13 +101,13 @@
                 <span style="color: red;">[{{ error }}]</span><br>
                 {% endfor %}
             </td>
-            <td><input type="submit" value="Add Player to {{ active_world.name }}!"></td>
+            <td><input type="submit" value="Add Player"></td> 
             </form>
             <form action="" method="post" name="newowner">
             {{ new_owner.hidden_tag() }}
             <td>World Owner</td>
             <td>{{ owner.name or "None" }}</td>
-            <td>{{ new_owner.player_list }}<input type="submit" value="New Owner of {{ active_world.name }}!"></td>
+            <td>{{ new_owner.player_list }}<input type="submit" value="New Owner"></td>
             </form>
         </tr>
         {% endif %}
