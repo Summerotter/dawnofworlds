@@ -74,11 +74,14 @@
                     <form action="" method="post" name="is_ready">
                     <td><input type="hidden" name="player" value="{{player.id}}">
                     {% if player_points[player.id].is_ready %}
-                        <input type="checkbox" name="is_ready" value=1 checked>
+                        <input type="hidden" name="is_ready" value="0">
+                        <input type="submit" value="Click to Unready">
+                        
                     {% else %}
-                        <input type="checkbox" name="is_ready" value=1> 
+                        <input type="hidden" name="is_ready" value="1">
+                        <input type="submit" value="Click to Ready">
                     {% endif %}
-                    <input type="submit" value="Make Ready"></td>
+                    </td>
                     </form>
                 {% else %}
                     {% if player_points[player.id].is_ready %}

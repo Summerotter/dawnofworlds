@@ -56,8 +56,8 @@ class LoginForm(Form):
 class AddPlayer(Form):
     player_list = SelectField("player_list",coerce=int)
 
-    def __init__(self):
-        Form.__init__(self)
+#    def __init__(self):
+#        Form.__init__(self)
 
 class MakeProvBldg(Form):
     name = StringField("name", validators=[DataRequired()])
@@ -116,8 +116,8 @@ class ArmySupportFrom(Form):
     
 class UpdatePoints(Form):
     points = IntegerField("update_points", validators=[DataRequired()])
-    def __init__(self):
-        Form.__init__(self)
+#    def __init__(self):
+#        Form.__init__(self)
         
 class HistoryEntry(Form):
     text = StringField("entry",validators=[DataRequired()])

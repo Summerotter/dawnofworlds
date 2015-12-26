@@ -184,11 +184,21 @@ def world_page(page=1):
             pointobj.is_ready = is_ready
             db.session.add(pointobj)
             db.session.commit()
+            pointobjs = PowerPoints.query.filter_by(world=world.id,is_ready=0).all()
+            if not len(pointobjs) > 0:
+                pointobj = PowerPoints.query.filter_by(world=world.id).all()
+                for each in pointobj:
+                    each.is_ready = 0
+                    db.session.add(each)
+                db.session.commit()
+                advance_turn(world,False)
+                
+                flash("Everyone has finished their turns, so "+world.name+"advances a turn!")
             return redirect(url_for('.world_page'))
     history = world.ret_history().paginate(page, POSTS_PER_PAGE, False)
-    newplayer = AddPlayer()
+    newplayer = AddPlayer(prefix="add_player")
     advanceturn = AdvanceTurn(prefix="turn")
-    updatepoints = UpdatePoints()
+    updatepoints = UpdatePoints(prefix="update_points")
     advance_age = AdvanceAge(prefix="age")
     history_entry = HistoryEntry(prefix="history")
     players = User.query.filter(~User.worlds.contains(world))
