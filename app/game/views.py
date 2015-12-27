@@ -170,12 +170,13 @@ def world_page(page=1):
     world = World.query.get(session['active_world'])
     if request.form:
         if 'points' in request.form:
-            points = request.form['points']
+            points = int(request.form['points'])
             player = request.form['player']
+            print(points)
             if points < 0:
                 flash("You can't give someone negative points, that's mean!")
                 return redirect(url_for('.world_page'))
-            if points > 999:
+            elif points > 999:
                 flash("Okay, that's just ridiculous. Stop that.")
                 return redirect(url_for('.world_page'))
             pointobj = PowerPoints.query.filter_by(world=world.id,player=player).first()
