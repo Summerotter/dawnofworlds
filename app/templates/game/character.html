@@ -2,8 +2,11 @@
 {% extends "/base.html" %}
 {% block page_content %}
 
-<font size=6><p>Your character is a {{physical_gender}} {{extras}} {{species}}, who is {{height}} and {{weight}}, with a {{build}} musculature. 
-<br>{{pronoun}} likes to be thought of as {{gender}}, has {{eye_color}} eyes and {{fur_color}} fur, with {{accessory}}. {{pronoun}} is a {{sex_pref}}, has a {{personality}} personality and {{social}}. {{pronoun}} works as a {{skill} {{job}}, {{pronoun_lower}}'s favorite food is {{food}} and {{pronoun_lower}} sometimes has nightmares about {{fear}}. {{pronoun}} is {{fan}} {{comic}}, and {{fan_goal}}.
+<font size=6><p>Your character is a {{physical_gender}} {{extras}} {{species}}, who is {{height}} and {{weight}}, with {{build}} musculature. {{pronoun[0]}} has {{eye_color}} eyes and {{fur_color}} fur, and {{accessory}}. {{pronoun[0]}} presents {{pronoun[3]}} as {{gender}}, and has a {{sexual_interest}} sex drive. {{pronoun[0]}} prefers to date {{primary_sexual_interest}}, but {{other_gender_openness}} dating other genders.
+
+<p>{{pronoun[0]}} has a {{personality}} personality and socially {{social}}. {{pronoun[0]}} works as a {{job}}, where {{pronoun[1]}} is considered to be {{skill}}. {{pronoun[4]}} favorite food is {{food}} and {{pronoun[1]}} sometimes has nightmares about {{fear}}. {{pronoun[0]}} {{fan}} {{comic}}, and {{fan_goal}}.
+<p>
+<p>Your character rolled {{mary_sue_extra}} for determining special background, and {{mary_sue_gender}} for being trans-gendered. (<=40 needed)
 
 <p><a href="{{ url_for('.character_builder') }}">New Character</a></font>
 
