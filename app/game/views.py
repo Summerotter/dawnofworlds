@@ -18,19 +18,27 @@ world_active = None
 @game.route("/randomchar",methods=['GET','POST'])
 def character_builder():
     species = ['Fox', 'Wolf', 'Cat', 'Leopard', 'Cheetah', 'Lion', 'Otter', 'Badger', 'Skunk', 'Rabbit', 'Gerbil', 'Hamster', 'Tiger', 'Lynx', 'Honey Badger', 'Dingo', 'Shiba-Inu', 'Malamute', 'Hare', 'Liger', 'Snow Leopard', 'Serval', 'Cow/Bull', 'Rat', 'German Shepard', 'Bulldog', 'Border Collie', 'Squirrel', 'Mouse', 'Sugar Glider', 'Possum', 'Ram', 'Dalmatian', 'Goat', 'Stallion', 'Horse', 'Sheep', 'Pig', 'Mouse', 'GuineaPig', 'Elephant', 'Gazelle', 'Gazebo', 'Boar', 'Deer', 'Caribou', 'Terrier', 'Boxer', 'Corgi', 'Golden Retriever', 'Reindeer', 'Great Dane', 'Mastiff', 'Old English Sheepdog', 'Pug', 'Donkey', 'Cougar', 'Bat', 'Eastern Dragon', 'Western Dragon', 'Giraffe', 'Rhino', 'Ferret', 'Mink', 'Pine Marten', 'Crow', 'Pelican', 'Hawk', 'Griffin', 'Crocodile', 'Alligator', 'Snake', 'Serpentine Dragon', 'Wyvern', 'Blue Tit', 'Hippo', 'Zebra', 'Seal', 'Seal-lion', 'Walrus', 'Bear', 'Panda', 'Red Panda', 'Polar Bear', 'Samoyed', 'Miniature Pinscher', 'Antelope', 'Anteater', 'Coyote', 'Jackal', 'Hedgehog', 'Hyena', 'Meerkat', 'Koala', 'Furred Eastern Dragon', 'Furred Western Dragon', 'Mongoose', 'Raccoon', 'Beaver', 'Monkey', 'Ape', 'Gorilla', 'Lemur', 'Weasel', 'Wolverine', 'Unicorn', 'Phoenix', 'Owl', 'Dolphin', 'Shark', 'Whale', 'Crux', 'Qwhilla', 'Sergal', 'Tanuki', 'Naga', 'Dinosaur', 'T-Rex', 'Raptor', 'Turtle', 'Lizard','Minotaur',]
+    physical_gender = ["male", "female","herm","ungendered"]
     gender = ["male", "female","herm","ungendered"]
     height = ["very short", "short", "average height", "tall", "very tall"]
     weight = ["very thin", "thin", "average weight", "husky", "fluffy", "fat", "very fat"]
-    build = ["thin", "out of shape", "swimmers", "fit", "body-builder"]
+    build = ["nearly no", "out of shape", "average","swimmer's", "fit", "body builder's"]
     eye_color = ["blue","green","brown",'gold','yellow','purple','red','orange']
     fur_color = ["red", "brown", "golden", "white", "grey", "black", "orange"]
     accessory = ["a scar", "an eyepatch", "a jaunty hat", "gloves", "Monocle", "Scarf", "Glasses", "Sunglasses"]
-    personality = ["Cocky", "Shy", "Naive", "Aggressive", "Calm", "oblivious"]
-    job = ["cook", "mechanic", "programmer", "pilot", "mercenary"]
+    personality = ["cocky", "shy", "naive", "aggressive", "calm", "oblivious", "professional","edgy",]
+    job = ["cook", "mechanic", "programmer", "pilot", "mercenary","internet commenter","assassin","postal worker"]
     food = ["rice", "pizza", "steak", "salad", "soup", "noodles"]
     fear = ["spiders", "heights", "water", "insects", "volcanoes", "My Little Pony", "mormons", "the dark", "Lizards"]
     extras = ["Tauric", "Demonic", "Quadrupedal", "Angelic", "Satyric"]
     sex_pref = ["bisexual", "homosexual", "heterosexual", "asexual",]
+    social = ['is a loner', 'is wall flower', 'has a few close friends', 'has a lot of friends', 'is a social butterly',"is totally popufur"]
+    skill = ['clueless','newbie','trained','skilled','expert','master']
+    comics = ["Caves and Critters", "Swords and Sausages", "Dan and Mab's Furry Adventures", "Housepets", "Havoc, Inc","Albedo","Savestate", "Two Kinds",]
+    fan = ['interested in', "follows", "eagerly reads", "buys all the books for", "is a big fan of", "is the biggest fan of","collects everything for",]
+    fan_goal = ['wants to meet the artist someday', "wants signed copies of everything", "has a crush on one of the characters", "wants to be a cameo in it", "has a crush on the artist", "has a crush on the artist's avatar", "wants to cosplay as one of the characters"]
+    
+    chosen_physical_gender = physical_gender[(randint(1,len(physical_gender))-1)]
     chosen_species = species[(randint(1,len(species))-1)]
     chosen_height = height[(randint(1,len(height))-1)]
     chosen_weight = weight[(randint(1,len(weight))-1)]
@@ -43,6 +51,12 @@ def character_builder():
     chosen_food = food[(randint(1,len(food))-1)]
     chosen_fear = fear[(randint(1,len(fear))-1)]
     chosen_sex_pref = sex_pref[(randint(1,len(sex_pref))-1)]
+    chosen_skill = skill[(randint(1,len(skill))-1)]
+    chosen_social = social[(randint(1,len(social))-1)]
+    chosen_comic = comics[(randint(1,len(comics))-1)]
+    chosen_fan = fan[(randint(1,len(fan))-1)]
+    chosen_fan_goal = fan_goal[(randint(1,len(fan_goal))-1)]
+    
     if randint(1,100) <= 40:
         chosen_extras = extras[(randint(1,len(extras))-1)]
     else:
@@ -50,14 +64,18 @@ def character_builder():
     chosen_gender = gender[(randint(1,len(gender))-1)]
     if chosen_gender == 'male':
         pronoun = "He"
+        pronoun_lower = "he"
     elif chosen_gender == "female":
         pronoun = "She"
+        pronoun_lower = "she"
     elif chosen_gender == "herm":
         pronoun = "Shi"
+        pronoun_lower = "shi"
     else:
         pronoun = "It"
-    return render_template("game/character.html", species=chosen_species, gender=chosen_gender, height=chosen_height, weight=chosen_weight, build=chosen_build, eye_color=chosen_eye_color,
-                            fur_color=chosen_fur_color, accessory=chosen_accessory, personality=chosen_personality, job=chosen_job, food=chosen_food, fear=chosen_fear, pronoun=pronoun, sex_pref=chosen_sex_pref)
+        pronoun_lower = "it"
+    return render_template("game/character.html", species=chosen_species, physical_gender=chosen_physical_gender, gender=chosen_gender, height=chosen_height, weight=chosen_weight, build=chosen_build, eye_color=chosen_eye_color,
+                            fur_color=chosen_fur_color, accessory=chosen_accessory, personality=chosen_personality, job=chosen_job, food=chosen_food, fear=chosen_fear, pronoun=pronoun, sex_pref=chosen_sex_pref, extra=chosen_extras, skill=chosen_skill, pronoun_lower=pronoun_lower, social=chosen_social, comic=chosen_comic,fan=chosen_fan,fan_goal=chosen_fan_goal)
 
 
 @game.route('/make-world/',methods=['GET','POST'])

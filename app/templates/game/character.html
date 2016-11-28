@@ -2,8 +2,8 @@
 {% extends "/base.html" %}
 {% block page_content %}
 
-<font size=6><p>Your character is a {{gender}}{{extras}} {{species}}, who is {{height}} and {{weight}}, with a {{build}} build. 
-<br>{{pronoun}} has {{eye_color}} eyes and {{fur_color}} fur, with {{accessory}}. {{pronoun}} is a {{sex_pref}} {{personality}} {{job}}, loves to eat {{food}} and is afraid of {{fear}}.
+<font size=6><p>Your character is a {{physical_gender}} {{extras}} {{species}}, who is {{height}} and {{weight}}, with a {{build}} musculature. 
+<br>{{pronoun}} likes to be thought of as {{gender}}, has {{eye_color}} eyes and {{fur_color}} fur, with {{accessory}}. {{pronoun}} is a {{sex_pref}}, has a {{personality}} personality and {{social}}. {{pronoun}} works as a {{skill} {{job}}, {{pronoun_lower}}'s favorite food is {{food}} and {{pronoun_lower}} sometimes has nightmares about {{fear}}. {{pronoun}} is {{fan}} {{comic}}, and {{fan_goal}}.
 
 <p><a href="{{ url_for('.character_builder') }}">New Character</a></font>
 
