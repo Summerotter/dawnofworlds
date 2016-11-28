@@ -188,8 +188,15 @@ def world_page(page=1):
     world = World.query.get(session['active_world'])
     if request.form:
         if 'points' in request.form:
-            points = request.form['points']
+            points = int(request.form['points'])
             player = request.form['player']
+            print(points)
+            if points < 0:
+                flash("You can't give someone negative points, that's mean!")
+                return redirect(url_for('.world_page'))
+            elif points > 999:
+                flash("Okay, that's just ridiculous. Stop that.")
+                return redirect(url_for('.world_page'))
             pointobj = PowerPoints.query.filter_by(world=world.id,player=player).first()
             pointobj.points = points
             db.session.add(pointobj)
@@ -302,7 +309,13 @@ def advance_turn(world, age):
             points.bonus += 1
         elif points.points > 5:
             points.bonus = 0
-        points.points = points.points + pointroll + points.bonus
+        if points.points >= 999:
+            points.points = 999
+        else:
+            if points.points <= 0:
+                points.points = pointroll + points.bonus
+            else:
+                points.points = points.points + pointroll + points.bonus
         db.session.add(points)
     avatars = Avatars.query.filter_by(world=world.id,is_alive=1,has_moved=1).all()
     for avatar in avatars:
@@ -1557,12 +1570,15 @@ def make_race(location_id):
                 flash("Racial color taken")
                 return redirect(url_for(".races_page"))
         points = current_user.return_points_obj(world.id)
+        cost = 0
         if form.subrace.data == 0:
-            if points.points < point_costs[world.age]['Create Subrace']:
+            cost = point_costs[world.age]['Create Subrace']
+            if points.points < cost:
                 flash("You do not have enough points for this")
                 return redirect(url_for(".races_page"))
         else:
-            if points.points < point_costs[world.age]['Create Race']:
+            cost = point_costs[world.age]['Create Race']
+            if points.points < cost:
                 flash("You do not have enough points for this")
                 return redirect(url_for(".races_page"))
 #        if True:
@@ -1579,8 +1595,8 @@ def make_race(location_id):
                         creator = form.made_by.data,
                         religion = 0,)
         religion_description = "The cultural religion of the "+form.culture.data
-        db.session.add(new_race)
-        points.points -= point_costs[world.age]['Create Race']
+        db.session.add(new_race) 
+        points.points -= cost
         db.session.add(points)
         db.session.commit()
         race = Race.query.order_by(Race.id.desc()).first()
