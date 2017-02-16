@@ -263,7 +263,11 @@ def world_page(page=1):
         flash("New World Owner")
         return redirect(url_for('.world_page'))
     if history_entry.validate_on_submit():
+        
         text = history_entry.text.data
+        if not current_user in world.players.all():
+            flash("You are not playing in this world.")
+            return redirect(url_for('.world_page'))
         new_history = WorldHistory(world=world.id,
                                     abs_turn=world.total_turns,
                                     age_turn=world.age_turn(),
@@ -404,11 +408,13 @@ def single_race(race):
     rename_race = Rename(prefix="rename_race")
     rename_culture = Rename(prefix="rename_culture")
     if rename_race.validate_on_submit():
+        
         race.race_name = rename_race.new_name.data
         db.session.add(race)
         db.session.commit()
         return redirect(url_for(".single_race",race=race.id))
     if rename_culture.validate_on_submit():
+        
         race.culture_name = rename_culture.new_name.data
         db.session.add(race)
         db.session.commit()
@@ -435,6 +441,7 @@ def single_race(race):
             player_list.append([i.id, i.username])
     new_owner.player_list.choices = player_list
     if new_owner.validate_on_submit():
+        
         race.creator = new_owner.player_list.data
         cult_religion = Orders.query.get(race.religion)
         cult_religion.owner = race.creator
@@ -445,6 +452,7 @@ def single_race(race):
         flash(text)
         return redirect(url_for(".single_race",race=race.id))
     if remove_form.validate_on_submit():
+        
         location = WorldMap.query.get(remove_form.support.data)
         location.race = 0
         cult_religion = Orders.query.get(race.religion)
@@ -457,6 +465,7 @@ def single_race(race):
         flash("Race has been removed from"+location.coords())
         return redirect(url_for('.single_race',race=race.id))
     if advance_form.validate_on_submit():
+        
         new_advance = RaceAdvances(race_id=race.id,text=advance_form.text.data)
         db.session.add(new_advance)
         db.session.commit()
@@ -464,6 +473,7 @@ def single_race(race):
         return redirect(url_for('.single_race',race=race.id))
         
     if advance_remove.validate_on_submit():
+        
         advance = RaceAdvances.query.get(advance_remove.support.data)
         db.session.delete(advance)
         db.session.commit()
@@ -562,6 +572,7 @@ def single_city(cityid,page=1):
     new_owner.new_owner.choices = race_list
     destroy = Destroy_Form(prefix="destroy")
     if form.validate_on_submit():
+        
         if points.points < command_city_cost:
             flash("You don't have enough points for that")
             return redirect(url_for(".single_city",cityid=city.id))
@@ -591,6 +602,7 @@ def single_city(cityid,page=1):
         flash("You built a building!")
         return redirect(url_for(".single_city",cityid=city.id))
     if army_form.validate_on_submit():
+        
         if points.points < command_city_cost:
             flash("You don't have enough points for that")
             return redirect(url_for(".single_city",cityid=city.id))
@@ -623,6 +635,7 @@ def single_city(cityid,page=1):
         flash("You built an army!")
         return redirect(url_for(".single_city",cityid=city.id))
     if new_owner.validate_on_submit():
+        
         new_owner = new_owner.new_owner.data
         armies = city.armies.all()
         for army in armies:
@@ -646,6 +659,7 @@ def single_city(cityid,page=1):
         flash(city.name+" has a new owner!")
         return redirect(url_for('.single_city',cityid=city.id))
     if destroy.validate_on_submit():
+        
         city.is_alive = 0
         city.owned_by = 0
         city.destroyed_in = world.age_turn()
@@ -674,6 +688,7 @@ def single_city(cityid,page=1):
         return redirect(url_for(".cities_page"))
         
     if advance_form.validate_on_submit():
+        
         if points.points < point_costs[world.age]['Advance City']:
             flash("You don't have enough points for that")
             return redirect(url_for(".single_city",cityid=city.id))
@@ -698,6 +713,7 @@ def single_city(cityid,page=1):
         return redirect(url_for('.single_city',cityid=city.id))
         
     if advance_remove.validate_on_submit():
+        
         advance = CityAdvances.query.get(advance_remove.support.data)
         entry = "The secrets of "+advance.text+" was lost"
         new_history = CityHistory(cityid=city.id,
@@ -762,6 +778,7 @@ def orders_page():
     orders = Orders.query.filter_by(world=world.id).all()
     
     if form.validate_on_submit():
+        
         points = current_user.return_points_obj(world.id)
         if points.points < point_costs[world.age]['Create Order']:
             flash("You do not have enough points for this")
@@ -806,6 +823,7 @@ def single_order(order):
         return redirect(url_for('.world_page'))
     rename = Rename()
     if rename.validate_on_submit():
+        
         order.name = rename.new_name.data
         db.session.add(order)
         db.session.commit()
@@ -837,6 +855,7 @@ def single_order(order):
         choices.append([location.id,location.coords()])
     remove.support.choices = choices
     if destroyform.validate_on_submit():
+        
         name = order.name
         order.is_alive = 0
         db.session.add(order)
@@ -844,6 +863,7 @@ def single_order(order):
         flash("You have destroyed "+name+"!")
         return redirect(url_for(".orders_page"))
     if remove_city.validate_on_submit():
+        
         city_id = remove_city.support.data
         order_city = Order_City.query.filter_by(order_id=order.id,city_id=city_id).first()
         db.session.delete(order_city)
@@ -851,6 +871,7 @@ def single_order(order):
         flash("Order has left the city")
         return redirect(url_for(".single_order",order=order.id))
     if expand.validate_on_submit():
+        
         location = WorldMap.query.filter_by(letter_coord=expand.letter.data,number_coord=expand.number.data,world=world.id).first()
         if location in order.locations:
             flash("Order is already in that location")
@@ -861,6 +882,7 @@ def single_order(order):
         flash("You have expanded an order")
         return redirect(url_for(".single_order",order=order.id))
     if city_expand.validate_on_submit():
+        
         city_id = city_expand.support.data
         check = Order_City.query.filter_by(city_id=city_id,order_id=order.id).all()
         if check:
@@ -872,6 +894,7 @@ def single_order(order):
         flash("You have expanded to a city!")
         return redirect(url_for(".single_order",order=order.id))
     if remove.validate_on_submit():
+        
         location = WorldMap.query.get(remove.support.data)
         order.locations.remove(location)
         db.session.add(order)
@@ -932,6 +955,7 @@ def single_avatar(avatar_id):
         return redirect(url_for('.world_page'))
     destroy_form = Destroy_Form()
     if destroy_form.validate_on_submit():
+        
         avatar.is_alive = 0
         db.session.add(avatar)
         db.session.commit()
@@ -960,6 +984,7 @@ def single_avatar(avatar_id):
     command_avatar.command_list.choices = commands
     command_cost = point_costs[world.age]['Command Avatar']
     if command_avatar.validate_on_submit():
+        
         option = command_avatar.command_list.data
         if option == 1:
             flash("Create Race")
@@ -1015,6 +1040,7 @@ def move_avatar_process(avatar_id):
     world_check()
     avatar = Avatars.query.get(avatar_id)
     if request.form:
+        
         if request.form['location']:
             avatar.location = request.form['location']
             avatar.has_moved = 1
@@ -1058,6 +1084,7 @@ def single_provbldg(bldg):
     newownerform.new_owner.choices = race_list
     destroyform = Destroy_Form()
     if newownerform.validate_on_submit():
+        
         new_owner = newownerform.new_owner.data
         building.owned_by = new_owner
         db.session.add(building)
@@ -1071,6 +1098,7 @@ def single_provbldg(bldg):
         flash("Changed Ownership")
         return redirect(url_for('.single_provbldg',bldg=building.id))
     if destroyform.validate_on_submit():
+        
         if destroyform.destroy.data:
             building.is_alive = 0
             building.owned_by = 0
@@ -1112,6 +1140,7 @@ def events_page():
     remove_event.played_by.choices = player_list
     remove_event.removal.choices = remove_event_list
     if remove_event.validate_on_submit():
+        
         if points.points < cost:
             flash("You lack sufficient points for this action")
             return redirect(url_for('.events_page'))
@@ -1161,6 +1190,7 @@ def single_army(armyid):
     form=UpdateLocation()
     movement = AvatarMovement(prefix="move")
     if movement.validate_on_submit():
+        
         return redirect(url_for(".army_movement",armyid=army.id))
     rename=Rename()
     support=ArmySupportFrom()
@@ -1172,6 +1202,7 @@ def single_army(armyid):
                 citychoice.append([each.id, each.name])
     support.support.choices = citychoice
     if form.validate_on_submit():
+        
         number = form.number.data
         letter = form.letter.data
         army.location = WorldMap.query.filter_by(letter_coord=letter,number_coord=number,world=world.id).first().id
@@ -1180,6 +1211,7 @@ def single_army(armyid):
         flash("New location for army")
         return redirect(url_for(".single_army",armyid=army.id))
     if rename.validate_on_submit():
+        
         new_name = rename.new_name.data
         army.name = new_name
         db.session.add(army)
@@ -1187,6 +1219,7 @@ def single_army(armyid):
         flash("New name for army")
         return redirect(url_for(".single_army",armyid=army.id))
     if support.validate_on_submit():
+        
         army.supported_from = support.support.data
         db.session.add(army)
         db.session.commit()
@@ -1207,6 +1240,7 @@ def single_army(armyid):
 def army_movement(armyid):
     world_check()
     world = World.query.get(session['active_world'])
+    
     army = Armies.query.get(armyid)
     if army.has_moved:
         flash("This Army has already moved thus turn.")
@@ -1225,6 +1259,7 @@ def army_movement(armyid):
 @login_required
 def do_army_movement(armyid):
     world_check()
+    
     army = Armies.query.get(armyid)
     if request.form:
         if request.form['location']:
@@ -1242,6 +1277,7 @@ def do_army_movement(armyid):
 @login_required
 def disband_army(armyid):
     world_check()
+    
     army = Armies.query.get(armyid)
     armyname = army.name
     army.is_alive=0
@@ -1301,8 +1337,8 @@ def world_map_regen():
         db.session.add(i)
     db.session.commit()
     return redirect(url_for('.world_map'))
-        
-    
+
+   
 @game.route("/map/<location_id>", methods=['GET','POST'])
 @login_required
 def single_location(location_id):
@@ -1380,6 +1416,7 @@ def single_location(location_id):
  #           flash("Error occured")
  #           return redirect(url_for(".single_location",location_id = location.id))
     if terrain_form.validate_on_submit():
+        
         if points.points < point_costs[world.age]['Shape Land']:
             flash("Not enough points for this action")
             return redirect(url_for(".single_location",location_id = location.id))
@@ -1449,6 +1486,7 @@ def make_event(location_id):
         player_list.append([current_user.id,current_user.name])
     form.played_by.choices = player_list
     if form.validate_on_submit():
+        
         cost = point_costs[world.age]['Event']
         if points.points < cost:
             flash("You lack sufficient points for this action")
@@ -1493,6 +1531,7 @@ def make_avatar(location_id):
         player_list.append([current_user.id,current_user.name])
     form.god.choices = player_list
     if form.validate_on_submit():
+        
         points = current_user.return_points_obj(world.id)
         if points.points < point_costs[world.age]['Create Avatar']:
             flash("You do not have enough points for this")
@@ -1573,6 +1612,7 @@ def make_race(location_id):
         race_list.append([race.id,race.culture_name])  
     form.subrace.choices = race_list
     if form.validate_on_submit():
+        
         race_check = Race.query.filter_by(world_id=world.id,culture_name=form.culture.data).all()
         if race_check:
             flash("Already a culture by that name")
@@ -1684,6 +1724,7 @@ def expand_race(location_id):
     number = location.number_coord #Y
     neighbors = []
     if request.form:
+        
         if points.points < point_costs[world.age]['Command Race']:
             flash("Not enough points for that action")
             return redirect(url_for(".single_location",location_id = location.id))
@@ -1737,6 +1778,7 @@ def single_location_make_city(location_id):
     location = WorldMap.query.get(location_id)
     race = Race.query.get(location.race)
     form = MakeCity()
+    
     points = current_user.return_points_obj(world.id)
     if points.points < point_costs[world.age]['Command Race']:
         flash("You don't have enough points for this action")
@@ -1797,6 +1839,7 @@ def build_prov_buildings(location_id):
     world_check()
     world = World.query.get(session['active_world'])
     builder_source = session['builder_source']
+    
     points = current_user.return_points_obj(world.id)
     cost = point_costs[world.age][builder_source]
     if points.points < cost:
