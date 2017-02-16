@@ -217,12 +217,14 @@ class User(UserMixin, db.Model):
     def return_points_obj(self,world_id):
         points = self.points.filter_by(world=world_id).first()
         try:
-            if points.points >= 0:
-                print(points)
+            points.points >= 0
         except:
             points = PowerPoints()
             points.points = 0
         return points
+        
+    def is_anon():
+        return False
 
 
 class AnonymousUser(AnonymousUserMixin):
@@ -234,8 +236,11 @@ class AnonymousUser(AnonymousUserMixin):
         
     def return_points_obj(self,world_id):
         points = PowerPoints()
-        points.points = 0
+        points.points = -1
         return points
+        
+    def is_anon(self):
+        return True
 
 login_manager.anonymous_user = AnonymousUser
 
