@@ -223,7 +223,7 @@ class User(UserMixin, db.Model):
             points.points = 0
         return points
         
-    def is_anon():
+    def is_anon(self):
         return False
 
 
