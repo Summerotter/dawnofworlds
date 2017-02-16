@@ -231,6 +231,11 @@ class AnonymousUser(AnonymousUserMixin):
 
     def is_administrator(self):
         return False
+        
+    def return_points_obj(self,world_id):
+        points = PowerPoints()
+        points.points = 0
+        return points
 
 login_manager.anonymous_user = AnonymousUser
 

@@ -140,7 +140,7 @@ def make_world():
   
 @game.route("/",methods=['GET', 'POST'])
 @game.route('/index/', methods=['GET', 'POST'])
-@login_required
+
 #The home page. Select Worlds Here
 def index():
     if 'user' in session:
@@ -185,7 +185,7 @@ def delete_all():
     
                            
 @game.route("/activate/<world_id>", methods=['GET', 'POST'])
-@login_required
+
 #Probably could have made this a function of index()
 #Swaps between active worlds cause I'm a derp
 def activate(world_id):
@@ -196,7 +196,7 @@ def activate(world_id):
     
 @game.route("/world", methods=['GET', 'POST'])
 @game.route('/world/<int:page>', methods=['GET', 'POST'])
-@login_required
+
 #Expanded basic info ont he world,player list, and add players.
 #Needs to have an edit for player names and worldname, here.
 def world_page(page=1):
@@ -359,13 +359,13 @@ def world_check():
         return redirect(url_for('.index'))
                           
 @game.route("/players/<userid>/")
-@login_required
+
 def userpage(userid):
     user = User.query.get(userid)
     return redirect(url_for('main.user',username=user.username))
 
 @game.route("/players", methods=["GET","POST"])
-@login_required
+
 def player_page():
     players = User.query.all()
     if 'active_world' not in session:
@@ -376,7 +376,7 @@ def player_page():
                            players = players,)
 
 @game.route("/races", methods=['GET','POST'])
-@login_required
+
 #Create races here. Need to allow edits for alignment and advances
 #Maybe specific /races/<racename> page?
 def races_page():
@@ -394,7 +394,7 @@ def races_page():
                            
                            
 @game.route("/races/<race>/",methods=['GET','POST'])
-@login_required
+
 def single_race(race):
     world_check()
     race = Race.query.get(race)
@@ -493,7 +493,7 @@ def single_race(race):
                             )
 
 @game.route("/cities", methods=["GET", "POST"])
-@login_required
+
 #Found cities, build buildings
 #Considering /cities/<cityid> page for buildings @advances
 def cities_page():
@@ -508,7 +508,7 @@ def cities_page():
                            )
                            
 @game.route("/cities/<cityid>/resettle", methods=['POST'])
-@login_required
+
 def resettle_city(cityid):
     world_check()
     world = World.query.get(session['active_world'])
@@ -531,7 +531,7 @@ def resettle_city(cityid):
 
 @game.route("/cities/<cityid>",methods=['GET','POST'])
 @game.route('/cities/<cityid>/<int:page>', methods=['GET', 'POST'])
-@login_required
+
 def single_city(cityid,page=1):
     world_check()
     world = World.query.get(session['active_world'])
@@ -760,7 +760,7 @@ def single_city(cityid,page=1):
                            )
 
 @game.route("/orders",methods=['GET','POST'])
-@login_required
+
 #Create orders. Perhaps subpage for expanding/removing?
 def orders_page():
     world_check()
@@ -810,7 +810,7 @@ def orders_page():
                            found_order_cost = point_costs[world.age]['Create Order'],)
 
 @game.route("/orders/<order>/", methods=['GET','POST'])
-@login_required
+
 def single_order(order):
     world_check()
     order = Orders.query.get(order)
@@ -916,7 +916,7 @@ def single_order(order):
                             )
 
 @game.route("/avatars",methods=['GET','POST'])
-@login_required
+
 #Create an avatar! Should build a 'create race' button here for that ability
 #Should that be checked by player..
 def avatars_page():
@@ -941,7 +941,7 @@ def avatars_page():
                            )
 
 @game.route("/avatars/<avatar_id>",methods=['GET','POST'])
-@login_required
+
 def single_avatar(avatar_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1016,7 +1016,7 @@ def single_avatar(avatar_id):
                            )
 #                           
 @game.route("/avatars/<avatar_id>/movement", methods=['GET'])
-@login_required
+
 def move_avatar(avatar_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1035,7 +1035,7 @@ def move_avatar(avatar_id):
         )
 #
 @game.route("/avatars/<avatar_id>/movement",methods=['POST'])
-@login_required
+
 def move_avatar_process(avatar_id):
     world_check()
     avatar = Avatars.query.get(avatar_id)
@@ -1053,7 +1053,7 @@ def move_avatar_process(avatar_id):
     return redirect(url_for(".single_avatar",avatar_id=avatar.id))
         
 @game.route("/prov",methods=['GET','POST'])
-@login_required
+
 #For things like walls, bridges, farmland, forts
 def prov_buildings_page():
     world_check()
@@ -1121,7 +1121,7 @@ def single_provbldg(bldg):
                            )
 
 @game.route("/events",methods=['GET', 'POST'])
-@login_required
+
 #For when events are played
 def events_page():
     world_check()
@@ -1163,7 +1163,7 @@ def events_page():
                            remove_event=remove_event,)
 
 @game.route("/military",methods=['GET', 'POST'])
-@login_required
+
 #Create armies and navies
 #Seperate control page per?
 def military_page():
@@ -1176,7 +1176,7 @@ def military_page():
                            )
 
 @game.route("/army/<armyid>",methods=['GET','POST'])
-@login_required
+
 def single_army(armyid):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1236,7 +1236,7 @@ def single_army(armyid):
                            )
 #
 @game.route("/army/<armyid>/movement",methods=['GET'])
-@login_required
+
 def army_movement(armyid):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1256,7 +1256,7 @@ def army_movement(armyid):
         )
 
 @game.route("/army/<armyid>/movement",methods=['POST'])
-@login_required
+
 def do_army_movement(armyid):
     world_check()
     
@@ -1274,7 +1274,7 @@ def do_army_movement(armyid):
     return redirect(url_for(".single_army",armyid=army.id))
                            
 @game.route("/army/<armyid>/disband")
-@login_required
+
 def disband_army(armyid):
     world_check()
     
@@ -1293,7 +1293,7 @@ def disband_army(armyid):
     return redirect(url_for('.military_page'))
 
 @game.route("/map")
-@login_required
+
 def world_map():
     world_check()
     world = World.query.get(session['active_world'])
@@ -1309,7 +1309,7 @@ def world_map():
                             size=world.size,)
 
 @game.route("/map/regen")
-@login_required
+
 def world_map_regen():
     world_check()
     world = World.query.get(session['active_world'])
@@ -1340,7 +1340,7 @@ def world_map_regen():
 
    
 @game.route("/map/<location_id>", methods=['GET','POST'])
-@login_required
+
 def single_location(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1470,7 +1470,7 @@ def single_location(location_id):
                             )
 #
 @game.route("/map/<location_id>/make-event/",methods=["GET","POST"])
-@login_required
+
 def make_event(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1516,7 +1516,7 @@ def make_event(location_id):
 
 
 @game.route("/map/<location_id>/create-avatar/",methods=["GET","POST"])
-@login_required
+
 def make_avatar(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1592,7 +1592,7 @@ def neighbors(location, r):
 
 
 @game.route("/map/<location_id>/create-race/",methods=["GET","POST"])
-@login_required
+
 def make_race(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1693,7 +1693,7 @@ def make_race(location_id):
                            )
 #
 @game.route("/map/<location_id>/expand-race/<order_id>", methods=['GET','POST'])
-@login_required
+
 def single_location_command_order(location_id,order_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1709,7 +1709,7 @@ def single_location_command_order(location_id,order_id):
     locations=neighbor_lands,letters=label_x,r=map_radius,order=order,location=location)
 
 @game.route("/map/<location_id>/expand-race/",methods=['GET','POST'])
-@login_required
+
 def expand_race(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1771,7 +1771,7 @@ def expand_race(location_id):
                             )                            
     
 @game.route("/map/<location_id>/make-city/", methods=['GET','POST'])
-@login_required
+
 def single_location_make_city(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1833,7 +1833,7 @@ def single_location_make_city(location_id):
                             )
                             
 @game.route("/map/<location_id>/make-prov-bldg", methods=['GET','POST'])
-@login_required
+
 #For things like walls, bridges, farmland, forts
 def build_prov_buildings(location_id):
     world_check()
