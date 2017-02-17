@@ -244,7 +244,7 @@ def world_page(page=1):
     history_entry = HistoryEntry(prefix="history")
     #players = User.query.filter(~User.worlds.contains(world))
     #applicant_point_obj = PowerPoints.query.filter_by(world=world.id).filter_by(player_status=0).all()
-    applicants = User.query.join(PowerPoints, PowerPoints.player==User.id).filter_by(world=world.id).filter_by(player_status=0).all()
+    applicants = User.query.join(PowerPoints, PowerPoints.player==User.id).filter_by(world=world.id).filter_by(player_status="pending").all()
     newplayer.player_list.choices= []
     new_owner = WorldOwner()
     new_owner.player_list.choices= []
@@ -255,7 +255,8 @@ def world_page(page=1):
     else:
         owner = ""
     owner_list = world.players.all()
-    players = User.query.join(PowerPoints, PowerPoints.player==User.id).filter_by(world=world.id).filter_by(player_status=1).all()
+    players = User.query.join(PowerPoints, PowerPoints.player==User.id).filter(PowerPoints.world==world.id, PowerPoints.player_status=="active").all()
+    print(players)
     for player in players:
         new_owner.player_list.choices.append([player.id,player.name])
     if new_owner.validate_on_submit():
@@ -283,7 +284,7 @@ def world_page(page=1):
         points = PowerPoints.query.filter_by(world=world.id).filter_by(player=newplayer.player_list.data).first()
         user = User.query.get(points.player)
         points.points = pointroll
-        points.player_status = 1
+        points.player_status = "active"
         db.session.add(points)
         db.session.commit()
         flash("You have added "+user.name+" to "+world.name+"!")
@@ -303,7 +304,7 @@ def world_page(page=1):
         #print(newplayer.player_list.data)
         #player = current_user
         world.players.append(current_user)
-        points = PowerPoints(world=world.id,player=current_user.id,points=-1,player_status=0)
+        points = PowerPoints(world=world.id,player=current_user.id,points=-1,player_status="pending")
         db.session.add(points)
         db.session.commit()
         flash("You have applied to "+world.name+"!")
