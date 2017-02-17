@@ -744,6 +744,7 @@ class PowerPoints(db.Model):
     points = db.Column(db.Integer,default=0)
     bonus = db.Column(db.Integer,default=0)
     is_ready = db.Column(db.Integer,default=0)
+    player_status = db.Column(db.Integer,default=0)
     
 class CityAdvances(db.Model):
     id = db.Column(db.Integer,primary_key=True)

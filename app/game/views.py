@@ -206,7 +206,6 @@ def world_page(page=1):
         if 'points' in request.form:
             points = int(request.form['points'])
             player = request.form['player']
-            print(points)
             if points < 0:
                 flash("You can't give someone negative points, that's mean!")
                 return redirect(url_for('.world_page'))
@@ -241,19 +240,22 @@ def world_page(page=1):
     advanceturn = AdvanceTurn(prefix="turn")
     updatepoints = UpdatePoints(prefix="update_points")
     advance_age = AdvanceAge(prefix="age")
+    apply_to_world = ApplyToWorld(prefix="application")
     history_entry = HistoryEntry(prefix="history")
-    players = User.query.filter(~User.worlds.contains(world))
+    #players = User.query.filter(~User.worlds.contains(world))
+    #applicant_point_obj = PowerPoints.query.filter_by(world=world.id).filter_by(player_status=0).all()
+    applicants = User.query.join(PowerPoints, PowerPoints.player==User.id).filter_by(world=world.id).filter_by(player_status=0).all()
     newplayer.player_list.choices= []
     new_owner = WorldOwner()
     new_owner.player_list.choices= []
-    for player in players:
+    for player in applicants:
         newplayer.player_list.choices.append([player.id,player.name])
     if world.owner:    
         owner = User.query.get(world.owner)
     else:
         owner = ""
     owner_list = world.players.all()
-    players = world.players.all()
+    players = User.query.join(PowerPoints, PowerPoints.player==User.id).filter_by(world=world.id).filter_by(player_status=1).all()
     for player in players:
         new_owner.player_list.choices.append([player.id,player.name])
     if new_owner.validate_on_submit():
@@ -276,13 +278,15 @@ def world_page(page=1):
         db.session.commit()
         return redirect(url_for('.world_page'))
     if newplayer.validate_on_submit():
-        player = User.query.get(newplayer.player_list.data)
-        world.players.append(player)
         pointroll = randint(1,6)+randint(1,6)
-        points = PowerPoints(world=world.id,player=player.id,points=pointroll,)
+        #print(newplayer.player_list.data)
+        points = PowerPoints.query.filter_by(world=world.id).filter_by(player=newplayer.player_list.data).first()
+        user = User.query.get(points.player)
+        points.points = pointroll
+        points.player_status = 1
         db.session.add(points)
         db.session.commit()
-        flash("You have added "+player.name+" to "+world.name+"!")
+        flash("You have added "+user.name+" to "+world.name+"!")
         return redirect(url_for('.world_page'))
     if advanceturn.validate_on_submit():
         flash("You have advanced "+world.name+" a turn!")
@@ -295,9 +299,21 @@ def world_page(page=1):
         else:
             flash(world.name+" is already at the Third Age!")
         return redirect(url_for('.world_page'))
+    if apply_to_world.validate_on_submit():
+        #print(newplayer.player_list.data)
+        #player = current_user
+        world.players.append(current_user)
+        points = PowerPoints(world=world.id,player=current_user.id,points=-1,player_status=0)
+        db.session.add(points)
+        db.session.commit()
+        flash("You have applied to "+world.name+"!")
+        return redirect(url_for('.world_page'))
     player_points = {}
     for player in players:
         player_points[player.id] =  player.return_points_obj(world.id)
+    add_user_display = False
+    if len(applicants) > 0:
+        add_user_display = True
     return render_template("/game/world.html",
                            active_world=world,
                            newplayer=newplayer,
@@ -310,7 +326,9 @@ def world_page(page=1):
                            updatepoints=updatepoints,
                            history_entry=history_entry,
                            owner=owner,
-                           new_owner=new_owner,)
+                           new_owner=new_owner,
+                           apply_to_world=apply_to_world,
+                           add_user_display=add_user_display,)
 
 #
 def advance_turn(world, age):

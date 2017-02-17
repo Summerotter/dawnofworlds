@@ -95,6 +95,7 @@
         
         {% if current_user == owner or current_user.is_administrator() %} 
         <tr>
+            {% if add_user_display %}
             <form action="" method="post" name="makeplayer">
             {{ newplayer.hidden_tag() }}
             <td>Add Player:</td>
@@ -106,6 +107,7 @@
             </td>
             <td><input type="submit" value="Add Player"></td> 
             </form>
+            {% endif %}
             <form action="" method="post" name="newowner">
             {{ new_owner.hidden_tag() }}
             <td>World Owner</td>
@@ -118,6 +120,12 @@
             
         </tr>
     </table>
+    {% if not current_user.is_anon() and current_user not in active_world.players.all() %} 
+    <form action="" method="post" name="apply">
+                {{ apply_to_world.hidden_tag() }}
+                <th class="title"><input type='submit' value="Apply to Join!"></th>
+            </form>
+    {% endif %}
 </section>
 </div>
 <div id="right_pane_wrapper">
