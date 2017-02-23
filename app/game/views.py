@@ -18,19 +18,27 @@ world_active = None
 @game.route("/randomchar",methods=['GET','POST'])
 def character_builder():
     species = ['Fox', 'Wolf', 'Cat', 'Leopard', 'Cheetah', 'Lion', 'Otter', 'Badger', 'Skunk', 'Rabbit', 'Gerbil', 'Hamster', 'Tiger', 'Lynx', 'Honey Badger', 'Dingo', 'Shiba-Inu', 'Malamute', 'Hare', 'Liger', 'Snow Leopard', 'Serval', 'Cow/Bull', 'Rat', 'German Shepard', 'Bulldog', 'Border Collie', 'Squirrel', 'Mouse', 'Sugar Glider', 'Possum', 'Ram', 'Dalmatian', 'Goat', 'Stallion', 'Horse', 'Sheep', 'Pig', 'Mouse', 'GuineaPig', 'Elephant', 'Gazelle', 'Gazebo', 'Boar', 'Deer', 'Caribou', 'Terrier', 'Boxer', 'Corgi', 'Golden Retriever', 'Reindeer', 'Great Dane', 'Mastiff', 'Old English Sheepdog', 'Pug', 'Donkey', 'Cougar', 'Bat', 'Eastern Dragon', 'Western Dragon', 'Giraffe', 'Rhino', 'Ferret', 'Mink', 'Pine Marten', 'Crow', 'Pelican', 'Hawk', 'Griffin', 'Crocodile', 'Alligator', 'Snake', 'Serpentine Dragon', 'Wyvern', 'Blue Tit', 'Hippo', 'Zebra', 'Seal', 'Seal-lion', 'Walrus', 'Bear', 'Panda', 'Red Panda', 'Polar Bear', 'Samoyed', 'Miniature Pinscher', 'Antelope', 'Anteater', 'Coyote', 'Jackal', 'Hedgehog', 'Hyena', 'Meerkat', 'Koala', 'Furred Eastern Dragon', 'Furred Western Dragon', 'Mongoose', 'Raccoon', 'Beaver', 'Monkey', 'Ape', 'Gorilla', 'Lemur', 'Weasel', 'Wolverine', 'Unicorn', 'Phoenix', 'Owl', 'Dolphin', 'Shark', 'Whale', 'Crux', 'Qwhilla', 'Sergal', 'Tanuki', 'Naga', 'Dinosaur', 'T-Rex', 'Raptor', 'Turtle', 'Lizard','Minotaur',]
-    gender = ["male", "female","herm","ungendered"]
+    physical_gender = ["male", "female","hermaphrodite","nongendered"]
+    gender = ["male", "female","hermaphrodite","nongendered"]
     height = ["very short", "short", "average height", "tall", "very tall"]
     weight = ["very thin", "thin", "average weight", "husky", "fluffy", "fat", "very fat"]
-    build = ["thin", "out of shape", "swimmers", "fit", "body-builder"]
+    build = ["nearly no", "an out of shape", "an average","a swimmer's", "a fit", "a body builder's"]
     eye_color = ["blue","green","brown",'gold','yellow','purple','red','orange']
     fur_color = ["red", "brown", "golden", "white", "grey", "black", "orange"]
-    accessory = ["a scar", "an eyepatch", "a jaunty hat", "gloves", "Monocle", "Scarf", "Glasses", "Sunglasses"]
-    personality = ["Cocky", "Shy", "Naive", "Aggressive", "Calm", "oblivious"]
-    job = ["cook", "mechanic", "programmer", "pilot", "mercenary"]
-    food = ["rice", "pizza", "steak", "salad", "soup", "noodles"]
+    accessory = ["has a scar", "has an eyepatch", "wears a jaunty hat", "wears gloves", "wears a monocle", "wears scarf", "wears glasses", "wears sunglasses"]
+    personality = ["cocky", "shy", "naive", "aggressive", "calm", "oblivious", "professional","edgy",]
+    job = ["cook", "mechanic", "programmer", "pilot", "mercenary","internet commenter","assassin","postal worker"]
+    food = ["rice", "pizza", "steak", "salad", "soup", "noodles", "tamales"]
     fear = ["spiders", "heights", "water", "insects", "volcanoes", "My Little Pony", "mormons", "the dark", "Lizards"]
-    extras = ["Tauric", "Demonic", "Quadrupedal", "Angelic", "Satyric"]
+    extras = ["tauric", "demonic", "quadrupedal", "angelic", "satyric"]
     sex_pref = ["bisexual", "homosexual", "heterosexual", "asexual",]
+    social = ['is a loner', 'is wall flower', 'has a few close friends', 'has a lot of friends', 'is a social butterly',"is totally popufur"]
+    skill = ['clueless','a newbie','well trained','quite skilled','an expert','a master']
+    comics = ["Caves and Critters", "Swords and Sausages", "Dan and Mab's Furry Adventures", "Housepets", "Havoc, Inc","Albedo","Savestate", "Two Kinds","Slightly Damned","Kevin and Kell", "Circles","How To Be A Werewolf"]
+    fan = ['is interested in', "follows", "eagerly reads", "buys all the books for", "is a big fan of", "is the biggest fan of","collects everything for",]
+    fan_goal = ['wants to meet the artist someday', "wants signed copies of everything", "has a crush on one of the characters", "wants to be a cameo in it", "has a crush on the artist", "has a crush on the artist's avatar", "wants to cosplay as one of the characters"]
+    
+    chosen_physical_gender = physical_gender[(randint(1,len(physical_gender))-1)]
     chosen_species = species[(randint(1,len(species))-1)]
     chosen_height = height[(randint(1,len(height))-1)]
     chosen_weight = weight[(randint(1,len(weight))-1)]
@@ -43,21 +51,47 @@ def character_builder():
     chosen_food = food[(randint(1,len(food))-1)]
     chosen_fear = fear[(randint(1,len(fear))-1)]
     chosen_sex_pref = sex_pref[(randint(1,len(sex_pref))-1)]
-    if randint(1,100) <= 40:
+    chosen_skill = skill[(randint(1,len(skill))-1)]
+    chosen_social = social[(randint(1,len(social))-1)]
+    chosen_comic = comics[(randint(1,len(comics))-1)]
+    chosen_fan = fan[(randint(1,len(fan))-1)]
+    chosen_fan_goal = fan_goal[(randint(1,len(fan_goal))-1)]
+    
+    mary_sue_extra = randint(1,100)
+    if mary_sue_extra <= 40:
         chosen_extras = extras[(randint(1,len(extras))-1)]
     else:
-        chosen_extras = "Anthro"
-    chosen_gender = gender[(randint(1,len(gender))-1)]
-    if chosen_gender == 'male':
-        pronoun = "He"
-    elif chosen_gender == "female":
-        pronoun = "She"
-    elif chosen_gender == "herm":
-        pronoun = "Shi"
+        chosen_extras = "anthropomorphic"
+        
+    mary_sue_gender = randint(1,100)
+    if mary_sue_gender <= 40:
+        mary_sue_genders = gender
+        mary_sue_genders.remove(chosen_physical_gender)
+        chosen_gender = mary_sue_genders[(randint(1,len(mary_sue_genders))-1)]
     else:
-        pronoun = "It"
-    return render_template("game/character.html", species=chosen_species, gender=chosen_gender, height=chosen_height, weight=chosen_weight, build=chosen_build, eye_color=chosen_eye_color,
-                            fur_color=chosen_fur_color, accessory=chosen_accessory, personality=chosen_personality, job=chosen_job, food=chosen_food, fear=chosen_fear, pronoun=pronoun, sex_pref=chosen_sex_pref)
+        chosen_gender = chosen_physical_gender
+    if chosen_gender == 'male':
+        pronoun = ("He", "he", "him", "himself", "His")
+    elif chosen_gender == "female":
+        pronoun = ("She", "she", "her", "herself", "Her")
+    elif chosen_gender == "hermaphrodite":
+        pronoun = ("Shi", "shi", "hir", "hirself", "Hir",)
+    else:
+        pronoun = ("It", "it", "it", "itself", "Its",)
+        
+    #genders["male", "female","herm","nongendered"]
+    #sex_pref = ["bisexual", "homosexual", "heterosexual", "asexual",]
+#    sex_prefs = {
+#        "male":{"homosexual":"male","bisexual":"males and females","heterosexual":"females","asexual":"none"},
+#        "female":{"homosexual":"female","bisexual":"males and females","heterosexual":"males","asexual":"none"},
+#        "herm":{"homosexual":"male","bisexual":"males and females","heterosexual":"females","asexual":"none"},
+#        "nongendered":{"homosexual":"male","bisexual":"males and females","heterosexual":"females","asexual":"none"},
+#    }
+    sexual_interest = ["no", "low", "normal", "high", "very high"][randint(0,4)]
+    primary_sexual_interest = ["males","females","herms","nongendereds"][randint(0,3)]
+    other_gender_openness = ["is not interested in", "is a bit curious about", "is okay with", "has little hesitation about", "has no hesitation about"][randint(0,4)]
+    return render_template("game/character.html", species=chosen_species, physical_gender=chosen_physical_gender, gender=chosen_gender, height=chosen_height, weight=chosen_weight, build=chosen_build, eye_color=chosen_eye_color,
+                            fur_color=chosen_fur_color, accessory=chosen_accessory, personality=chosen_personality, job=chosen_job, food=chosen_food, fear=chosen_fear, pronoun=pronoun, sex_pref=chosen_sex_pref, extras=chosen_extras, skill=chosen_skill, social=chosen_social, comic=chosen_comic,fan=chosen_fan,fan_goal=chosen_fan_goal, mary_sue_gender=mary_sue_gender, mary_sue_extra=mary_sue_extra, other_gender_openness=other_gender_openness,primary_sexual_interest=primary_sexual_interest,sexual_interest=sexual_interest)
 
 
 @game.route('/make-world/',methods=['GET','POST'])
@@ -106,7 +140,7 @@ def make_world():
   
 @game.route("/",methods=['GET', 'POST'])
 @game.route('/index/', methods=['GET', 'POST'])
-@login_required
+
 #The home page. Select Worlds Here
 def index():
     if 'user' in session:
@@ -151,7 +185,7 @@ def delete_all():
     
                            
 @game.route("/activate/<world_id>", methods=['GET', 'POST'])
-@login_required
+
 #Probably could have made this a function of index()
 #Swaps between active worlds cause I'm a derp
 def activate(world_id):
@@ -162,7 +196,7 @@ def activate(world_id):
     
 @game.route("/world", methods=['GET', 'POST'])
 @game.route('/world/<int:page>', methods=['GET', 'POST'])
-@login_required
+
 #Expanded basic info ont he world,player list, and add players.
 #Needs to have an edit for player names and worldname, here.
 def world_page(page=1):
@@ -172,7 +206,6 @@ def world_page(page=1):
         if 'points' in request.form:
             points = int(request.form['points'])
             player = request.form['player']
-            print(points)
             if points < 0:
                 flash("You can't give someone negative points, that's mean!")
                 return redirect(url_for('.world_page'))
@@ -207,19 +240,23 @@ def world_page(page=1):
     advanceturn = AdvanceTurn(prefix="turn")
     updatepoints = UpdatePoints(prefix="update_points")
     advance_age = AdvanceAge(prefix="age")
+    apply_to_world = ApplyToWorld(prefix="application")
     history_entry = HistoryEntry(prefix="history")
-    players = User.query.filter(~User.worlds.contains(world))
+    #players = User.query.filter(~User.worlds.contains(world))
+    #applicant_point_obj = PowerPoints.query.filter_by(world=world.id).filter_by(player_status=0).all()
+    applicants = User.query.join(PowerPoints, PowerPoints.player==User.id).filter_by(world=world.id).filter_by(player_status="pending").all()
     newplayer.player_list.choices= []
     new_owner = WorldOwner()
     new_owner.player_list.choices= []
-    for player in players:
+    for player in applicants:
         newplayer.player_list.choices.append([player.id,player.name])
     if world.owner:    
         owner = User.query.get(world.owner)
     else:
         owner = ""
     owner_list = world.players.all()
-    players = world.players.all()
+    players = User.query.join(PowerPoints, PowerPoints.player==User.id).filter(PowerPoints.world==world.id, PowerPoints.player_status=="active").all()
+    print(players)
     for player in players:
         new_owner.player_list.choices.append([player.id,player.name])
     if new_owner.validate_on_submit():
@@ -229,7 +266,11 @@ def world_page(page=1):
         flash("New World Owner")
         return redirect(url_for('.world_page'))
     if history_entry.validate_on_submit():
+        
         text = history_entry.text.data
+        if not current_user in world.players.all():
+            flash("You are not playing in this world.")
+            return redirect(url_for('.world_page'))
         new_history = WorldHistory(world=world.id,
                                     abs_turn=world.total_turns,
                                     age_turn=world.age_turn(),
@@ -238,13 +279,15 @@ def world_page(page=1):
         db.session.commit()
         return redirect(url_for('.world_page'))
     if newplayer.validate_on_submit():
-        player = User.query.get(newplayer.player_list.data)
-        world.players.append(player)
         pointroll = randint(1,6)+randint(1,6)
-        points = PowerPoints(world=world.id,player=player.id,points=pointroll,)
+        #print(newplayer.player_list.data)
+        points = PowerPoints.query.filter_by(world=world.id).filter_by(player=newplayer.player_list.data).first()
+        user = User.query.get(points.player)
+        points.points = pointroll
+        points.player_status = "active"
         db.session.add(points)
         db.session.commit()
-        flash("You have added "+player.name+" to "+world.name+"!")
+        flash("You have added "+user.name+" to "+world.name+"!")
         return redirect(url_for('.world_page'))
     if advanceturn.validate_on_submit():
         flash("You have advanced "+world.name+" a turn!")
@@ -257,9 +300,21 @@ def world_page(page=1):
         else:
             flash(world.name+" is already at the Third Age!")
         return redirect(url_for('.world_page'))
+    if apply_to_world.validate_on_submit():
+        #print(newplayer.player_list.data)
+        #player = current_user
+        world.players.append(current_user)
+        points = PowerPoints(world=world.id,player=current_user.id,points=-1,player_status="pending")
+        db.session.add(points)
+        db.session.commit()
+        flash("You have applied to "+world.name+"!")
+        return redirect(url_for('.world_page'))
     player_points = {}
     for player in players:
         player_points[player.id] =  player.return_points_obj(world.id)
+    add_user_display = False
+    if len(applicants) > 0:
+        add_user_display = True
     return render_template("/game/world.html",
                            active_world=world,
                            newplayer=newplayer,
@@ -272,7 +327,9 @@ def world_page(page=1):
                            updatepoints=updatepoints,
                            history_entry=history_entry,
                            owner=owner,
-                           new_owner=new_owner,)
+                           new_owner=new_owner,
+                           apply_to_world=apply_to_world,
+                           add_user_display=add_user_display,)
 
 #
 def advance_turn(world, age):
@@ -321,13 +378,13 @@ def world_check():
         return redirect(url_for('.index'))
                           
 @game.route("/players/<userid>/")
-@login_required
+
 def userpage(userid):
     user = User.query.get(userid)
     return redirect(url_for('main.user',username=user.username))
 
 @game.route("/players", methods=["GET","POST"])
-@login_required
+
 def player_page():
     players = User.query.all()
     if 'active_world' not in session:
@@ -338,7 +395,7 @@ def player_page():
                            players = players,)
 
 @game.route("/races", methods=['GET','POST'])
-@login_required
+
 #Create races here. Need to allow edits for alignment and advances
 #Maybe specific /races/<racename> page?
 def races_page():
@@ -356,7 +413,7 @@ def races_page():
                            
                            
 @game.route("/races/<race>/",methods=['GET','POST'])
-@login_required
+
 def single_race(race):
     world_check()
     race = Race.query.get(race)
@@ -367,14 +424,17 @@ def single_race(race):
     if race.world_id != world.id:
         flash("That doesn't exist in the active world")
         return redirect(url_for('.world_page'))
+    points = current_user.return_points_obj(world.id)
     rename_race = Rename(prefix="rename_race")
     rename_culture = Rename(prefix="rename_culture")
-    if rename_race.validate_on_submit():
+    if rename_race.validate_on_submit() and points.points >= 0:
+        
         race.race_name = rename_race.new_name.data
         db.session.add(race)
         db.session.commit()
         return redirect(url_for(".single_race",race=race.id))
-    if rename_culture.validate_on_submit():
+    if rename_culture.validate_on_submit() and points.points >= 0:
+        
         race.culture_name = rename_culture.new_name.data
         db.session.add(race)
         db.session.commit()
@@ -400,7 +460,8 @@ def single_race(race):
         if not i.id == race.creator:
             player_list.append([i.id, i.username])
     new_owner.player_list.choices = player_list
-    if new_owner.validate_on_submit():
+    if new_owner.validate_on_submit() and points.points >= 0:
+        
         race.creator = new_owner.player_list.data
         cult_religion = Orders.query.get(race.religion)
         cult_religion.owner = race.creator
@@ -410,7 +471,8 @@ def single_race(race):
         text = "Race",race.culture_name,"is now owned by",race.made_by()
         flash(text)
         return redirect(url_for(".single_race",race=race.id))
-    if remove_form.validate_on_submit():
+    if remove_form.validate_on_submit() and points.points >= 0:
+        
         location = WorldMap.query.get(remove_form.support.data)
         location.race = 0
         cult_religion = Orders.query.get(race.religion)
@@ -422,14 +484,16 @@ def single_race(race):
         db.session.commit()
         flash("Race has been removed from"+location.coords())
         return redirect(url_for('.single_race',race=race.id))
-    if advance_form.validate_on_submit():
+    if advance_form.validate_on_submit() and points.points >= 0:
+        
         new_advance = RaceAdvances(race_id=race.id,text=advance_form.text.data)
         db.session.add(new_advance)
         db.session.commit()
         flash("Race has been granted a boon")
         return redirect(url_for('.single_race',race=race.id))
         
-    if advance_remove.validate_on_submit():
+    if advance_remove.validate_on_submit() and points.points >= 0:
+        
         advance = RaceAdvances.query.get(advance_remove.support.data)
         db.session.delete(advance)
         db.session.commit()
@@ -449,7 +513,7 @@ def single_race(race):
                             )
 
 @game.route("/cities", methods=["GET", "POST"])
-@login_required
+
 #Found cities, build buildings
 #Considering /cities/<cityid> page for buildings @advances
 def cities_page():
@@ -464,7 +528,7 @@ def cities_page():
                            )
                            
 @game.route("/cities/<cityid>/resettle", methods=['POST'])
-@login_required
+
 def resettle_city(cityid):
     world_check()
     world = World.query.get(session['active_world'])
@@ -487,7 +551,7 @@ def resettle_city(cityid):
 
 @game.route("/cities/<cityid>",methods=['GET','POST'])
 @game.route('/cities/<cityid>/<int:page>', methods=['GET', 'POST'])
-@login_required
+
 def single_city(cityid,page=1):
     world_check()
     world = World.query.get(session['active_world'])
@@ -527,7 +591,8 @@ def single_city(cityid,page=1):
             race_list.append( [race.id, race.culture_name])
     new_owner.new_owner.choices = race_list
     destroy = Destroy_Form(prefix="destroy")
-    if form.validate_on_submit():
+    if form.validate_on_submit() and points.points >= 0:
+        
         if points.points < command_city_cost:
             flash("You don't have enough points for that")
             return redirect(url_for(".single_city",cityid=city.id))
@@ -557,6 +622,7 @@ def single_city(cityid,page=1):
         flash("You built a building!")
         return redirect(url_for(".single_city",cityid=city.id))
     if army_form.validate_on_submit():
+        
         if points.points < command_city_cost:
             flash("You don't have enough points for that")
             return redirect(url_for(".single_city",cityid=city.id))
@@ -588,7 +654,8 @@ def single_city(cityid,page=1):
         db.session.commit()
         flash("You built an army!")
         return redirect(url_for(".single_city",cityid=city.id))
-    if new_owner.validate_on_submit():
+    if new_owner.validate_on_submit() and points.points >= 0:
+        
         new_owner = new_owner.new_owner.data
         armies = city.armies.all()
         for army in armies:
@@ -611,7 +678,8 @@ def single_city(cityid,page=1):
         db.session.commit()
         flash(city.name+" has a new owner!")
         return redirect(url_for('.single_city',cityid=city.id))
-    if destroy.validate_on_submit():
+    if destroy.validate_on_submit() and points.points >= 0:
+        
         city.is_alive = 0
         city.owned_by = 0
         city.destroyed_in = world.age_turn()
@@ -640,6 +708,7 @@ def single_city(cityid,page=1):
         return redirect(url_for(".cities_page"))
         
     if advance_form.validate_on_submit():
+        
         if points.points < point_costs[world.age]['Advance City']:
             flash("You don't have enough points for that")
             return redirect(url_for(".single_city",cityid=city.id))
@@ -663,7 +732,8 @@ def single_city(cityid,page=1):
         db.session.commit()
         return redirect(url_for('.single_city',cityid=city.id))
         
-    if advance_remove.validate_on_submit():
+    if advance_remove.validate_on_submit() and points.points >= 0:
+        
         advance = CityAdvances.query.get(advance_remove.support.data)
         entry = "The secrets of "+advance.text+" was lost"
         new_history = CityHistory(cityid=city.id,
@@ -710,7 +780,7 @@ def single_city(cityid,page=1):
                            )
 
 @game.route("/orders",methods=['GET','POST'])
-@login_required
+
 #Create orders. Perhaps subpage for expanding/removing?
 def orders_page():
     world_check()
@@ -718,7 +788,9 @@ def orders_page():
     players = world.players.all()
     form = MakeOrder()
     player_list = []
-    if current_user.id == world.owner:
+    if current_user.is_anon():
+        pass
+    elif current_user.id == world.owner:
         for player in players:
             player_list.append([player.id,player.name])
     else:
@@ -728,6 +800,7 @@ def orders_page():
     orders = Orders.query.filter_by(world=world.id).all()
     
     if form.validate_on_submit():
+        
         points = current_user.return_points_obj(world.id)
         if points.points < point_costs[world.age]['Create Order']:
             flash("You do not have enough points for this")
@@ -759,11 +832,12 @@ def orders_page():
                            found_order_cost = point_costs[world.age]['Create Order'],)
 
 @game.route("/orders/<order>/", methods=['GET','POST'])
-@login_required
+
 def single_order(order):
     world_check()
     order = Orders.query.get(order)
     world = World.query.get(session['active_world'])
+    points = current_user.return_points_obj(world.id)
     if order is None:
         flash("That doesn't exist")
         return redirect(url_for('.world_page'))
@@ -771,7 +845,8 @@ def single_order(order):
         flash("That doesn't exist in the active world")
         return redirect(url_for('.world_page'))
     rename = Rename()
-    if rename.validate_on_submit():
+    if rename.validate_on_submit() and points.points >= 0:
+        
         order.name = rename.new_name.data
         db.session.add(order)
         db.session.commit()
@@ -802,21 +877,24 @@ def single_order(order):
     for location in locations:
         choices.append([location.id,location.coords()])
     remove.support.choices = choices
-    if destroyform.validate_on_submit():
+    if destroyform.validate_on_submit() and points.points >= 0:
+        
         name = order.name
         order.is_alive = 0
         db.session.add(order)
         db.session.commit()
         flash("You have destroyed "+name+"!")
         return redirect(url_for(".orders_page"))
-    if remove_city.validate_on_submit():
+    if remove_city.validate_on_submit() and points.points >= 0:
+        
         city_id = remove_city.support.data
         order_city = Order_City.query.filter_by(order_id=order.id,city_id=city_id).first()
         db.session.delete(order_city)
         db.session.commit()
         flash("Order has left the city")
         return redirect(url_for(".single_order",order=order.id))
-    if expand.validate_on_submit():
+    if expand.validate_on_submit() and points.points >= 0:
+        
         location = WorldMap.query.filter_by(letter_coord=expand.letter.data,number_coord=expand.number.data,world=world.id).first()
         if location in order.locations:
             flash("Order is already in that location")
@@ -826,7 +904,8 @@ def single_order(order):
         db.session.commit()
         flash("You have expanded an order")
         return redirect(url_for(".single_order",order=order.id))
-    if city_expand.validate_on_submit():
+    if city_expand.validate_on_submit() and points.points >= 0:
+        
         city_id = city_expand.support.data
         check = Order_City.query.filter_by(city_id=city_id,order_id=order.id).all()
         if check:
@@ -837,7 +916,8 @@ def single_order(order):
         db.session.commit()
         flash("You have expanded to a city!")
         return redirect(url_for(".single_order",order=order.id))
-    if remove.validate_on_submit():
+    if remove.validate_on_submit() and points.points >= 0:
+        
         location = WorldMap.query.get(remove.support.data)
         order.locations.remove(location)
         db.session.add(order)
@@ -859,7 +939,7 @@ def single_order(order):
                             )
 
 @game.route("/avatars",methods=['GET','POST'])
-@login_required
+
 #Create an avatar! Should build a 'create race' button here for that ability
 #Should that be checked by player..
 def avatars_page():
@@ -868,7 +948,9 @@ def avatars_page():
     form = MakeAvatar()
     players = world.players.all()
     player_list = []
-    if current_user.id == world.owner:
+    if current_user.is_anon():
+        pass
+    elif current_user.id == world.owner:
         for player in players:
             player_list.append([player.id,player.name])
     else:
@@ -884,10 +966,11 @@ def avatars_page():
                            )
 
 @game.route("/avatars/<avatar_id>",methods=['GET','POST'])
-@login_required
+
 def single_avatar(avatar_id):
     world_check()
     world = World.query.get(session['active_world'])
+    points = current_user.return_points_obj(world.id)
     avatar = Avatars.query.get(avatar_id)
     location = avatar.return_location()
     if avatar is None:
@@ -897,7 +980,8 @@ def single_avatar(avatar_id):
         flash("That doesn't exist in the active world")
         return redirect(url_for('.world_page'))
     destroy_form = Destroy_Form()
-    if destroy_form.validate_on_submit():
+    if destroy_form.validate_on_submit() and points.points >= 0:
+        
         avatar.is_alive = 0
         db.session.add(avatar)
         db.session.commit()
@@ -925,7 +1009,8 @@ def single_avatar(avatar_id):
         commands.append([4,'Command Order'])
     command_avatar.command_list.choices = commands
     command_cost = point_costs[world.age]['Command Avatar']
-    if command_avatar.validate_on_submit():
+    if command_avatar.validate_on_submit() and points.points >= 0:
+        
         option = command_avatar.command_list.data
         if option == 1:
             flash("Create Race")
@@ -957,7 +1042,7 @@ def single_avatar(avatar_id):
                            )
 #                           
 @game.route("/avatars/<avatar_id>/movement", methods=['GET'])
-@login_required
+
 def move_avatar(avatar_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -976,11 +1061,12 @@ def move_avatar(avatar_id):
         )
 #
 @game.route("/avatars/<avatar_id>/movement",methods=['POST'])
-@login_required
+
 def move_avatar_process(avatar_id):
     world_check()
     avatar = Avatars.query.get(avatar_id)
     if request.form:
+        
         if request.form['location']:
             avatar.location = request.form['location']
             avatar.has_moved = 1
@@ -993,7 +1079,7 @@ def move_avatar_process(avatar_id):
     return redirect(url_for(".single_avatar",avatar_id=avatar.id))
         
 @game.route("/prov",methods=['GET','POST'])
-@login_required
+
 #For things like walls, bridges, farmland, forts
 def prov_buildings_page():
     world_check()
@@ -1008,6 +1094,7 @@ def prov_buildings_page():
 def single_provbldg(bldg):
     world_check()
     world = World.query.get(session['active_world'])
+    points = current_user.return_points_obj(world.id)
     building = BldgProv.query.get(bldg)
     if building is None:
         flash("That doesn't exist")
@@ -1023,7 +1110,8 @@ def single_provbldg(bldg):
             race_list.append( [race.id, race.culture_name])
     newownerform.new_owner.choices = race_list
     destroyform = Destroy_Form()
-    if newownerform.validate_on_submit():
+    if newownerform.validate_on_submit() and points.points >= 0:
+        
         new_owner = newownerform.new_owner.data
         building.owned_by = new_owner
         db.session.add(building)
@@ -1036,7 +1124,8 @@ def single_provbldg(bldg):
         db.session.commit()
         flash("Changed Ownership")
         return redirect(url_for('.single_provbldg',bldg=building.id))
-    if destroyform.validate_on_submit():
+    if destroyform.validate_on_submit() and points.points >= 0:
+        
         if destroyform.destroy.data:
             building.is_alive = 0
             building.owned_by = 0
@@ -1059,14 +1148,15 @@ def single_provbldg(bldg):
                            )
 
 @game.route("/events",methods=['GET', 'POST'])
-@login_required
+
 #For when events are played
 def events_page():
     world_check()
     world = World.query.get(session['active_world'])
     players = world.players.all()
     player_list = []
-    player_list.append([current_user.id,current_user.name])
+    if not current_user.is_anon():
+        player_list.append([current_user.id,current_user.name])
     points = current_user.return_points_obj(world.id)
     cost = point_costs[world.age]['Event']
     events = world.event.all()
@@ -1078,6 +1168,7 @@ def events_page():
     remove_event.played_by.choices = player_list
     remove_event.removal.choices = remove_event_list
     if remove_event.validate_on_submit():
+        
         if points.points < cost:
             flash("You lack sufficient points for this action")
             return redirect(url_for('.events_page'))
@@ -1100,7 +1191,7 @@ def events_page():
                            remove_event=remove_event,)
 
 @game.route("/military",methods=['GET', 'POST'])
-@login_required
+
 #Create armies and navies
 #Seperate control page per?
 def military_page():
@@ -1113,10 +1204,11 @@ def military_page():
                            )
 
 @game.route("/army/<armyid>",methods=['GET','POST'])
-@login_required
+
 def single_army(armyid):
     world_check()
     world = World.query.get(session['active_world'])
+    points = current_user.return_points_obj(world.id)
     army = Armies.query.get(armyid)
     if army is None:
         flash("That doesn't exist")
@@ -1126,7 +1218,8 @@ def single_army(armyid):
         return redirect(url_for('.world_page'))
     form=UpdateLocation()
     movement = AvatarMovement(prefix="move")
-    if movement.validate_on_submit():
+    if movement.validate_on_submit() and points.points >= 0:
+        
         return redirect(url_for(".army_movement",armyid=army.id))
     rename=Rename()
     support=ArmySupportFrom()
@@ -1137,7 +1230,8 @@ def single_army(armyid):
             if each.id != army.supported_from:
                 citychoice.append([each.id, each.name])
     support.support.choices = citychoice
-    if form.validate_on_submit():
+    if form.validate_on_submit() and points.points >= 0:
+        
         number = form.number.data
         letter = form.letter.data
         army.location = WorldMap.query.filter_by(letter_coord=letter,number_coord=number,world=world.id).first().id
@@ -1145,14 +1239,16 @@ def single_army(armyid):
         db.session.commit()
         flash("New location for army")
         return redirect(url_for(".single_army",armyid=army.id))
-    if rename.validate_on_submit():
+    if rename.validate_on_submit() and points.points >= 0:
+        
         new_name = rename.new_name.data
         army.name = new_name
         db.session.add(army)
         db.session.commit()
         flash("New name for army")
         return redirect(url_for(".single_army",armyid=army.id))
-    if support.validate_on_submit():
+    if support.validate_on_submit() and points.points >= 0:
+        
         army.supported_from = support.support.data
         db.session.add(army)
         db.session.commit()
@@ -1169,10 +1265,11 @@ def single_army(armyid):
                            )
 #
 @game.route("/army/<armyid>/movement",methods=['GET'])
-@login_required
+
 def army_movement(armyid):
     world_check()
     world = World.query.get(session['active_world'])
+    
     army = Armies.query.get(armyid)
     if army.has_moved:
         flash("This Army has already moved thus turn.")
@@ -1188,9 +1285,10 @@ def army_movement(armyid):
         )
 
 @game.route("/army/<armyid>/movement",methods=['POST'])
-@login_required
+
 def do_army_movement(armyid):
     world_check()
+    
     army = Armies.query.get(armyid)
     if request.form:
         if request.form['location']:
@@ -1205,9 +1303,10 @@ def do_army_movement(armyid):
     return redirect(url_for(".single_army",armyid=army.id))
                            
 @game.route("/army/<armyid>/disband")
-@login_required
+
 def disband_army(armyid):
     world_check()
+    
     army = Armies.query.get(armyid)
     armyname = army.name
     army.is_alive=0
@@ -1223,7 +1322,7 @@ def disband_army(armyid):
     return redirect(url_for('.military_page'))
 
 @game.route("/map")
-@login_required
+
 def world_map():
     world_check()
     world = World.query.get(session['active_world'])
@@ -1239,7 +1338,7 @@ def world_map():
                             size=world.size,)
 
 @game.route("/map/regen")
-@login_required
+
 def world_map_regen():
     world_check()
     world = World.query.get(session['active_world'])
@@ -1267,10 +1366,10 @@ def world_map_regen():
         db.session.add(i)
     db.session.commit()
     return redirect(url_for('.world_map'))
-        
-    
+
+   
 @game.route("/map/<location_id>", methods=['GET','POST'])
-@login_required
+
 def single_location(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1346,6 +1445,7 @@ def single_location(location_id):
  #           flash("Error occured")
  #           return redirect(url_for(".single_location",location_id = location.id))
     if terrain_form.validate_on_submit():
+        
         if points.points < point_costs[world.age]['Shape Land']:
             flash("Not enough points for this action")
             return redirect(url_for(".single_location",location_id = location.id))
@@ -1361,9 +1461,10 @@ def single_location(location_id):
     orders = location.orders.all()
     owns_present_order = False
     for i in orders:
-        if current_user.id == i.owner:
-            owns_present_order = True
-            break
+        if not current_user.is_anon():
+            if current_user.id == i.owner:
+                owns_present_order = True
+                break
             
     r = 2
     neighbor_lands, label_x, map_radius= neighbors(location, r)
@@ -1399,7 +1500,7 @@ def single_location(location_id):
                             )
 #
 @game.route("/map/<location_id>/make-event/",methods=["GET","POST"])
-@login_required
+
 def make_event(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1408,13 +1509,16 @@ def make_event(location_id):
     form = MakeEvent()
     players = world.players.all()
     player_list = []
-    if current_user.id == world.owner:
+    if current_user.is_anon():
+        pass
+    elif current_user.id == world.owner:
         for player in players:
             player_list.append([player.id,player.name])
     else:
         player_list.append([current_user.id,current_user.name])
     form.played_by.choices = player_list
     if form.validate_on_submit():
+        
         cost = point_costs[world.age]['Event']
         if points.points < cost:
             flash("You lack sufficient points for this action")
@@ -1444,7 +1548,7 @@ def make_event(location_id):
 
 
 @game.route("/map/<location_id>/create-avatar/",methods=["GET","POST"])
-@login_required
+
 def make_avatar(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1452,13 +1556,16 @@ def make_avatar(location_id):
     form = MakeAvatar()
     players = world.players.all()
     player_list = []
-    if current_user.id == world.owner:
+    if current_user.is_anon():
+        pass
+    elif current_user.id == world.owner:
         for player in players:
             player_list.append([player.id,player.name])
     else:
         player_list.append([current_user.id,current_user.name])
     form.god.choices = player_list
     if form.validate_on_submit():
+        
         points = current_user.return_points_obj(world.id)
         if points.points < point_costs[world.age]['Create Avatar']:
             flash("You do not have enough points for this")
@@ -1519,7 +1626,7 @@ def neighbors(location, r):
 
 
 @game.route("/map/<location_id>/create-race/",methods=["GET","POST"])
-@login_required
+
 def make_race(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1528,7 +1635,9 @@ def make_race(location_id):
     form = MakeRace()
     players = world.players.all()
     player_list = []
-    if current_user.id == world.owner:
+    if current_user.is_anon():
+        pass
+    elif current_user.id == world.owner:
         for player in players:
             player_list.append([player.id,player.name])
     else:
@@ -1538,7 +1647,8 @@ def make_race(location_id):
     for race in races:
         race_list.append([race.id,race.culture_name])  
     form.subrace.choices = race_list
-    if form.validate_on_submit():
+    if form.validate_on_submit() and points.points >= 0:
+        
         race_check = Race.query.filter_by(world_id=world.id,culture_name=form.culture.data).all()
         if race_check:
             flash("Already a culture by that name")
@@ -1619,7 +1729,7 @@ def make_race(location_id):
                            )
 #
 @game.route("/map/<location_id>/expand-race/<order_id>", methods=['GET','POST'])
-@login_required
+
 def single_location_command_order(location_id,order_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1635,7 +1745,7 @@ def single_location_command_order(location_id,order_id):
     locations=neighbor_lands,letters=label_x,r=map_radius,order=order,location=location)
 
 @game.route("/map/<location_id>/expand-race/",methods=['GET','POST'])
-@login_required
+
 def expand_race(location_id):
     world_check()
     world = World.query.get(session['active_world'])
@@ -1650,6 +1760,7 @@ def expand_race(location_id):
     number = location.number_coord #Y
     neighbors = []
     if request.form:
+        
         if points.points < point_costs[world.age]['Command Race']:
             flash("Not enough points for that action")
             return redirect(url_for(".single_location",location_id = location.id))
@@ -1696,13 +1807,14 @@ def expand_race(location_id):
                             )                            
     
 @game.route("/map/<location_id>/make-city/", methods=['GET','POST'])
-@login_required
+
 def single_location_make_city(location_id):
     world_check()
     world = World.query.get(session['active_world'])
     location = WorldMap.query.get(location_id)
     race = Race.query.get(location.race)
     form = MakeCity()
+    
     points = current_user.return_points_obj(world.id)
     if points.points < point_costs[world.age]['Command Race']:
         flash("You don't have enough points for this action")
@@ -1757,12 +1869,13 @@ def single_location_make_city(location_id):
                             )
                             
 @game.route("/map/<location_id>/make-prov-bldg", methods=['GET','POST'])
-@login_required
+
 #For things like walls, bridges, farmland, forts
 def build_prov_buildings(location_id):
     world_check()
     world = World.query.get(session['active_world'])
     builder_source = session['builder_source']
+    
     points = current_user.return_points_obj(world.id)
     cost = point_costs[world.age][builder_source]
     if points.points < cost:
@@ -1772,7 +1885,7 @@ def build_prov_buildings(location_id):
     race = Race.query.get(location.race)
     buildings = BldgProv.query.filter_by(world_in=world.id).all()
     form = MakeProvBldg()
-    if form.validate_on_submit():
+    if form.validate_on_submit() and points.points >= 0:
         new_building = BldgProv(name = form.name.data,
                                 built_by = race.id,
                                 owned_by = race.id,

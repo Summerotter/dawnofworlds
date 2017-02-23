@@ -216,7 +216,15 @@ class User(UserMixin, db.Model):
         
     def return_points_obj(self,world_id):
         points = self.points.filter_by(world=world_id).first()
+        try:
+            points.points >= 0
+        except:
+            points = PowerPoints()
+            points.points = 0
         return points
+        
+    def is_anon(self):
+        return False
 
 
 class AnonymousUser(AnonymousUserMixin):
@@ -225,6 +233,14 @@ class AnonymousUser(AnonymousUserMixin):
 
     def is_administrator(self):
         return False
+        
+    def return_points_obj(self,world_id):
+        points = PowerPoints()
+        points.points = -1
+        return points
+        
+    def is_anon(self):
+        return True
 
 login_manager.anonymous_user = AnonymousUser
 
@@ -728,6 +744,7 @@ class PowerPoints(db.Model):
     points = db.Column(db.Integer,default=0)
     bonus = db.Column(db.Integer,default=0)
     is_ready = db.Column(db.Integer,default=0)
+    player_status = db.Column(db.String,default="pending")
     
 class CityAdvances(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -738,3 +755,33 @@ class RaceAdvances(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     race_id = db.Column(db.Integer, db.ForeignKey('race.id'))
     text = db.Column(db.String(256))
+    
+#library items start here
+
+class Books(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    title = db.Column(db.String(256))
+    primary_author = db.Column(db.Integer, db.ForeignKey('author.id'))
+    publisher = db.Column(db.Integer, db.ForeignKey('publisher.id'))
+    series = db.Column(db.Integer, db.ForeignKey('series.id'))
+    series_number = db.Column(db.Integer)
+    published = db.Column(db.Integer)
+    small_blurb = db.Column(db.Text)
+    large_review = db.Column(db.Text)
+    
+    
+    
+class Author(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(256))
+    books = db.relationship("Books",backref="author_obj",lazy='dynamic')
+    
+class Publisher(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(256))
+    books = db.relationship("Books",backref="publisher_obj",lazy='dynamic')
+    
+class Series(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(256))
+    books = db.relationship("Books",backref="series_obj",lazy='dynamic')

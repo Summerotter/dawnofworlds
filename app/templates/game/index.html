@@ -37,7 +37,6 @@
         {% endif %}
 		{% for world in worlds %}
 			{% if world != active_world %}
-            {% if current_user in world.players.all() or current_user.is_administrator() %}
 		<tr>
 			<td align="center">{{ world.name }} </td>
             {% if world.owner %}
@@ -51,7 +50,6 @@
 			<td align="center">{{ world.races.count() }}</td>
 			<td align="center"><a href="{{ url_for('.activate', world_id=world.id) }}">Activate world</a></td>
 		</tr>
-			{% endif %}
             {% endif %}
 		{% endfor %}
 		</table>

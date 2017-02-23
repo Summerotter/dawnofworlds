@@ -110,6 +110,9 @@ class AdvanceTurn(Form):
     
 class AdvanceAge(Form):
     advance_age =  HiddenField("advance_age")
+    
+class ApplyToWorld(Form):
+    apply = HiddenField("apply")
 
 class ArmySupportFrom(Form):
     support = SelectField("support",coerce=int,validators=[DataRequired()])
