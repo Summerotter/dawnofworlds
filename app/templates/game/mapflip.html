@@ -3,7 +3,31 @@
 {% block page_content %}
 <div class="map" id="left_pane_wrapper">
 <section id="left_pane">
-   
+    <div>
+    <table class="map">
+        <tr>
+            <th class="map">Map Key</th>
+        </tr>
+        <tr>
+            <td class="map"><div class="map"><img class="map_terrain" src="{{ url_for('static', filename='images/forest.png') }}" /></div></td>
+            <td>Forest</td>
+            <td class="map"><div class="map"><img class="map_terrain" src="{{ url_for('static', filename='images/mountains.png') }}" /></div></td>
+            <td>Mountains</td>
+            <td class="map"><div class="map"><img class="map_terrain" src="{{ url_for('static', filename='images/hills.png') }}" /></div></td>
+            <td>Hills</td>
+            <td class="map"><div class="map"><img class="map_terrain" src="{{ url_for('static', filename='images/city_transparent.png') }}" /></div></td>
+            <td>City</td>
+        </tr>
+        <tr>
+            <td class="map"><div class="map"><img class="map_terrain" src="{{ url_for('static', filename='images/grassland.png') }}" /></div></td>
+            <td>Grassland</td>
+            <td class="map"><div class="map"><img class="map_terrain" src="{{ url_for('static', filename='images/jungle.png') }}" /></div></td>
+            <td>Jungle</td>
+            <td class="map"><div class="map"><img class="map_terrain" src="{{ url_for('static', filename='images/water.png') }}" /></div></td>
+            <td>Water</td>
+        </tr>
+    </table>
+   </div>
     <table class="map">
         <tr>
         {% for letter in letters %}
