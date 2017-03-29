@@ -1,0 +1,41 @@
+
+<div class="map">
+<table class="map">
+    <tr>
+        <th class="map">X/Y</th>
+        {% for letter in letters %}
+            <th class="map">{{letter}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in locations|batch(r) %}
+    <tr>
+        <th class="map">{{row[0]}}</th>
+        {% for location in row[1:] %}
+                           
+            {% if location == False %}
+                <td class="map">X</td>
+            {% else %}
+                <td class="map">
+        <form action="" method="post" name="movement">
+        <input type="hidden" name="location" value="{{location.id}}">
+        {% if location.race_color %}
+        <div class="map" style="box-shadow: inset 0 0 0 2px  {{ location.race_color }}">
+        {% else %}
+        <div class="map">
+        {% endif %}
+        <img class="map_terrain" src="{{ url_for('static', filename='images/' + location.image) }}"/>
+        {% if location.has_city %}
+            <input type="image" class="map_obj" src="{{ url_for('static', filename='images/city_transparent.png') }}" alt="Oh hey a city"/>
+        {% endif %}
+        <input type="image" class="map_button" src="{{ url_for('static', filename='images/transparent_test.png') }}"/>
+        </div>
+        
+        
+        </a></form></td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+    {%endfor%}
+</table>
+</div>
+</div>

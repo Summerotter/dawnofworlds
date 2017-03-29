@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Furry Yellow Pages - {{ user.username }}{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
+    <div class="profile-header">
+        <h1>{{ user.username }}</h1>
+        
+        {% if current_user.is_administrator() %}
+        <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+        {% endif %}
+
+        
+
+<!--        <p>Member since {{ moment(user.member_since).format('L') }}. Last seen {{ moment(user.last_seen).fromNow() }}.</p>
+        <p>{{ user.posts.count() }} blog posts.<br> -->
+        <!--- {{ user.group_membership.count() }} group memberships.</p> -->
+        <p><h1>Where can I be found?</h1><br>
+        {% if user.website %}Website: <a href="http://{{ user.website }}">{{user.website}}</a>{% endif %}<br>
+        {% if user.furaffinity %}Furaffinity Account: <a href="https://www.furaffinity.net/user/{{ user.furaffinity }}">{{user.furaffinity}}</a>{% endif %}<br>
+        {% if user.weasyl %}Weasyl Account: <a href="https://www.weasyl.com/~{{ user.weasyl }}">{{user.weasyl}}</a>{% endif %}<br>
+               
+        </p>
+        <p>
+            {% if user == current_user %}
+            <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">Edit Profile</a>
+            <a class="btn btn-default" href="{{ url_for('.user_media') }}">Edit Media Options</a>
+            {% endif %}
+            {% if current_user.is_administrator() %}
+            <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit Profile [Admin]</a>
+            {% endif %}
+        </p>
+    </div>
+</div>
+        {% if user.about_me %}
+            <div class="post-content">
+            {% if user.about_me_html %}
+                {{ user.about_me_html | safe }}
+            {% else %}
+                <p>{{ user.about_me }}</p>
+            {% endif %}
+            </div>
+        {% endif %}
+            {% if user.media_offered %}
+            <p>Media I work with:<br>
+            {% include '_media.html' %}
+            </p>
+        {% endif %}
+<p>Group Memberships</p>
+{% include '_groups.html' %}
+<!-- {% if user == current_user %}
+{{ wtf.quick_form(form)}}
+{% endif %}
+<h3>Posts by {{ user.username }}</h3>
+ {% include '_posts.html' %}
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, '.user', username=user.username) }}
+</div>
+{% endif %} -->
+{% endblock %}

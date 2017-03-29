@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Furry Yellow Pages - Media: {{ group.username }}{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>{{ group.username }}
+        {% if current_user.can(Permission.FOLLOW) %}
+            {% if current_user.is_offering_media(group) %}
+            <a class="btn btn-default" href="{{ url_for('.remove_media',mediatype=group.username) }}">Remove Media</a>
+            {% else %}
+            <a class="btn btn-default" href="{{ url_for('.offer_media',mediatype=group.username) }}">Offer Media</a>
+            {% endif %}
+        {% endif %}
+    </h1>
+
+       
+
+        {% if group.description %}
+        <p>{{ group.description }}</p>{% endif %}
+
+        
+        <p>
+            {% if current_user.is_administrator() %}
+            <a class="btn btn-danger" href="{{ url_for('.edit_media',mediatype=group.username) }}">Edit Media</a>
+            {% endif %}
+        </p>
+    </div>
+    <p>
+        {% include '_users.html' %}
+               
+        </p>
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<table>
+    {% for row in media|batch(4) %}
+    <tr>
+    {% for group in row %}
+    
+    <td>
+        
+        
+        <div class="post-content">
+        <a href="{{ url_for('.media_page', mediatype=group.username) }}">{{ group.username }}</a>
+        </div>
+    </td>
+
+    {% endfor %}
+    </tr>
+    {% endfor %}
+</table>

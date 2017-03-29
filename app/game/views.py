@@ -1647,6 +1647,7 @@ def make_race(location_id):
     for race in races:
         race_list.append([race.id,race.culture_name])  
     form.subrace.choices = race_list
+    points = current_user.return_points_obj(world.id)
     if form.validate_on_submit() and points.points >= 0:
         
         race_check = Race.query.filter_by(world_id=world.id,culture_name=form.culture.data).all()
@@ -1661,7 +1662,7 @@ def make_race(location_id):
             if Race.query.filter_by(world_id=world.id).filter_by(map_color=color).all():
                 flash("Racial color taken")
                 return redirect(url_for(".races_page"))
-        points = current_user.return_points_obj(world.id)
+        
         cost = 0
         if form.subrace.data == 0:
             cost = point_costs[world.age]['Create Subrace']

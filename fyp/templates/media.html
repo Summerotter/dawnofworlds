@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Furry Yellow Pages - Media Types{% endblock %}
+
+{% block page_content %}
+{% if current_user.is_administrator() %}
+<p>Create New Media <a href="{{ url_for('main.create_media') }}">Here</a></p>
+{% endif %}
+
+{% include '_media.html' %}
+{% if current_user.is_administrator() %}{% include '_pending_media.html' %}{% endif %}
+{% endblock %}

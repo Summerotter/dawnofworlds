@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Furry Yellow Pages - Media and Services Management{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Manage your Media and Services</h1>
+    <a class="btn btn-default" href="{{ url_for('.user', username=current_user.username) }}">Return to your Profile</a>
+</div>
+<div class="col-md-4">
+    <form action="" method="post" name="update_user_media">
+     {{ form.hidden_tag() }}
+    {% include '_user_offered_media.html' %}
+    {% include '_user_unoffered_media.html' %}
+    
+               
+                {{form.submit}}
+    </form>
+</div>
+{% endblock %}
