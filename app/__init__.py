@@ -40,9 +40,7 @@ def create_app(config_name):
     from .game import game as game_blueprint
     app.register_blueprint(game_blueprint, url_prefix="/game")
     #app.register_blueprint(game_blueprint)
-    
-    from .library import library as library_blueprint
-    app.register_blueprint(library_blueprint, url_prefix="/library")
+
 
     return app
 #

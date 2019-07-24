@@ -755,33 +755,3 @@ class RaceAdvances(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     race_id = db.Column(db.Integer, db.ForeignKey('race.id'))
     text = db.Column(db.String(256))
-    
-#library items start here
-
-class Books(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    title = db.Column(db.String(256))
-    primary_author = db.Column(db.Integer, db.ForeignKey('author.id'))
-    publisher = db.Column(db.Integer, db.ForeignKey('publisher.id'))
-    series = db.Column(db.Integer, db.ForeignKey('series.id'))
-    series_number = db.Column(db.Integer)
-    published = db.Column(db.Integer)
-    small_blurb = db.Column(db.Text)
-    large_review = db.Column(db.Text)
-    
-    
-    
-class Author(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.String(256))
-    books = db.relationship("Books",backref="author_obj",lazy='dynamic')
-    
-class Publisher(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.String(256))
-    books = db.relationship("Books",backref="publisher_obj",lazy='dynamic')
-    
-class Series(db.Model):
-    id = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.String(256))
-    books = db.relationship("Books",backref="series_obj",lazy='dynamic')
